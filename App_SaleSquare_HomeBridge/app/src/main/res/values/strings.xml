@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">App_SaleSquare_HomeBridge</string>
+    <string name="title">¡Hola, empecemos a crear tu aviso!</string>
+    <string name="subtitle">¿Dónde está ubicado tu inmueble?</string>
+    <string name="addressTitle">Ingresa calle y número</string>
+    <string name="address">Ingresa una dirección</string>
+    <string name="city">Selecciona un departamento</string>
+    <string name="cityTitle">Departamento</string>
+    <string name="back">Atrás</string>
+    <string name="open">Abrir selector</string>
+    <string name="province">Selecciona una provincia</string>
+    <string name="provinceTitle">Provincia</string>
+    <string name="district">Selecciona un distrito</string>
+    <string name="districtTitle">Distrito</string>
+    <string name="map">Seleccionar ubicación en el mapa</string>
+    <string name="mapTitle">Mapa</string>
+    <string name="confirm">Confirmar ubicación</string>
 </resources>
