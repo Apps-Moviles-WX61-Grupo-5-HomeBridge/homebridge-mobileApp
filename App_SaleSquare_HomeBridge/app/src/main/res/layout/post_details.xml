@@ -12,15 +12,27 @@
         android:layout_height="wrap_content"
         android:background="#DCDCDC">
 
+        <ImageView
+            android:id="@+id/ivEditDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvOperationPrice"
+            app:srcCompat="@drawable/baseline_edit_square_24" />
+
         <TextView
             android:id="@+id/tvDetails_summary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="173dp"
             android:text="395m2 - 3 dorm - 2 baños - 3 estc"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,11 +40,9 @@
             android:id="@+id/tvAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="9dp"
-            android:layout_marginEnd="133dp"
             android:text="Los Libertadores, San Isidro, Lima, Lima"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDetails_summary" />
 
@@ -85,7 +95,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="21dp"
             android:text="Oportunidad ideal para un proyecto de inversión, con ubicación estratégica."
             android:textStyle="bold"
@@ -106,7 +116,7 @@
             android:id="@+id/ivCalendar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
@@ -116,7 +126,7 @@
             android:id="@+id/tvDescription"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="¡Oportunidad única! Se vende hermosa casa con amplios espacios y excelente iluminación natural. Ubicada en una zona tranquila y segura, cuenta con jardín, terraza y acabados de primera. Ideal para familias que buscan comodidad y estilo. ¡No dejes pasar esta oferta y agenda tu visita hoy mismo!"
             app:layout_constraintStart_toStartOf="parent"
@@ -387,7 +397,7 @@
             android:id="@+id/tvServicesTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Servicios"
             android:textStyle="bold"
@@ -398,7 +408,7 @@
             android:id="@+id/tvServices"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="Área de lavanderia"
             app:layout_constraintStart_toStartOf="parent"
@@ -408,7 +418,7 @@
             android:id="@+id/tvShowMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:text="Ver ubicación en mapa"
             android:textColor="#1D950D"
@@ -420,7 +430,7 @@
             android:id="@+id/tvPropietaryInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Información del anunciante"
             android:textStyle="bold"
@@ -465,6 +475,17 @@
             app:cornerRadius="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivLandlordPicture" />
+
+        <ImageView
+            android:id="@+id/ivEditAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="44dp"
+            app:layout_constraintStart_toEndOf="@+id/tvAddress"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_edit_square_24"
+            android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

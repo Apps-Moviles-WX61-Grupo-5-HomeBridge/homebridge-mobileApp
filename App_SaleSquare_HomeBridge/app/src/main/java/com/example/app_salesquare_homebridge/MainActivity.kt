@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.edit -> {
-                    Toast.makeText(this, "Edit", Toast.LENGTH_SHORT).show()
+                    coverCardView()
+                    showEditIcons()
                     true
                 }
                 R.id.delete -> {
@@ -51,5 +52,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
         popupMenu.show()
+    }
+
+    private fun coverCardView() {
+        val cardView: CardView = findViewById(R.id.cvOperationPrice)
+
+        cardView.visibility = View.GONE
+    }
+
+    private fun showEditIcons() {
+        val editAddress: ImageView = findViewById(R.id.ivEditAddress)
+        val editDetails: ImageView = findViewById(R.id.ivEditDetails)
+
+        editAddress.visibility = View.VISIBLE
+        editDetails.visibility = View.VISIBLE
     }
 }
