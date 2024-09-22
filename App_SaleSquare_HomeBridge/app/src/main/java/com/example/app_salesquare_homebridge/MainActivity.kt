@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -24,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         val backIcon:ImageView = findViewById<ImageView>(R.id.back_icon)
         val menuIcon:ImageView = findViewById<ImageView>(R.id.menu_icon)
-        val title: TextView = findViewById<TextView>(R.id.toolbar_title)
 
         backIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in back icon", Toast.LENGTH_SHORT).show()
@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         menuIcon.setOnClickListener { view ->
             showMenu(view)
         }
-
-        title.text = "Mi inmueble"
     }
 
     private fun showMenu(v: View) {
@@ -51,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
-            true
         }
         popupMenu.show()
     }
