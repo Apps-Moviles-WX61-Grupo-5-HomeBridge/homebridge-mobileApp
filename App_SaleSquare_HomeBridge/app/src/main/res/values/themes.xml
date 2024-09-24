@@ -3,6 +3,8 @@
     <style name="Base.Theme.App_SaleSquare_HomeBridge" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#465544</item>
+        <item name="colorSecondary">#9B9F92</item>
     </style>
 
     <style name="Theme.App_SaleSquare_HomeBridge" parent="Base.Theme.App_SaleSquare_HomeBridge" />
