@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         backIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in back icon", Toast.LENGTH_SHORT).show()
             showShareIcon()
+            showEditIcons(false)
         }
         menuIcon.setOnClickListener { view ->
             showMenu(view)
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.edit -> {
                     coverCardView()
-                    showEditIcons()
+                    showEditIcons(true)
                     true
                 }
                 R.id.delete -> {
@@ -78,14 +79,16 @@ class MainActivity : AppCompatActivity() {
         cardView.visibility = View.GONE
     }
 
-    private fun showEditIcons() {
+    private fun showEditIcons(isVisible: Boolean) {
         val editAddress: ImageView = findViewById(R.id.ivEditAddress)
         val editDetails: ImageView = findViewById(R.id.ivEditDetails)
         val editPhotos: ImageView = findViewById(R.id.ivEditPhotos)
 
-        editAddress.visibility = View.VISIBLE
-        editDetails.visibility = View.VISIBLE
-        editPhotos.visibility = View.VISIBLE
+        val visibility = if (isVisible) View.VISIBLE else View.GONE
+
+        editAddress.visibility = visibility
+        editDetails.visibility = visibility
+        editPhotos.visibility = visibility
 
         adjustPhotosMargin()
         adjustTitleMargin()
