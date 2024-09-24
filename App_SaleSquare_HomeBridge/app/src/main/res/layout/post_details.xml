@@ -13,17 +13,39 @@
         android:background="#DCDCDC">
 
         <ImageView
+            android:id="@+id/ivEditPhotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photos_slider"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_edit_square_24" />
+
+        <include
+            android:id="@+id/photos_slider"
+            layout="@layout/post_photos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
             android:id="@+id/ivEditDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/tvTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvOperationPrice"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress"
             app:srcCompat="@drawable/baseline_edit_square_24" />
 
         <TextView
@@ -34,7 +56,7 @@
             android:layout_marginTop="16dp"
             android:text="395m2 - 3 dorm - 2 baños - 3 estc"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/photos_slider"/>
 
         <TextView
             android:id="@+id/tvAddress"
@@ -50,7 +72,7 @@
             android:id="@+id/cvOperationPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="6dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -480,12 +502,12 @@
             android:id="@+id/ivEditAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/tvAddress"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_edit_square_24"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvDetails_summary"
+            app:srcCompat="@drawable/baseline_edit_square_24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

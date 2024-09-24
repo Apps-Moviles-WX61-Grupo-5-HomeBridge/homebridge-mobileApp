@@ -2,15 +2,17 @@ package com.example.app_salesquare_homebridge
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import org.imaginativeworld.whynotimagecarousel.ImageCarousel
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +25,19 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val backIcon:ImageView = findViewById<ImageView>(R.id.back_icon)
-        val menuIcon:ImageView = findViewById<ImageView>(R.id.menu_icon)
+        val backIcon:ImageView = findViewById(R.id.back_icon)
+        val menuIcon:ImageView = findViewById(R.id.menu_icon)
+        val carousel: ImageCarousel = findViewById(R.id.carousel)
+
+        val list = mutableListOf<CarouselItem>()
+        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714694.jpg?rapc=bXZhX2ltYWdl?isFirstImage=true")
+        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714701.jpg?rapc=bXZhX2ltYWdl")
+        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714695.jpg?rapc=bXZhX2ltYWdl")
+        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714687.jpg?rapc=bXZhX2ltYWdl")
+        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714689.jpg?rapc=bXZhX2ltYWdl")
+        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714685.jpg?rapc=bXZhX2ltYWdl")
+
+        carousel.setData(list)
 
         backIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in back icon", Toast.LENGTH_SHORT).show()
@@ -63,8 +76,43 @@ class MainActivity : AppCompatActivity() {
     private fun showEditIcons() {
         val editAddress: ImageView = findViewById(R.id.ivEditAddress)
         val editDetails: ImageView = findViewById(R.id.ivEditDetails)
+        val editPhotos: ImageView = findViewById(R.id.ivEditPhotos)
 
         editAddress.visibility = View.VISIBLE
         editDetails.visibility = View.VISIBLE
+        editPhotos.visibility = View.VISIBLE
+
+        adjustPhotosMargin()
+        adjustTitleMargin()
+    }
+
+    private fun addCarouselItem(list: MutableList<CarouselItem>, imageUrl: String) {
+        list.add(CarouselItem(imageUrl = imageUrl))
+    }
+
+    private fun adjustPhotosMargin() {
+        val ivEditPhotos = findViewById<ImageView>(R.id.ivEditPhotos)
+        val photos = findViewById<View>(R.id.photos_slider)
+
+        val params = photos.layoutParams as ViewGroup.MarginLayoutParams
+        if (ivEditPhotos.visibility == View.VISIBLE) {
+            params.topMargin = 100
+        } else {
+            params.topMargin = 0
+        }
+        photos.layoutParams = params
+    }
+
+    private fun adjustTitleMargin() {
+        val ivEditDetails = findViewById<ImageView>(R.id.ivEditDetails)
+        val tvTitle = findViewById<View>(R.id.tvTitle)
+
+        val params = tvTitle.layoutParams as ViewGroup.MarginLayoutParams
+        if (ivEditDetails.visibility == View.VISIBLE) {
+            params.topMargin = 150
+        } else {
+            params.topMargin = 21
+        }
+        tvTitle.layoutParams = params
     }
 }
