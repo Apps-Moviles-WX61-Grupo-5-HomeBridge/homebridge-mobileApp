@@ -15,4 +15,7 @@
     <string name="map">Seleccionar ubicación en el mapa</string>
     <string name="mapTitle">Mapa</string>
     <string name="confirm">Confirmar ubicación</string>
+    <string name="createPost">Crear una nueva publicación</string>
+    <string name="editLocation">Editar ubicación</string>
+    <string name="editTitle">Editar ubicación de inmueble</string>
 </resources>
