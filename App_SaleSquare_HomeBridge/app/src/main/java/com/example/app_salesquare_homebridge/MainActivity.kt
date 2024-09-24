@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val backIcon:ImageView = findViewById(R.id.back_icon)
         val menuIcon:ImageView = findViewById(R.id.menu_icon)
+        val shareIcon:ImageView = findViewById(R.id.share_icon)
         val carousel: ImageCarousel = findViewById(R.id.carousel)
 
         val list = mutableListOf<CarouselItem>()
@@ -41,9 +42,13 @@ class MainActivity : AppCompatActivity() {
 
         backIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in back icon", Toast.LENGTH_SHORT).show()
+            showShareIcon()
         }
         menuIcon.setOnClickListener { view ->
             showMenu(view)
+        }
+        shareIcon.setOnClickListener {
+            Toast.makeText(this, "You clicked in share icon", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -114,5 +119,13 @@ class MainActivity : AppCompatActivity() {
             params.topMargin = 21
         }
         tvTitle.layoutParams = params
+    }
+
+    private fun showShareIcon() {
+        val shareIcon = findViewById<ImageView>(R.id.share_icon)
+        val menuIcon = findViewById<ImageView>(R.id.menu_icon)
+
+        shareIcon.visibility = View.VISIBLE
+        menuIcon.visibility = View.GONE
     }
 }
