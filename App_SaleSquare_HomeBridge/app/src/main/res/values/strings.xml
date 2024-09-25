@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">App_SaleSquare_HomeBridge</string>
+    <string name="fotos">Fotos</string>
+    <string name="publicar_inmueble">Publicar Inmueble</string>
+    <string name="confirmar_cambios">Confirmar cambios</string>
+    <string name="Boton_de_editar_imagen">Boton de editar imagen</string>
+    <string name="boton_de_eliminar">Boton de eliminar</string>
+    <string name="imagen_de_la_propiedad">Imagen de la propiedad</string>
+    <string name="eliminar_foto">Eliminar Foto</string>
+    <string name="boton_de_agregar_imagen">Boton de agregar imagen</string>
+    <string name="confirmar_eliminaci_n_de_publicaci_n">Confirmar eliminación de \n publicación</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="confirmar">Confirmar</string>
 </resources>
