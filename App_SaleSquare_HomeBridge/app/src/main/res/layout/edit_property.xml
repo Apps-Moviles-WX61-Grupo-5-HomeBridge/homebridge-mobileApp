@@ -133,7 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="520dp"
-            android:text="0"
+            android:text="2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="632dp"
-            android:text="0"
+            android:text="3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -223,7 +223,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="408dp"
-            android:text="0"
+            android:text="2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -233,7 +233,7 @@
             android:layout_marginTop="772dp"
             android:layout_marginEnd="45dp"
             android:background="@color/white"
-            android:hint="0"
+            android:hint="112"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -245,7 +245,7 @@
             android:layout_marginStart="51dp"
             android:layout_marginTop="772dp"
             android:background="@color/white"
-            android:hint="0"
+            android:hint="95"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -344,8 +344,8 @@
             android:layout_marginStart="51dp"
             android:layout_marginTop="1060dp"
             android:background="@color/white"
-            android:hint="0"
-            android:textAlignment="center"
+            android:hint="1,314,000.00"
+            android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -416,7 +416,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="1176dp"
             android:background="@color/white"
-            android:hint="Ingresa el titulo de tu aviso"
+            android:hint="Oportunidad ideal para un proyecto de inversión, con ubicación estratégica"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -428,7 +428,7 @@
             android:layout_marginStart="17dp"
             android:layout_marginTop="1251dp"
             android:background="@color/white"
-            android:hint="Escribe un minimo de 150 caracteres"
+            android:hint="¡Oportunidad única! Se vende hermosa casa con amplios espacios y excelente iluminación natural. Ubicada en una zona tranquila y segura, cuenta con jardín, terraza y acabados de primera. Ideal para familias que buscan comodidad y estilo. ¡No dejes pasar esta oferta y agenda tu visita hoy mismo!"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
