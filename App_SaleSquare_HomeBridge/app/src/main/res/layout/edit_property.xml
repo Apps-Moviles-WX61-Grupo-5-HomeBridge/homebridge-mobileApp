@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/new_property"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background"
+        tools:context=".MainActivity">
+
+        <Button
+            android:id="@+id/button26"
+            android:layout_width="71dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/transparent"
+            android:text="&lt;"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="88dp"
+            android:text="Venta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="76dp"
+            android:text="Alquiler"
+            app:layout_constraintStart_toEndOf="@+id/button27"
+            app:layout_constraintTop_toTopOf="@+id/button27" />
+
+        <Button
+            android:id="@+id/button29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="206dp"
+            android:text="Casa"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="76dp"
+            android:text="Departamento"
+            app:layout_constraintStart_toEndOf="@+id/button29"
+            app:layout_constraintTop_toTopOf="@+id/button29" />
+
+        <Button
+            android:id="@+id/button32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="269dp"
+            android:text="Terreno"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="49dp"
+            android:text="Tipo de Operación"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="167dp"
+            android:text="Tipo de Inmueble"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="471dp"
+            android:text="Baños"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button34"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="508dp"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="-"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button35"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="21dp"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="+"
+            app:layout_constraintStart_toEndOf="@+id/button34"
+            app:layout_constraintTop_toTopOf="@+id/button34" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="520dp"
+            android:text="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="584dp"
+            android:text="Estacionamientos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button36"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="621dp"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="-"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button37"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="21dp"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="+"
+            app:layout_constraintStart_toEndOf="@+id/button36"
+            app:layout_constraintTop_toTopOf="@+id/button36" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="632dp"
+            android:text="3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="358dp"
+            android:text="Dormitorios"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button31"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="395dp"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="-"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button33"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="21dp"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="+"
+            app:layout_constraintStart_toEndOf="@+id/button31"
+            app:layout_constraintTop_toTopOf="@+id/button31" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="408dp"
+            android:text="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="94dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="772dp"
+            android:layout_marginEnd="45dp"
+            android:background="@color/white"
+            android:hint="112"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText"
+            android:layout_width="94dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="772dp"
+            android:background="@color/white"
+            android:hint="95"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="697dp"
+            android:text="Superficie"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="731dp"
+            android:text="Área Techada"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="786dp"
+            android:text="m2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="110dp"
+            android:text="Área Total"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView26" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="147dp"
+            android:text="m2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView27" />
+
+        <RadioGroup
+            android:layout_width="121dp"
+            android:layout_height="146dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="892dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/radio_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A estrenar" />
+
+            <RadioButton
+                android:id="@+id/radio_old"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Años de antigüedad" />
+
+            <RadioButton
+                android:id="@+id/radio_construction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="En construcción" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="863dp"
+            android:text="Antigüedad"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText1"
+            android:layout_width="94dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="1060dp"
+            android:background="@color/white"
+            android:hint="1,314,000.00"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="1040dp"
+            android:text="Precio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="1072dp"
+            android:text="S/"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="1128dp"
+            android:text="Describe el inmueble"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="1152dp"
+            android:text="Titulo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="1227dp"
+            android:text="Descripcion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="57dp"
+            android:layout_marginTop="1365dp"
+            android:text="Continuar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText2"
+            android:layout_width="302dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="1176dp"
+            android:background="@color/white"
+            android:hint="Oportunidad ideal para un proyecto de inversión, con ubicación estratégica"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText3"
+            android:layout_width="302dp"
+            android:layout_height="92dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="1251dp"
+            android:background="@color/white"
+            android:hint="¡Oportunidad única! Se vende hermosa casa con amplios espacios y excelente iluminación natural. Ubicada en una zona tranquila y segura, cuenta con jardín, terraza y acabados de primera. Ideal para familias que buscan comodidad y estilo. ¡No dejes pasar esta oferta y agenda tu visita hoy mismo!"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="148dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="339dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="453dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="566dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/line4"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="675dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/line5"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="842dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/line6"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="1036dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/line7"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="1112dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
