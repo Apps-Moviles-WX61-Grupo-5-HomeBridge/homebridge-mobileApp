@@ -45,7 +45,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="59dp"
                 android:hint="@string/address"
                 android:id="@+id/etAddress"
                 android:background="@drawable/rounded_edit_text"
