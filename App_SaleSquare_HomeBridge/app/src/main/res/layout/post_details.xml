@@ -196,7 +196,7 @@
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/gray">
+                    android:background="@color/greenish_gray">
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -236,7 +236,7 @@
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/gray">
+                    android:background="@color/greenish_gray">
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -276,7 +276,7 @@
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/gray">
+                    android:background="@color/greenish_gray">
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -316,7 +316,7 @@
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/gray">
+                    android:background="@color/greenish_gray">
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -356,7 +356,7 @@
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/gray">
+                    android:background="@color/greenish_gray">
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -396,7 +396,7 @@
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/gray">
+                    android:background="@color/greenish_gray">
 
                     <TextView
                         android:layout_width="fill_parent"
