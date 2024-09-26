@@ -27,6 +27,7 @@ class AddPhotosActivity : AppCompatActivity() {
         btnCreatePost.setOnClickListener {
             val intent = Intent(this, MyPostsActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

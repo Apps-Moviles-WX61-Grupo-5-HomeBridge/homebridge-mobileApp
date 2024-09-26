@@ -43,6 +43,12 @@
             android:name=".MyPostsActivity"
             android:exported="false" />
         <activity
+            android:name=".EditImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".PostResultsActivity"
             android:exported="true">
             <intent-filter>

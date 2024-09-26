@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,11 +19,19 @@
             android:paddingBottom="5dp"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photos_slider"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_edit_square_24" />
-        <!--            app:layout_constraintTop_toBottomOf="@id/photos_slider"-->
 
-
+        <include
+            android:id="@+id/photos_slider"
+            layout="@layout/post_photos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivEditDetails"
@@ -45,11 +52,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="395m2 - 3 dorm - 2 baños - 3 estc"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-<!--            app:layout_constraintTop_toBottomOf="@id/photos_slider"-->
-
+            app:layout_constraintTop_toBottomOf="@id/photos_slider" />
 
         <TextView
             android:id="@+id/tvAddress"
@@ -480,14 +486,16 @@
             android:id="@+id/btContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="53dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="100dp"
             android:backgroundTint="#465544"
             android:drawableRight="@drawable/baseline_email_24"
             android:paddingLeft="90dp"
             android:paddingRight="90dp"
             android:text="Contactar"
             app:cornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivLandlordPicture" />
 

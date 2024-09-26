@@ -3,11 +3,11 @@ package com.example.app_salesquare_homebridge
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.app_salesquare_homebridge.ui.EditLocationActivity
 
 class EditPropertyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,13 +20,13 @@ class EditPropertyActivity : AppCompatActivity() {
             insets
         }
 
-        this.changeToEditPost()
+        this.changeToEditLocation()
     }
 
-    private fun changeToEditPost(): Unit {
+    private fun changeToEditLocation(): Unit {
         val btnCreatePost = findViewById<Button>(R.id.btnContinue)
         btnCreatePost.setOnClickListener {
-            val intent = Intent(this, EditPropertyActivity::class.java)
+            val intent = Intent(this, EditLocationActivity::class.java)
             startActivity(intent)
         }
     }

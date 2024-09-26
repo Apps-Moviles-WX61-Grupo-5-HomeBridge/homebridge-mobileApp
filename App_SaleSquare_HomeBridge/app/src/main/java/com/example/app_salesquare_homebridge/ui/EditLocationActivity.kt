@@ -8,13 +8,11 @@ import android.location.Geocoder
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.view.MotionEvent
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ScrollView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
@@ -23,6 +21,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.app_salesquare_homebridge.EditImageActivity
 import com.example.app_salesquare_homebridge.R
 import com.example.app_salesquare_homebridge.models.Location
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -72,7 +71,7 @@ class EditLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         tvCity = findViewById(R.id.tvCity3)
         tvProvince = findViewById(R.id.tvProvince2)
         tvDistrict = findViewById(R.id.tvDistrict2)
-        val btConfirm = findViewById<Button>(R.id.btConfirm2)
+        val btConfirm = findViewById<Button>(R.id.continue_button)
         val ibBack = findViewById<ImageButton>(R.id.ibBack)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -120,7 +119,7 @@ class EditLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         location = Location(null, address, city, province, district, latitude, longitude)
         // Guardar la instancia de Location en la base de datos
         Toast.makeText(this, "Ubicación guardada", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, MainActivity::class.java) //TODO: Cambiar el main activity
+        val intent = Intent(this, EditImageActivity::class.java) //TODO: Cambiar el main activity
         val gson = Gson()
         intent.putExtra("location", gson.toJson(location))
         startActivity(intent)
