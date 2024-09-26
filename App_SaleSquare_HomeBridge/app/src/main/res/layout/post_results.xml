@@ -8,15 +8,18 @@
     android:background="#DCDCDC"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <ImageButton
+        android:id="@+id/logo_button"
         android:layout_width="59dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:scaleType="fitCenter"
+        android:scaleX="1.25"
+        android:scaleY="1.25"
+        android:src="@drawable/salesquare_logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/salesquare_logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -27,7 +30,7 @@
         android:layout_marginEnd="10dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/logo_button"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -68,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/filter_button"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -89,8 +92,8 @@
             android:autoSizeTextType="uniform"
             android:autoText="false"
             android:text="Filtrar"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton2"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+            app:layout_constraintBottom_toTopOf="@+id/filter_button"
+            app:layout_constraintEnd_toStartOf="@+id/filter_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -112,10 +115,10 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:adjustViewBounds="false"
+            android:background="@drawable/ripple_button"
             android:cropToPadding="false"
             android:padding="5dp"
             android:paddingEnd="60dp"
-            android:background="@drawable/ripple_button"
             android:scaleType="centerInside"
             android:src="@drawable/sort_icon" />
 
@@ -128,8 +131,8 @@
             android:autoSizeTextType="uniform"
             android:autoText="false"
             android:text="Ordenar"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton2"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+            app:layout_constraintBottom_toTopOf="@+id/filter_button"
+            app:layout_constraintEnd_toStartOf="@+id/filter_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -140,14 +143,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
-        android:text="Estás viendo 20 propiedades"
+        android:text="Estás viendo 1 propiedad(es)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/posts_recycler_view"
         android:layout_width="409dp"
         android:layout_height="555dp"
         android:layout_marginTop="10dp"
@@ -157,6 +160,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <FrameLayout
+        android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:visibility="visible"
@@ -166,7 +170,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/post_not_found_text"
             android:layout_width="344dp"
             android:layout_height="90dp"
             android:layout_marginLeft="35dp"
@@ -177,10 +181,22 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/posts_not_found_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             app:srcCompat="@drawable/post_not_found" />
     </FrameLayout>
+
+    <Button
+        android:id="@+id/see_post_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:text="Ver propiedad"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@
         tools:context=".MainActivity">
 
         <Button
-            android:id="@+id/button26"
+            android:id="@+id/back_button"
             android:layout_width="71dp"
             android:layout_height="34dp"
             android:layout_marginStart="4dp"
@@ -400,7 +400,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button38"
+            android:id="@+id/btnContinue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="57dp"

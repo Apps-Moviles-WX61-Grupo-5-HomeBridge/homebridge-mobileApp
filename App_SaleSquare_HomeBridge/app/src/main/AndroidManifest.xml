@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,13 +16,34 @@
         android:theme="@style/Theme.App_SaleSquare_HomeBridge"
         tools:targetApi="31">
         <activity
-            android:name=".EditImageActivity"
+            android:name=".NewPropertyActivity"
             android:exported="false" />
         <activity
-            android:name=".AddImageActivity"
+            android:name=".SearchFilterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".AddPhotosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CreateLocationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.EditLocationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditPropertyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPostsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostResultsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +51,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAWteO3GWNKFeKpDql-7E5W8bp6FeRmiJY" />
     </application>
 
 </manifest>

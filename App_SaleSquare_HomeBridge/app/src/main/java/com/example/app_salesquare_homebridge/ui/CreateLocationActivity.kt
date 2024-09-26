@@ -22,6 +22,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.app_salesquare_homebridge.NewPropertyActivity
 import com.example.app_salesquare_homebridge.R
 import com.example.app_salesquare_homebridge.models.Location
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -96,7 +97,7 @@ class CreateLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         location = Location(null, address, city, province, district, latitude, longitude)
         // Guardar la instancia de Location en la base de datos
         Toast.makeText(this, "Ubicación guardada", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, MainActivity::class.java) //TODO: Cambiar el main activity
+        val intent = Intent(this, NewPropertyActivity::class.java) //TODO: Cambiar el main activity
         val gson = Gson()
         intent.putExtra("location", gson.toJson(location))
         startActivity(intent)

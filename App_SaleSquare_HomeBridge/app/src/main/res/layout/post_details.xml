@@ -20,19 +20,11 @@
             android:paddingBottom="5dp"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/photos_slider"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_edit_square_24" />
+        <!--            app:layout_constraintTop_toBottomOf="@id/photos_slider"-->
 
-        <include
-            android:id="@+id/photos_slider"
-            layout="@layout/post_photos"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/ivEditDetails"
@@ -53,10 +45,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:text="395m2 - 3 dorm - 2 baños - 3 estc"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/photos_slider"/>
+            app:layout_constraintTop_toTopOf="parent" />
+<!--            app:layout_constraintTop_toBottomOf="@id/photos_slider"-->
+
 
         <TextView
             android:id="@+id/tvAddress"
