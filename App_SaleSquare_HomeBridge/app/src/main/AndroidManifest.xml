@@ -49,6 +49,9 @@
             android:name=".MyProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".PostResultsActivity"
             android:exported="true">
             <intent-filter>
@@ -60,6 +63,43 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             android:value="AIzaSyAWteO3GWNKFeKpDql-7E5W8bp6FeRmiJY" />
     </application>
 

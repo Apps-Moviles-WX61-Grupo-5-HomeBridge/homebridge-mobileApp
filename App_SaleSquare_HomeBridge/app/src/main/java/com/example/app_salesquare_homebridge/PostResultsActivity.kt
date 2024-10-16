@@ -46,6 +46,7 @@ class PostResultsActivity : AppCompatActivity()
         this.changeToFilter()
         this.changeToPostDescription()
         this.changeToMenu()
+        this.changeToLogin()
     }
 
     private fun loadPosts(): Unit {
@@ -78,6 +79,14 @@ class PostResultsActivity : AppCompatActivity()
         val btnMenu = findViewById<ImageButton>(R.id.logo_button)
         btnMenu.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun changeToLogin(): Unit {
+        val btnLogin = findViewById<ImageButton>(R.id.imageButton4)
+        btnLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
