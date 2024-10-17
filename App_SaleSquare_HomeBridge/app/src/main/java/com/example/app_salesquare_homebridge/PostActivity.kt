@@ -5,14 +5,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.app_salesquare_homebridge.communication.PublicationResponse
+import com.example.app_salesquare_homebridge.network.HomeBridgeApiService
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit.Builder
+import retrofit2.converter.gson.GsonConverterFactory
 
 class PostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +36,7 @@ class PostActivity : AppCompatActivity() {
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         val menuIcon:ImageView = findViewById(R.id.menu_icon)
         val shareIcon:ImageView = findViewById(R.id.share_icon)
-        val carousel:ImageCarousel = findViewById(R.id.carousel)
+        /*val carousel:ImageCarousel = findViewById(R.id.carousel)
 
         val list = mutableListOf<CarouselItem>()
         addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714694.jpg?rapc=bXZhX2ltYWdl?isFirstImage=true")
@@ -38,7 +46,7 @@ class PostActivity : AppCompatActivity() {
         addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714689.jpg?rapc=bXZhX2ltYWdl")
         addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714685.jpg?rapc=bXZhX2ltYWdl")
 
-        carousel.setData(list)
+        carousel.setData(list)*/
 
         backIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in back icon", Toast.LENGTH_SHORT).show()
@@ -51,6 +59,7 @@ class PostActivity : AppCompatActivity() {
         shareIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in share icon", Toast.LENGTH_SHORT).show()
         }
+        loadPublication(5)
     }
 
 
@@ -131,5 +140,44 @@ class PostActivity : AppCompatActivity() {
 
         shareIcon.visibility = View.VISIBLE
         menuIcon.visibility = View.GONE
+    }
+
+    private fun loadPublication(id: Int) {
+        val retrofit = Builder()
+            .baseUrl("https://fakeapi-fa2p.onrender.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(HomeBridgeApiService::class.java)
+        val request = service.getPublications(id)
+
+        request.enqueue(object : Callback<PublicationResponse> {
+            override fun onResponse(call: Call<PublicationResponse>, response: Response<PublicationResponse>) {
+                if (response.isSuccessful) {
+                    val publicationResponse: PublicationResponse = response.body()!!
+                    val publication = publicationResponse.toPublication()
+
+                    findViewById<TextView>(R.id.tvTitle).text = publication.title
+                    findViewById<TextView>(R.id.tvDescription).text = publication.description
+                    findViewById<TextView>(R.id.tvPrice).text = publication.price.toString()
+                    findViewById<TextView>(R.id.tvDate).text = publication.createdDate.toString()
+                    findViewById<TextView>(R.id.tvAddress).text = publication.location
+
+                    val carousel: ImageCarousel = findViewById(R.id.carousel)
+                    val list = mutableListOf<CarouselItem>()
+                    val images = publication.images ?: emptyList()
+
+                    for (imageUrl in images) {
+                        addCarouselItem(list, imageUrl)
+                    }
+
+                    carousel.setData(list)
+                }
+            }
+
+            override fun onFailure(call: Call<PublicationResponse>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
     }
 }
