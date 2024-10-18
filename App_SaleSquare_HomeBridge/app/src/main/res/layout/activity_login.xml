@@ -70,7 +70,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText4"
+        android:id="@+id/etEmail"
         android:layout_width="366dp"
         android:layout_height="50dp"
         android:layout_marginTop="415dp"
@@ -81,10 +81,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etPassword"
         android:layout_width="366dp"
         android:layout_height="50dp"
         android:layout_marginTop="472dp"
         android:hint="Contraseña"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
