@@ -24,21 +24,45 @@ data class Publications (
     @ColumnInfo(name = "location")
     var location: String?,
 
-    @ColumnInfo(name = "address")
-    var priority: Int,
-
-    @ColumnInfo(name = "hasExpired")
-    var hasExpired: Boolean?,
-
    @ColumnInfo(name = "createdDate")
     var createdDate: String?,
 
-    @ColumnInfo(name = "updatedDate")
-    var updatedDate: String?,
+    @ColumnInfo(name = "imagesList")
+    var imagesList: List<String>?,
 
-    @ColumnInfo(name = "isDeleted")
-    var isDeleted: Boolean?,
+    @ColumnInfo(name = "coveredArea")
+    var coveredArea: Float?,
 
-    @ColumnInfo(name = "images")
-    var images: List<String>?
+    @ColumnInfo(name = "totalArea")
+    var totalArea: Float?,
+
+    @ColumnInfo(name = "type")
+    var type: String?,
+
+    @ColumnInfo(name = "operation")
+    var operation: String?,
+
+    @ColumnInfo(name = "delivery")
+    var delivery: String?,
+
+    @ColumnInfo(name = "dormitories")
+    var dormitory: Int?,
+
+    @ColumnInfo(name = "bathrooms")
+    var bathroom: Int?,
+
+    @ColumnInfo(name = "parkingLot")
+    var parkingLot: Int?,
+
+    @ColumnInfo(name = "saleState")
+    var saleState: String?,
+
+    @ColumnInfo(name = "projectStage")
+    var projectStage: String?,
+
+    @ColumnInfo(name = "projectStartDate")
+    var projectStartDate: String?,
+
+    @ColumnInfo(name = "antiquity")
+    var antiquity: Int?
 )

@@ -187,11 +187,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvType"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Casa"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Tipo" />
                 </TableRow>
 
                 <TableRow
@@ -207,11 +208,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvOperation2"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Venta"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Operación" />
                 </TableRow>
 
                 <TableRow
@@ -227,11 +229,15 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="fill_parent"
+                        android:id="@+id/tvDelivery"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:padding="10dp"
-                        android:text="15 días despues del pago"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        tools:text="Tiempo de entrega" />
                 </TableRow>
 
                 <TableRow
@@ -247,11 +253,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvCoveredArea"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="340m2"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Área techada" />
                 </TableRow>
 
                 <TableRow
@@ -267,11 +274,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvTotalArea"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="395m2"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Área total" />
                 </TableRow>
 
                 <TableRow
@@ -287,11 +295,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvDormitoriesQuantity"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="2"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Numero dormitorios" />
                 </TableRow>
 
                 <TableRow
@@ -307,11 +316,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvBathroomsQuantity"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="3"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Número baños" />
                 </TableRow>
 
                 <TableRow
@@ -327,10 +337,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvParkingLotsQuantity"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="3"
+                        android:text="Número estacionamientos"
                         android:textStyle="bold" />
                 </TableRow>
 
@@ -347,11 +358,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvSaleState"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Disponible"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Estado" />
                 </TableRow>
 
                 <TableRow
@@ -367,10 +379,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvProjectStage"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Terminado"
+                        android:text="Etapa"
                         android:textStyle="bold" />
                 </TableRow>
 
@@ -387,11 +400,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvProjectStartDate"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="15/06/2020"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Fecha inicio" />
                 </TableRow>
 
                 <TableRow
@@ -407,47 +421,29 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvAntiquity"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="4"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Tiempo antigüedad" />
                 </TableRow>
             </TableLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/tvServicesTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:text="Servicios"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-        <TextView
-            android:id="@+id/tvServices"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Área de lavanderia"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvServicesTitle" />
 
         <Button
             android:id="@+id/tvShowMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="180dp"
             android:backgroundTint="#465544"
             android:text="Ver ubicación en mapa"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvServices" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <TextView
             android:id="@+id/tvPropietaryInfo"
