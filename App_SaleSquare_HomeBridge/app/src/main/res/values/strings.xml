@@ -29,4 +29,14 @@
     <string name="createPost">Crear una nueva publicación</string>
     <string name="editLocation">Editar ubicación</string>
     <string name="editTitle">Editar ubicación de inmueble</string>
+    <string name="bienvenido">¡Bienvenido a Salesquare!</string>
+    <string name="ingresar">Ingresar con mi cuenta:</string>
+    <string name="email">Email</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="crearcuenta">Crear una cuenta</string>
+    <string name="aunocuenta">¿Aún no tienes cuenta?</string>
+    <string name="creala">Créala en menos de un minuto</string>
+    <string name="registrarme">Registrarme con un Email:</string>
+    <string name="condicion">Al registrarte, estás aceptando los términos y condiciones</string>
+    <string name="tengo">Ya tengo cuenta. Ingresar</string>
 </resources>

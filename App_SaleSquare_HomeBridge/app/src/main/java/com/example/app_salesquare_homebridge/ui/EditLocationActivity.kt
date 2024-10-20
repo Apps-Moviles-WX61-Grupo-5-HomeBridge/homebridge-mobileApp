@@ -119,7 +119,7 @@ class EditLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         location = Location(null, address, city, province, district, latitude, longitude)
         // Guardar la instancia de Location en la base de datos
         Toast.makeText(this, "Ubicación guardada", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, EditImageActivity::class.java) //TODO: Cambiar el main activity
+        val intent = Intent(this, EditImageActivity::class.java)
         val gson = Gson()
         intent.putExtra("location", gson.toJson(location))
         startActivity(intent)
@@ -148,7 +148,7 @@ class EditLocationActivity : AppCompatActivity(), OnMapReadyCallback {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     enableMyLocation()
                 } else {
-                    // Permiso denegado, maneja el caso
+
                 }
             }
         }

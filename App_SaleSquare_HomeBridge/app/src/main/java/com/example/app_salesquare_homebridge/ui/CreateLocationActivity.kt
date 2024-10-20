@@ -97,7 +97,7 @@ class CreateLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         location = Location(null, address, city, province, district, latitude, longitude)
         // Guardar la instancia de Location en la base de datos
         Toast.makeText(this, "Ubicación guardada", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, NewPropertyActivity::class.java) //TODO: Cambiar el main activity
+        val intent = Intent(this, NewPropertyActivity::class.java)
         val gson = Gson()
         intent.putExtra("location", gson.toJson(location))
         startActivity(intent)

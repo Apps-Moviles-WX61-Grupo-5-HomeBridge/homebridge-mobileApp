@@ -28,7 +28,7 @@ class LoginActivity: AppCompatActivity() {
 
         val clickableSpan = object: ClickableSpan() {
             override fun onClick(widget: View) {
-                val intent = Intent(this@LoginActivity,  PostResultsActivity::class.java) //Coloca el RegisterActivity
+                val intent = Intent(this@LoginActivity,  RegisterActivity::class.java)
                 startActivity(intent)
             }
             override fun updateDrawState(ds: TextPaint) {
@@ -57,6 +57,7 @@ class LoginActivity: AppCompatActivity() {
                 Login(email, password)
             }
         }
+
     }
 
     private fun Login(email: String, password: String) {
