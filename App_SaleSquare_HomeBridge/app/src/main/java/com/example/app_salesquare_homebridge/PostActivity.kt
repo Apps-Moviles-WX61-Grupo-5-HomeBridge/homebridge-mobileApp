@@ -29,7 +29,7 @@ class PostActivity : AppCompatActivity() {
             insets
         }
 
-        val backIcon = findViewById<ImageView>(R.id.back_icon)
+        val backIcon = findViewById<ImageView>(R.id.inmuebles_icon)
         val menuIcon:ImageView = findViewById(R.id.menu_icon)
         val shareIcon:ImageView = findViewById(R.id.share_icon)
         val carousel:ImageCarousel = findViewById(R.id.carousel)
@@ -140,7 +140,7 @@ class PostActivity : AppCompatActivity() {
     }
 
     private fun goBack(): Unit {
-        val btnCreatePost = findViewById<ImageView>(R.id.back_icon)
+        val btnCreatePost = findViewById<ImageView>(R.id.inmuebles_icon)
         btnCreatePost.setOnClickListener {
             finish()
         }
