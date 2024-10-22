@@ -8,18 +8,22 @@ import      android.widget.ImageView
 import      android.widget.TextView
 import      androidx.activity.enableEdgeToEdge
 import      androidx.appcompat.app.AppCompatActivity
-import      androidx.cardview.widget.CardView
 import      androidx.core.view.ViewCompat
 import      androidx.core.view.WindowInsetsCompat
 import      androidx.recyclerview.widget.LinearLayoutManager
 import      androidx.recyclerview.widget.RecyclerView
+import      com.example.app_salesquare_homebridge.network.PostApiService
 import      com.example.app_salesquare_homebridge.posts.Post
 import      com.example.app_salesquare_homebridge.posts.PostAdapter
 import      com.example.app_salesquare_homebridge.ui.MainActivity
+import      retrofit2.Call
+import      retrofit2.Response
+import      retrofit2.Retrofit
+import      retrofit2.converter.gson.GsonConverterFactory
 
 
 
-class PostResultsActivity : AppCompatActivity()
+public final class PostResultsActivity : AppCompatActivity()
 {
 //	|-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|
 //				    Members and Fields
@@ -50,7 +54,30 @@ class PostResultsActivity : AppCompatActivity()
     }
 
     private fun loadPosts(): Unit {
-        this.m_Posts.add(Post(200.0, "San Juan de Lurigancho, Lima", 100.0, 3, 2, 1, "Casa"))
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/api/v1/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(PostApiService::class.java)
+        val call = service.getPublication(userRequest)
+
+        call.enqueue(object : retrofit2.Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                    startActivity(intent)
+                }
+                else
+                {
+                    val a = 0
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
 
         findViewById<ImageView>(R.id.posts_not_found_image).visibility = ImageView.INVISIBLE
         findViewById<TextView>(R.id.post_not_found_text).visibility = TextView.INVISIBLE

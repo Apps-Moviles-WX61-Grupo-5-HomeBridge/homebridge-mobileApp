@@ -1,6 +1,8 @@
-package com.example.app_salesquare_homebridge.communication
+package     com.example.app_salesquare_homebridge.communication
 
-data class UserRequest (
+
+
+public final data class UserRequest (
     val username: String,
     val email: String,
     val password: String,

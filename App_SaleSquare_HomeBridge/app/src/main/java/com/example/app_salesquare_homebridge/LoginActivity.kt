@@ -11,12 +11,15 @@ import okhttp3.*
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import okhttp3.MediaType.Companion.toMediaType
 import okio.IOException
 import org.json.JSONObject
 
 class LoginActivity: AppCompatActivity() {
     private val client = OkHttpClient()
+    private val m_UserWrapper: UserWrapper = UserWrapper()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)

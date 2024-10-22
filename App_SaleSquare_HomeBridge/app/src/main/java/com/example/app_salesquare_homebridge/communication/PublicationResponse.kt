@@ -2,7 +2,6 @@ package com.example.app_salesquare_homebridge.communication
 
 import com.example.app_salesquare_homebridge.models.Publication
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 class PublicationResponse (
