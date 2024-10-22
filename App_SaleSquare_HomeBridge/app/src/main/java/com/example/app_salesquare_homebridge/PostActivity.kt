@@ -36,22 +36,11 @@ class PostActivity : AppCompatActivity() {
         val backIcon = findViewById<ImageView>(R.id.back_icon)
         val menuIcon:ImageView = findViewById(R.id.menu_icon)
         val shareIcon:ImageView = findViewById(R.id.share_icon)
-        /*val carousel:ImageCarousel = findViewById(R.id.carousel)
-
-        val list = mutableListOf<CarouselItem>()
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714694.jpg?rapc=bXZhX2ltYWdl?isFirstImage=true")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714701.jpg?rapc=bXZhX2ltYWdl")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714695.jpg?rapc=bXZhX2ltYWdl")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714687.jpg?rapc=bXZhX2ltYWdl")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714689.jpg?rapc=bXZhX2ltYWdl")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714685.jpg?rapc=bXZhX2ltYWdl")
-
-        carousel.setData(list)*/
 
         backIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in back icon", Toast.LENGTH_SHORT).show()
             showShareIcon()
-            showEditIcons(false)
+            showEditIcon(false)
         }
         menuIcon.setOnClickListener { view ->
             showMenu(view)
@@ -70,7 +59,7 @@ class PostActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.edit -> {
                     coverCardView()
-                    showEditIcons(true)
+                    showEditIcon(true)
                     true
                 }
                 R.id.delete -> {
@@ -89,49 +78,31 @@ class PostActivity : AppCompatActivity() {
         cardView.visibility = View.GONE
     }
 
-    private fun showEditIcons(isVisible: Boolean) {
-        val editAddress: ImageView = findViewById(R.id.ivEditAddress)
-        val editDetails: ImageView = findViewById(R.id.ivEditDetails)
-        val editPhotos: ImageView = findViewById(R.id.ivEditPhotos)
+    private fun showEditIcon(isVisible: Boolean) {
+        val editIcon: ImageView = findViewById(R.id.ivEditIcon)
 
         val visibility = if (isVisible) View.VISIBLE else View.GONE
 
-        editAddress.visibility = visibility
-        editDetails.visibility = visibility
-        editPhotos.visibility = visibility
+        editIcon.visibility = visibility
 
-        adjustPhotosMargin()
-        adjustTitleMargin()
+        adjustEditMargin()
     }
 
     private fun addCarouselItem(list: MutableList<CarouselItem>, imageUrl: String) {
         list.add(CarouselItem(imageUrl = imageUrl))
     }
 
-    private fun adjustPhotosMargin() {
-        val ivEditPhotos = findViewById<ImageView>(R.id.ivEditPhotos)
+    private fun adjustEditMargin() {
+        val ivEditIcon = findViewById<ImageView>(R.id.ivEditIcon)
         val photos = findViewById<View>(R.id.photos_slider)
 
         val params = photos.layoutParams as ViewGroup.MarginLayoutParams
-        if (ivEditPhotos.visibility == View.VISIBLE) {
+        if (ivEditIcon.visibility == View.VISIBLE) {
             params.topMargin = 100
         } else {
             params.topMargin = 0
         }
         photos.layoutParams = params
-    }
-
-    private fun adjustTitleMargin() {
-        val ivEditDetails = findViewById<ImageView>(R.id.ivEditDetails)
-        val tvTitle = findViewById<View>(R.id.tvTitle)
-
-        val params = tvTitle.layoutParams as ViewGroup.MarginLayoutParams
-        if (ivEditDetails.visibility == View.VISIBLE) {
-            params.topMargin = 150
-        } else {
-            params.topMargin = 21
-        }
-        tvTitle.layoutParams = params
     }
 
     private fun showShareIcon() {

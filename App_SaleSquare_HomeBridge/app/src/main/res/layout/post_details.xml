@@ -14,7 +14,7 @@
         android:paddingBottom="40dp">
 
         <ImageButton
-            android:id="@+id/ivEditPhotos"
+            android:id="@+id/ivEditIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
@@ -34,20 +34,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/ivEditDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:src="@drawable/baseline_edit_square_24"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAddress" />
 
         <TextView
             android:id="@+id/tvDetails_summary"
@@ -341,8 +327,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Número estacionamientos"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Número estacionamientos" />
                 </TableRow>
 
                 <TableRow
@@ -383,8 +369,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Etapa"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Etapa" />
                 </TableRow>
 
                 <TableRow
@@ -498,17 +484,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivLandlordPicture" />
-
-        <ImageButton
-            android:id="@+id/ivEditAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/tvAddress"
-            app:layout_constraintTop_toBottomOf="@+id/tvDetails_summary"
-            app:srcCompat="@drawable/baseline_edit_square_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
