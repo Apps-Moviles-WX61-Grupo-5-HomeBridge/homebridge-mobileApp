@@ -7,15 +7,22 @@ import      android.view.ViewGroup
 import android.widget.Button
 import      android.widget.ImageView
 import      android.widget.PopupMenu
+import android.widget.TextView
 import      android.widget.Toast
 import      androidx.activity.enableEdgeToEdge
 import      androidx.appcompat.app.AppCompatActivity
 import      androidx.cardview.widget.CardView
 import      androidx.core.view.ViewCompat
 import      androidx.core.view.WindowInsetsCompat
+import com.example.app_salesquare_homebridge.communication.PublicationResponse
+import com.example.app_salesquare_homebridge.network.PostApiService
 import      org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import      org.imaginativeworld.whynotimagecarousel.model.CarouselItem
-
+import retrofit2.Retrofit.Builder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class PostActivity : AppCompatActivity() {
@@ -32,17 +39,6 @@ class PostActivity : AppCompatActivity() {
         val backIcon = findViewById<ImageView>(R.id.inmuebles_icon)
         val menuIcon:ImageView = findViewById(R.id.menu_icon)
         val shareIcon:ImageView = findViewById(R.id.share_icon)
-        val carousel:ImageCarousel = findViewById(R.id.carousel)
-
-        val list = mutableListOf<CarouselItem>()
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714694.jpg?rapc=bXZhX2ltYWdl?isFirstImage=true")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714701.jpg?rapc=bXZhX2ltYWdl")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714695.jpg?rapc=bXZhX2ltYWdl")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714687.jpg?rapc=bXZhX2ltYWdl")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714689.jpg?rapc=bXZhX2ltYWdl")
-        addCarouselItem(list, "https://img10.naventcdn.com/avisos/resize/111/01/44/64/30/87/1200x1200/1487714685.jpg?rapc=bXZhX2ltYWdl")
-
-        carousel.setData(list)
 
         backIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in back icon", Toast.LENGTH_SHORT).show()
@@ -55,6 +51,7 @@ class PostActivity : AppCompatActivity() {
         shareIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in share icon", Toast.LENGTH_SHORT).show()
         }
+        loadPublication(1)
         this.goBack()
         this.changeToLandlordProfile()
     }
@@ -87,48 +84,30 @@ class PostActivity : AppCompatActivity() {
     }
 
     private fun showEditIcons(isVisible: Boolean) {
-        val editAddress: ImageView = findViewById(R.id.ivEditAddress)
-        val editDetails: ImageView = findViewById(R.id.ivEditDetails)
-        val editPhotos: ImageView = findViewById(R.id.ivEditPhotos)
+        val editIcon: ImageView = findViewById(R.id.ivEditIcon)
 
         val visibility = if (isVisible) View.VISIBLE else View.GONE
 
-        editAddress.visibility = visibility
-        editDetails.visibility = visibility
-        editPhotos.visibility = visibility
+        editIcon.visibility = visibility
 
-        adjustPhotosMargin()
-        adjustTitleMargin()
+        adjustEditMargin()
     }
 
     private fun addCarouselItem(list: MutableList<CarouselItem>, imageUrl: String) {
         list.add(CarouselItem(imageUrl = imageUrl))
     }
 
-    private fun adjustPhotosMargin() {
-        val ivEditPhotos = findViewById<ImageView>(R.id.ivEditPhotos)
+    private fun adjustEditMargin() {
+        val ivEditIcon = findViewById<ImageView>(R.id.ivEditIcon)
         val photos = findViewById<View>(R.id.photos_slider)
 
         val params = photos.layoutParams as ViewGroup.MarginLayoutParams
-        if (ivEditPhotos.visibility == View.VISIBLE) {
+        if (ivEditIcon.visibility == View.VISIBLE) {
             params.topMargin = 100
         } else {
             params.topMargin = 0
         }
         photos.layoutParams = params
-    }
-
-    private fun adjustTitleMargin() {
-        val ivEditDetails = findViewById<ImageView>(R.id.ivEditDetails)
-        val tvTitle = findViewById<View>(R.id.tvTitle)
-
-        val params = tvTitle.layoutParams as ViewGroup.MarginLayoutParams
-        if (ivEditDetails.visibility == View.VISIBLE) {
-            params.topMargin = 150
-        } else {
-            params.topMargin = 21
-        }
-        tvTitle.layoutParams = params
     }
 
     private fun showShareIcon() {
@@ -137,6 +116,60 @@ class PostActivity : AppCompatActivity() {
 
         shareIcon.visibility = View.VISIBLE
         menuIcon.visibility = View.GONE
+    }
+
+    private fun loadPublication(id: Int) {
+        val retrofit = Builder()
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(PostApiService::class.java)
+        val request = service.getPublication(id)
+
+        request.enqueue(object : Callback<List<PublicationResponse>> {
+            override fun onResponse(call: Call<List<PublicationResponse>>, response: Response<List<PublicationResponse>>) {
+                if (response.isSuccessful) {
+                    val publicationResponse: List<PublicationResponse> = response.body()!!
+                    if (publicationResponse.isNotEmpty()) {
+                        val publication = publicationResponse[0].toPublication()
+
+                        findViewById<TextView>(R.id.tvTitle).text = publication.title
+                        findViewById<TextView>(R.id.tvDescription).text = publication.description
+                        findViewById<TextView>(R.id.tvPrice).text = publication.price.toString()
+                        findViewById<TextView>(R.id.tvDate).text = publication.createdDate.toString()
+                        findViewById<TextView>(R.id.tvAddress).text = publication.location
+                        findViewById<TextView>(R.id.tvCoveredArea).text = publication.coveredArea.toString()
+                        findViewById<TextView>(R.id.tvTotalArea).text = publication.totalArea.toString()
+                        findViewById<TextView>(R.id.tvType).text = publication.type
+                        findViewById<TextView>(R.id.tvOperation).text = publication.operation
+                        findViewById<TextView>(R.id.tvDelivery).text = publication.delivery
+                        findViewById<TextView>(R.id.tvDormitoriesQuantity).text = publication.dormitory.toString()
+                        findViewById<TextView>(R.id.tvBathroomsQuantity).text = publication.bathroom.toString()
+                        findViewById<TextView>(R.id.tvParkingLotsQuantity).text = publication.parkingLot.toString()
+                        findViewById<TextView>(R.id.tvSaleState).text = publication.saleState
+                        findViewById<TextView>(R.id.tvProjectStage).text = publication.projectStage
+                        findViewById<TextView>(R.id.tvProjectStartDate).text = publication.projectStartDate
+                        findViewById<TextView>(R.id.tvAntiquity).text = publication.antiquity.toString()
+                        findViewById<TextView>(R.id.tvOperation2).text = publication.operation
+
+                        val carousel: ImageCarousel = findViewById(R.id.carousel)
+                        val list = mutableListOf<CarouselItem>()
+                        val images = publication.imagesList ?: emptyList()
+
+                        for (imageUrl in images) {
+                            addCarouselItem(list, imageUrl)
+                        }
+
+                        carousel.setData(list)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<PublicationResponse>>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
     }
 
     private fun goBack(): Unit {
