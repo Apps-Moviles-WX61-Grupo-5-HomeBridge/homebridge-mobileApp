@@ -64,5 +64,14 @@ data class Publication (
     var projectStartDate: String?,
 
     @ColumnInfo(name = "antiquity")
-    var antiquity: Int?
+    var antiquity: Int?,
+
+    @ColumnInfo(name = "size")
+    var size: Int?,
+
+    @ColumnInfo(name = "garages")
+    var garages: Int?,
+
+    @ColumnInfo(name = "rooms")
+    var rooms: Int?
 )

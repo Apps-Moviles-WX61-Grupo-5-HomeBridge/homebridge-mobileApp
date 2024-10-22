@@ -24,7 +24,10 @@ class PublicationResponse (
     private var projectStage: String,
     private var projectStartDate: String,
     private var createdDate: String,
-    private var antiquity: Int
+    private var antiquity: Int,
+    private var size: Int,
+    private var rooms: Int,
+    private var garages: Int
 ) {
     fun toPublication() : Publication {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -54,7 +57,10 @@ class PublicationResponse (
             projectStage = this.projectStage ?: "",
             projectStartDate = this.projectStartDate ?: "",
             antiquity = this.antiquity ?: 0,
-            imagesList = this.imageList
+            imagesList = this.imageList,
+            size = this.size ?: 0,
+            rooms = this.rooms ?: 0,
+            garages = this.garages ?: 0
         )
     }
 }

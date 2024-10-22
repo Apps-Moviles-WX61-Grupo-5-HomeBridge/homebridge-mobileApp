@@ -45,10 +45,10 @@ public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
     public fun bind(post: Publication): Unit {
         this.m_PriceText.text = post.price.toString()
         this.m_Location.text = post.location
-        this.m_Size.text = ""
-        this.m_Rooms.text = ""
+        this.m_Size.text = post.size.toString()
+        this.m_Rooms.text = post.rooms.toString()
         this.m_Bathrooms.text = post.bathroom.toString()
-        this.m_Garages.text = ""
+        this.m_Garages.text = post.garages.toString()
         this.m_Description.text = post.description
         this.m_ImageView.setImageResource(R.drawable.cute_house)
     }
