@@ -79,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
 
     fun registerUser(email: String, password: String) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://app-salesquare.azurewebsites.net/api/v1/")
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -92,6 +92,10 @@ class RegisterActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                     startActivity(intent)
+                }
+                else
+                {
+                    val a = 0
                 }
             }
 
