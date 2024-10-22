@@ -125,7 +125,7 @@ class PostActivity : AppCompatActivity() {
             .build()
 
         val service = retrofit.create(PostApiService::class.java)
-        val request = service.getPublication(id)
+        val request = service.publications("a", id)
 
         request.enqueue(object : Callback<List<PublicationResponse>> {
             override fun onResponse(call: Call<List<PublicationResponse>>, response: Response<List<PublicationResponse>>) {

@@ -1,22 +1,24 @@
-package com.example.app_salesquare_homebridge
+package     com.example.app_salesquare_homebridge
 
-import android.content.Intent
-import android.os.Bundle
-import android.text.SpannableString
-import android.text.TextPaint
-import android.text.style.ClickableSpan
-import android.util.Log
-import android.view.View
-import okhttp3.*
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.example.app_salesquare_homebridge.shared.user.UserWrapper
-import okhttp3.MediaType.Companion.toMediaType
-import okio.IOException
-import org.json.JSONObject
+import      android.content.Intent
+import      android.os.Bundle
+import      android.text.SpannableString
+import      android.text.TextPaint
+import      android.text.style.ClickableSpan
+import      android.util.Log
+import      android.view.View
+import      okhttp3.*
+import      android.widget.TextView
+import      android.widget.Toast
+import      androidx.appcompat.app.AppCompatActivity
+import      com.example.app_salesquare_homebridge.shared.user.UserWrapper
+import      okhttp3.MediaType.Companion.toMediaType
+import      okio.IOException
+import      org.json.JSONObject
 
-class LoginActivity: AppCompatActivity() {
+
+
+public final class LoginActivity: AppCompatActivity() {
     private val client = OkHttpClient()
     private val m_UserWrapper: UserWrapper = UserWrapper()
 
@@ -57,21 +59,19 @@ class LoginActivity: AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                Login(email, password)
+                login(email, password)
             }
         }
 
     }
 
-    private fun Login(email: String, password: String) {
+    private fun login(email: String, password: String) {
         val url = "https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/api/v1/user/login"
         val Json = JSONObject().apply {
             put("password", password)
             put("email", email)
         }
-
         val requestBody = RequestBody.create("application/json; charset=utf-8".toMediaType(), Json.toString())
-
         val request = Request.Builder()
             .url(url)
             .post(requestBody)
@@ -105,11 +105,14 @@ class LoginActivity: AppCompatActivity() {
                                         "Inicio de sesión exitoso",
                                         Toast.LENGTH_SHORT
                                     ).show()
-                                    val token = jsonObject.getString("token")
-                                    val refreshToken = jsonObject.getString("refreshToken")
+
+                                    this@LoginActivity.m_UserWrapper.token(jsonObject.getString("token"))
+                                    this@LoginActivity.m_UserWrapper.userId(jsonObject.getInt("userId"))
+                                    this@LoginActivity.m_UserWrapper.refreshToken(jsonObject.getString("refreshToken"))
 
                                     val intent =
                                         Intent(this@LoginActivity, PostResultsActivity::class.java)
+                                    intent.putExtra("userWrapper", this@LoginActivity.m_UserWrapper)
                                     startActivity(intent)
                                 }
                             } else {
@@ -119,8 +122,8 @@ class LoginActivity: AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
-                        }catch (e: Exception) {
-
+                        } catch (e: Exception) {
+                            val a: Int = 0
                         }
                     }
                 }
