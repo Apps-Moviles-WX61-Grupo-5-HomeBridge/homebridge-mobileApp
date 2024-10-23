@@ -71,7 +71,8 @@ public final class PostResultsActivity : AppCompatActivity()
         }
 
         navbar.findViewById<ImageView>(R.id.icon_cuenta).setOnClickListener {
-            // Manejar la navegación a la sección de Cuenta
+            val intent = Intent(this, AccountConfigurationActivity::class.java)
+            startActivity(intent)
         }
 
         this.d_UserWrapper = intent.getParcelableExtra("userWrapper")!!

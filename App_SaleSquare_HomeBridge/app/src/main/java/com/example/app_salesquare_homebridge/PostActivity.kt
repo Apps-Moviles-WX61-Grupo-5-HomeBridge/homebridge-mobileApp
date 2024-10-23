@@ -165,57 +165,6 @@ class PostActivity : AppCompatActivity() {
         }
 
         carousel.setData(list)
-        /*val retrofit = Builder()
-            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(PostApiService::class.java)
-        val request = service.publications("Bearer ${this.d_UserWrapper.token()}", this.d_UserWrapper.userId())
-
-        request.enqueue(object : Callback<List<PublicationResponse>> {
-            override fun onResponse(call: Call<List<PublicationResponse>>, response: Response<List<PublicationResponse>>) {
-                if (response.isSuccessful) {
-                    val publicationResponse: List<PublicationResponse> = response.body()!!
-                    if (publicationResponse.isNotEmpty()) {
-                        val publication = publicationResponse[id].toPublication()
-
-                        findViewById<TextView>(R.id.tvTitle).text = publication.title
-                        findViewById<TextView>(R.id.tvDescription).text = publication.description
-                        findViewById<TextView>(R.id.tvPrice).text = publication.price.toString()
-                        findViewById<TextView>(R.id.tvDate).text = publication.createdDate.toString()
-                        findViewById<TextView>(R.id.tvAddress).text = publication.location
-                        findViewById<TextView>(R.id.tvCoveredArea).text = publication.coveredArea.toString()
-                        findViewById<TextView>(R.id.tvTotalArea).text = publication.totalArea.toString()
-                        findViewById<TextView>(R.id.tvType).text = publication.type
-                        findViewById<TextView>(R.id.tvOperation).text = publication.operation
-                        findViewById<TextView>(R.id.tvDelivery).text = publication.delivery
-                        findViewById<TextView>(R.id.tvDormitoriesQuantity).text = publication.dormitory.toString()
-                        findViewById<TextView>(R.id.tvBathroomsQuantity).text = publication.bathroom.toString()
-                        findViewById<TextView>(R.id.tvParkingLotsQuantity).text = publication.parkingLot.toString()
-                        findViewById<TextView>(R.id.tvSaleState).text = publication.saleState
-                        findViewById<TextView>(R.id.tvProjectStage).text = publication.projectStage
-                        findViewById<TextView>(R.id.tvProjectStartDate).text = publication.projectStartDate
-                        findViewById<TextView>(R.id.tvAntiquity).text = publication.antiquity.toString()
-                        findViewById<TextView>(R.id.tvOperation2).text = publication.operation
-
-                        val carousel: ImageCarousel = findViewById(R.id.carousel)
-                        val list = mutableListOf<CarouselItem>()
-                        val images = publication.imagesList ?: emptyList()
-
-                        for (imageUrl in images) {
-                            addCarouselItem(list, imageUrl)
-                        }
-
-                        carousel.setData(list)
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<PublicationResponse>>, t: Throwable) {
-                println("Error: ${t.message}")
-            }
-        })*/
     }
 
     private fun goBack(): Unit {
