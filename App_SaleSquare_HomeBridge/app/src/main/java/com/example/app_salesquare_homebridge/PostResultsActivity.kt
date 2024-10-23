@@ -5,6 +5,7 @@ import      android.os.Bundle
 import      android.widget.Button
 import      android.widget.ImageButton
 import      android.widget.ImageView
+import android.widget.LinearLayout
 import      android.widget.TextView
 import      androidx.activity.enableEdgeToEdge
 import      androidx.appcompat.app.AppCompatActivity
@@ -52,6 +53,25 @@ public final class PostResultsActivity : AppCompatActivity()
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val navbar = layoutInflater.inflate(R.layout.navbar, findViewById<LinearLayout>(R.id.navbar_container), true)
+
+        navbar.findViewById<ImageView>(R.id.icon_buscar).setOnClickListener {
+            val intent = Intent(this, SearchFilterActivity::class.java)
+            startActivity(intent)
+        }
+
+        navbar.findViewById<ImageView>(R.id.icon_notificaciones).setOnClickListener {
+            // Manejar la navegación a la sección de Notificaciones
+        }
+
+        navbar.findViewById<ImageView>(R.id.icon_planes).setOnClickListener {
+            // Manejar la navegación a la sección de Planes
+        }
+
+        navbar.findViewById<ImageView>(R.id.icon_cuenta).setOnClickListener {
+            // Manejar la navegación a la sección de Cuenta
         }
 
         this.d_UserWrapper = intent.getParcelableExtra("userWrapper")!!
