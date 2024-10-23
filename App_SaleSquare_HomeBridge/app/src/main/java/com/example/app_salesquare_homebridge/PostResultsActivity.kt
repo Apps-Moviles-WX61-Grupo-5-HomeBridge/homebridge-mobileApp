@@ -58,7 +58,6 @@ public final class PostResultsActivity : AppCompatActivity()
 
         this.loadPosts()
         this.changeToFilter()
-        this.changeToPostDescription()
         this.changeToMenu()
         this.changeToLogin()
     }
@@ -109,13 +108,6 @@ public final class PostResultsActivity : AppCompatActivity()
         val btnFilter = findViewById<ImageButton>(R.id.filter_button)
         btnFilter.setOnClickListener {
             val intent = Intent(this, SearchFilterActivity::class.java)
-            startActivity(intent)
-        }
-    }
-    private fun changeToPostDescription(): Unit {
-        val crdView = findViewById<Button>(R.id.see_post_button)
-        crdView.setOnClickListener {
-            val intent = Intent(this, PostActivity::class.java)
             startActivity(intent)
         }
     }

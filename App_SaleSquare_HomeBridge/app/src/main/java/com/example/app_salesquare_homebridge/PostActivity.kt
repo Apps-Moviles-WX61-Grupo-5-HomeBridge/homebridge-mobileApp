@@ -16,6 +16,7 @@ import      androidx.core.view.ViewCompat
 import      androidx.core.view.WindowInsetsCompat
 import com.example.app_salesquare_homebridge.communication.PublicationResponse
 import com.example.app_salesquare_homebridge.network.PostApiService
+import com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import      org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import      org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 import retrofit2.Retrofit.Builder
@@ -51,7 +52,7 @@ class PostActivity : AppCompatActivity() {
         shareIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in share icon", Toast.LENGTH_SHORT).show()
         }
-        loadPublication(1)
+        loadPublication()
         this.goBack()
         this.changeToLandlordProfile()
     }
@@ -118,21 +119,66 @@ class PostActivity : AppCompatActivity() {
         menuIcon.visibility = View.GONE
     }
 
-    private fun loadPublication(id: Int) {
-        val retrofit = Builder()
+    private fun loadPublication() {
+        val title = intent.getStringExtra("title")
+        val description = intent.getStringExtra("description")
+        val price = intent.getDoubleExtra("price",0.0)
+        val rooms = intent.getIntExtra("rooms", 0)
+        val bathroom = intent.getIntExtra("bathroom", 0)
+        val garages = intent.getIntExtra("garages", 0)
+        val location = intent.getStringExtra("location")
+        val coveredArea = intent.getFloatExtra("coveredArea", 0.0f)
+        val totalArea = intent.getFloatExtra("totalArea", 0.0f)
+        val type = intent.getStringExtra("type")
+        val operation = intent.getStringExtra("operation")
+        val delivery = intent.getStringExtra("delivery")
+        val antiquity = intent.getIntExtra("antiquity", 0)
+        val projectStage = intent.getStringExtra("projectStage")
+        val projectStartDate = intent.getStringExtra("projectStartDate")
+        val saleState = intent.getStringExtra("saleState")
+
+        findViewById<TextView>(R.id.tvTitle).text = title
+        findViewById<TextView>(R.id.tvDescription).text = description
+        findViewById<TextView>(R.id.tvPrice).text = price.toString()
+        findViewById<TextView>(R.id.tvDormitoriesQuantity).text = rooms.toString()
+        findViewById<TextView>(R.id.tvBathroomsQuantity).text = bathroom.toString()
+        findViewById<TextView>(R.id.tvParkingLotsQuantity).text = garages.toString()
+        findViewById<TextView>(R.id.tvAddress).text = location
+        findViewById<TextView>(R.id.tvCoveredArea).text = coveredArea.toString()
+        findViewById<TextView>(R.id.tvTotalArea).text = totalArea.toString()
+        findViewById<TextView>(R.id.tvType).text = type
+        findViewById<TextView>(R.id.tvOperation).text = operation
+        findViewById<TextView>(R.id.tvDelivery).text = delivery
+        findViewById<TextView>(R.id.tvAntiquity).text = antiquity.toString()
+        findViewById<TextView>(R.id.tvProjectStage).text = projectStage
+        findViewById<TextView>(R.id.tvProjectStartDate).text = projectStartDate
+        findViewById<TextView>(R.id.tvSaleState).text = saleState
+        findViewById<TextView>(R.id.tvOperation2).text = operation
+
+
+        val carousel: ImageCarousel = findViewById(R.id.carousel)
+        val list = mutableListOf<CarouselItem>()
+        val images = intent.getStringArrayListExtra("imageList") ?: emptyList<String>()
+
+        for (imageUrl in images) {
+            addCarouselItem(list, imageUrl)
+        }
+
+        carousel.setData(list)
+        /*val retrofit = Builder()
             .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val service = retrofit.create(PostApiService::class.java)
-        val request = service.publications("a", id)
+        val request = service.publications("Bearer ${this.d_UserWrapper.token()}", this.d_UserWrapper.userId())
 
         request.enqueue(object : Callback<List<PublicationResponse>> {
             override fun onResponse(call: Call<List<PublicationResponse>>, response: Response<List<PublicationResponse>>) {
                 if (response.isSuccessful) {
                     val publicationResponse: List<PublicationResponse> = response.body()!!
                     if (publicationResponse.isNotEmpty()) {
-                        val publication = publicationResponse[0].toPublication()
+                        val publication = publicationResponse[id].toPublication()
 
                         findViewById<TextView>(R.id.tvTitle).text = publication.title
                         findViewById<TextView>(R.id.tvDescription).text = publication.description
@@ -169,7 +215,7 @@ class PostActivity : AppCompatActivity() {
             override fun onFailure(call: Call<List<PublicationResponse>>, t: Throwable) {
                 println("Error: ${t.message}")
             }
-        })
+        })*/
     }
 
     private fun goBack(): Unit {

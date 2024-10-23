@@ -187,16 +187,4 @@
             app:srcCompat="@drawable/post_not_found" />
     </FrameLayout>
 
-    <Button
-        android:id="@+id/see_post_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
-        android:text="Ver propiedad"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/properties_shown_tv"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ class PublicationResponse (
     private var title: String,
     private var description: String,
     private var price: Double,
-    private var _Location_Address: String,
+    private var _Location: LocationApiResponse,
     private var userId: Int,
     private var imageList: List<String>,
     private var coveredArea: Float,
@@ -30,12 +30,12 @@ class PublicationResponse (
     private var garages: Int
 ) {
     fun toPublication() : Publication {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val createdDate = if (this.createdDate != null) {
-            dateFormat.parse(this.createdDate)
-        } else {
-            null
-        }
+        val inputDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+        val outputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val createdDate = inputDateFormat.parse(createdDate)
+        val projectStartDate = inputDateFormat.parse(projectStartDate)
+        val formattedCreatedDate: String = outputDateFormat.format(createdDate)
+        val formattedProjectStartDate: String = outputDateFormat.format(projectStartDate)
 
         return Publication(
             id = id,
@@ -43,8 +43,8 @@ class PublicationResponse (
             title = this.title ?: "",
             description = this.description ?: "",
             price = this.price ?: 0.0,
-            createdDate = createdDate.toString(),
-            location = this._Location_Address ?: "",
+            createdDate = formattedCreatedDate ?: "",
+            location = this._Location.address ?: "",
             coveredArea = this.coveredArea,
             totalArea = this.totalArea,
             type = this.type ?: "",
@@ -55,7 +55,7 @@ class PublicationResponse (
             parkingLot = this.parkingLotQuantity ?: 0,
             saleState = this.saleState ?: "",
             projectStage = this.projectStage ?: "",
-            projectStartDate = this.projectStartDate ?: "",
+            projectStartDate = formattedProjectStartDate ?: "",
             antiquity = this.antiquity ?: 0,
             imagesList = this.imageList,
             size = this.size ?: 0,
@@ -64,3 +64,6 @@ class PublicationResponse (
         )
     }
 }
+data class LocationApiResponse (
+    var address: String
+)

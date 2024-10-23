@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_post"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         app:cardBackgroundColor="#D7E5B7"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,5 +113,13 @@
             android:layout_marginTop="258dp"
             android:autoSizeTextType="uniform"
             android:text="3 estac." />
+
+        <Button
+            android:id="@+id/bt_PostDetails"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="340dp"
+            android:text="Ver detalles" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

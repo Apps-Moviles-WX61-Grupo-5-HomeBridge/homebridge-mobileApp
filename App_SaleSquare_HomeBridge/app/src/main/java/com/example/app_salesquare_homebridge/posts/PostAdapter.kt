@@ -1,12 +1,15 @@
 package     com.example.app_salesquare_homebridge.posts
 
+import android.content.Intent
 import      android.view.LayoutInflater
 import      android.view.View
 import      android.view.ViewGroup
+import android.widget.Button
 import      android.widget.ImageView
 import      android.widget.TextView
 import      androidx.recyclerview.widget.RecyclerView
 import      androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.app_salesquare_homebridge.PostActivity
 import      com.example.app_salesquare_homebridge.R
 import      com.example.app_salesquare_homebridge.models.Publication
 
@@ -41,6 +44,7 @@ public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val m_Garages: TextView = itemView.findViewById<TextView>(R.id.garages_text)
     private val m_Description: TextView = itemView.findViewById<TextView>(R.id.description_text)
     private val m_ImageView: ImageView = itemView.findViewById<ImageView>(R.id.house_image_reference)
+    private val m_PostDetailsButton: Button = itemView.findViewById<Button>(R.id.bt_PostDetails)
 
     public fun bind(post: Publication): Unit {
         this.m_PriceText.text = post.price.toString()
@@ -51,5 +55,30 @@ public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
         this.m_Garages.text = post.garages.toString()
         this.m_Description.text = post.description
         this.m_ImageView.setImageResource(R.drawable.cute_house)
+
+        m_PostDetailsButton.setOnClickListener {
+            val context = itemView.context
+            val intent = Intent(context, PostActivity::class.java)
+            intent.putExtra("post_id", post.id)
+            intent.putExtra("size", post.size)
+            intent.putExtra("rooms", post.rooms)
+            intent.putExtra("bathroom", post.bathroom)
+            intent.putExtra("garages", post.garages)
+            intent.putExtra("description", post.description)
+            intent.putExtra("price", post.price)
+            intent.putExtra("imageList", ArrayList(post.imagesList))
+            intent.putExtra("title", post.title)
+            intent.putExtra("location", post.location)
+            intent.putExtra("coveredArea", post.coveredArea)
+            intent.putExtra("totalArea", post.totalArea)
+            intent.putExtra("type", post.type)
+            intent.putExtra("operation", post.operation)
+            intent.putExtra("delivery", post.delivery)
+            intent.putExtra("saleState", post.saleState)
+            intent.putExtra("projectStage", post.projectStage)
+            intent.putExtra("projectStartDate", post.projectStartDate)
+            intent.putExtra("antiquity", post.antiquity)
+            context.startActivity(intent)
+        }
     }
 }
