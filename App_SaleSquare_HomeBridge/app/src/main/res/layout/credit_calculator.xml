@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="@color/color_background">
+
+    <TextView
+        android:id="@+id/tvCalculador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Calculadora Crediticia"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvInteres"
+        android:layout_width="181dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="10dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCalculador">
+
+        <TextView
+            android:id="@+id/tvTasa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasa de Interés Anual:" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPlazo"
+        android:layout_width="181dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="10dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCalculador" >
+
+        <TextView
+            android:id="@+id/tvPlazo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plazo en meses:" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMoneda"
+        android:layout_width="181dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvInteres" >
+
+        <TextView
+            android:id="@+id/tvMoneda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Moneda:" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPrice"
+        android:layout_width="181dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="212dp"
+
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvPlazo" >
+
+        <TextView
+            android:id="@+id/tvPriceIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio de inmueble:" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPrice2"
+        android:layout_width="181dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="28dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvMoneda" >
+
+        <TextView
+            android:id="@+id/tvPrice2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio de inmueble:" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPrice3"
+        android:layout_width="181dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="212dp"
+
+        android:layout_marginTop="28dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvPrice" >
+
+        <TextView
+            android:id="@+id/tvPrice3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio de inmueble:" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMontoFi"
+        android:layout_width="394dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="316dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp">
+
+            <TextView
+                android:id="@+id/tvMontoFi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="225dp"
+                android:layout_marginBottom="1dp"
+                android:text="Monto a financiar:"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvPriceFi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPriceFi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="2dp"
+                android:text="$ *******"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvMontoFi"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMontoCu"
+        android:layout_width="394dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvMontoFi">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp">
+
+            <TextView
+                android:id="@+id/tvMontoCu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="225dp"
+                android:layout_marginBottom="1dp"
+                android:text="Monto de las cuotas:"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvPriceCu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPriceCu"
+                android:layout_width="58dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="2dp"
+                android:text="$ *******"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvMontoCu"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btCalcular"
+        android:layout_width="247dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#465544"
+        android:text="Calcular"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvMontoCu" />
+
+    <LinearLayout
+        android:id="@+id/navbar_container3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

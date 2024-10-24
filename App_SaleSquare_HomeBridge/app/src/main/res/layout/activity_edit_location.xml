@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.EditLocationActivity"
+        android:background="#DADADA"
+        android:contentDescription="@string/back">
+
+    <ImageButton
+            android:src="@drawable/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibBack"
+            app:layout_constraintEnd_toStartOf="@+id/tvEditTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvEditTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/tvEditTitle"
+            android:contentDescription="@string/back"
+            android:backgroundTint="#D8D8D8" />
+
+    <TextView
+            android:text="@string/addressTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAddressTitle3"
+            android:textSize="12sp"
+            android:fontFamily="@font/hind_semibold"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tvEditTitle"
+            android:layout_marginTop="24dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/ibBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddressTitle3"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="4dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="59dp"
+                android:hint="@string/address"
+                android:id="@+id/etAddress"
+                android:background="@drawable/rounded_edit_text"
+                android:textSize="12sp"
+                android:fontFamily="@font/hind_semibold"
+                android:textColor="@color/black"
+                tools:text="Direccion" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+            android:text="@string/editTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEditTitle"
+            android:fontFamily="@font/hind_semibold"
+            android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp" />
+
+    <AutoCompleteTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCity3"
+            android:background="@drawable/rounded_edit_text"
+            android:textSize="12sp"
+            android:fontFamily="@font/hind_semibold"
+            android:textColor="#8C747474"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="17dp"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="17dp"
+            app:layout_constraintStart_toStartOf="@+id/tvCityTitle3"
+            app:layout_constraintTop_toBottomOf="@+id/tvCityTitle3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/city"
+            android:textColorHint="@color/gray"
+            android:layout_marginTop="4dp" />
+
+    <TextView
+            android:text="@string/cityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCityTitle3"
+            android:fontFamily="@font/hind_semibold"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            android:layout_marginTop="24dp" />
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/back"
+            android:id="@+id/ivOpen7"
+            android:rotation="270"
+            app:layout_constraintEnd_toEndOf="@+id/tvCity3"
+            app:layout_constraintTop_toTopOf="@+id/tvCity3"
+            android:contentDescription="@string/open"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp" />
+
+    <TextView
+            android:text="@string/provinceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvProvinceTitle2"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvCity3"
+            app:layout_constraintStart_toStartOf="@+id/tvCity3"
+            android:fontFamily="@font/hind_semibold"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="24dp" />
+
+    <AutoCompleteTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvProvince2"
+            android:background="@drawable/rounded_edit_text"
+            android:textSize="12sp"
+            android:fontFamily="@font/hind_semibold"
+            android:textColor="@color/gray"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="17dp"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="17dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvProvinceTitle2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/province"
+            android:textColorHint="@color/gray"
+            app:layout_constraintStart_toStartOf="@+id/tvProvinceTitle2"
+            android:layout_marginTop="4dp" />
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/back"
+            android:id="@+id/ivOpen4"
+            android:rotation="270"
+            app:layout_constraintEnd_toEndOf="@+id/tvProvince2"
+            android:contentDescription="@string/open"
+            app:layout_constraintTop_toTopOf="@+id/tvProvince2"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp" />
+
+    <TextView
+            android:text="@string/districtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDistricTitle2"
+            android:fontFamily="@font/hind_semibold"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/tvProvince2"
+            app:layout_constraintStart_toStartOf="@+id/tvProvince2"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="24dp" />
+
+    <AutoCompleteTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDistrict2"
+            android:background="@drawable/rounded_edit_text"
+            android:textSize="12sp"
+            android:fontFamily="@font/hind_semibold"
+            android:textColor="@color/gray"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="17dp"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="17dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvDistricTitle2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/district"
+            android:textColorHint="@color/gray"
+            app:layout_constraintStart_toStartOf="@+id/tvDistricTitle2"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="4dp" />
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/back"
+            android:id="@+id/ivOpen5"
+            android:rotation="270"
+            app:layout_constraintEnd_toEndOf="@+id/tvDistrict2"
+            app:layout_constraintTop_toTopOf="@+id/tvDistrict2"
+            android:contentDescription="@string/open"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp" />
+
+    <TextView
+            android:text="@string/mapTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvMap2"
+            app:layout_constraintTop_toBottomOf="@+id/tvDistrict2"
+            app:layout_constraintStart_toStartOf="@+id/tvDistrict2"
+            android:fontFamily="@font/hind_semibold"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="24dp" />
+
+    <com.google.android.gms.maps.MapView
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:id="@+id/mvMap2"
+            app:layout_constraintTop_toBottomOf="@+id/tvMap2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/map"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="8dp" />
+
+    <Button
+            android:text="@string/confirm"
+            android:layout_width="221dp"
+            android:layout_height="56dp"
+            android:id="@+id/continue_button"
+            android:backgroundTint="@color/dark_green"
+            app:layout_constraintStart_toStartOf="@+id/tvMap2"
+            app:layout_constraintTop_toBottomOf="@+id/mvMap2"
+            android:textColor="@color/white"
+            android:layout_marginTop="32dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

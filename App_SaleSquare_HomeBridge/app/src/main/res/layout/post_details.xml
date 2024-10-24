@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DCDCDC"
+        android:paddingBottom="40dp">
+
+        <ImageButton
+            android:id="@+id/ivEditIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photos_slider"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_edit_square_24" />
+
+        <include
+            android:id="@+id/photos_slider"
+            layout="@layout/post_photos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="9dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photos_slider"
+            tools:text="Dirección" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvOperationPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddress">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp">
+
+                <TextView
+                    android:id="@+id/tvOperation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="225dp"
+                    android:layout_marginBottom="1dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvPrice"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Tipo" />
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="225dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="2dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvOperation"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Precio" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="21dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvOperationPrice"
+            tools:text="Título" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/ivCalendar"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            tools:text="Fecha de publicación" />
+
+        <ImageView
+            android:id="@+id/ivCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:srcCompat="@drawable/baseline_calendar_month_24" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
+            tools:text="Descripción" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/style_border_tablelayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription">
+
+            <TableLayout
+                android:id="@+id/tlDetails"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:stretchColumns="*"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Tipo de propiedad"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvType"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Tipo" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/greenish_gray">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Operación"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvOperation2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Operación" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Entrega"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDelivery"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        tools:text="Tiempo de entrega" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/greenish_gray">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Área techada"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCoveredArea"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Área techada" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Área total"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvTotalArea"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Área total" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/greenish_gray">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Dormitorios"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDormitoriesQuantity"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Numero dormitorios" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Baños"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvBathroomsQuantity"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Número baños" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/greenish_gray">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Estacionamientos"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvParkingLotsQuantity"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Número estacionamientos" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Estado de venta"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSaleState"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Estado" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/greenish_gray">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Etapa del proyecto"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvProjectStage"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Etapa" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Fecha de inicio del proyecto"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvProjectStartDate"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Fecha inicio" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/greenish_gray">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:text="Antigüedad"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvAntiquity"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        tools:text="Tiempo antigüedad" />
+                </TableRow>
+            </TableLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/tvShowMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="180dp"
+            android:backgroundTint="#465544"
+            android:text="Ver ubicación en mapa"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/tvPropietaryInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Información del anunciante"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvShowMap" />
+
+        <TextView
+            android:id="@+id/tvLandlordName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:text="Pedro Ruíz"
+            app:layout_constraintStart_toEndOf="@+id/ivLandlordPicture"
+            app:layout_constraintTop_toBottomOf="@+id/tvPropietaryInfo" />
+
+        <ImageButton
+            android:id="@+id/ivLandlordPicture"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="142dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_landlord_profile_image"
+            app:layout_constraintEnd_toStartOf="@+id/tvLandlordName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPropietaryInfo"
+            app:shapeAppearanceOverlay="@style/roundedImageView"/>
+
+        <Button
+            android:id="@+id/btContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#465544"
+            android:drawableRight="@drawable/baseline_email_24"
+            android:paddingLeft="90dp"
+            android:paddingRight="90dp"
+            android:text="Contactar"
+            app:cornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivLandlordPicture" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
