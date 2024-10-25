@@ -40,7 +40,16 @@ class PostActivity : AppCompatActivity() {
         val backIcon = findViewById<ImageView>(R.id.inmuebles_icon)
         val menuIcon:ImageView = findViewById(R.id.menu_icon)
         val shareIcon:ImageView = findViewById(R.id.share_icon)
+        val editIcon:Button = findViewById(R.id.tvShowMap)
+        val tvAddress = findViewById<TextView>(R.id.tvAddress)
 
+        editIcon.setOnClickListener {
+            val address = tvAddress.text.toString()
+            val intent = Intent(this, MapActivity::class.java).apply {
+                putExtra("address", address)
+            }
+            startActivity(intent)
+        }
         backIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in back icon", Toast.LENGTH_SHORT).show()
             showShareIcon()
