@@ -13,7 +13,7 @@
     <string name="confirmar">Confirmar</string>
     <string name="title">¡Hola, empecemos a crear tu aviso!</string>
     <string name="subtitle">¿Dónde está ubicado tu inmueble?</string>
-    <string name="addressTitle">Ingresa calle y número</string>
+    <string name="addressTitle">Ingresa calle, número y distrito</string>
     <string name="address">Ingresa una dirección</string>
     <string name="city">Selecciona un departamento</string>
     <string name="cityTitle">Departamento</string>

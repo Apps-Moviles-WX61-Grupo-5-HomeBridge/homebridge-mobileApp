@@ -33,9 +33,6 @@
             android:name=".AddPhotosActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.CreateLocationActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.EditLocationActivity"
             android:exported="false" />
         <activity

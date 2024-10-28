@@ -13,15 +13,6 @@ data class Location (
     var address: String?,
 
     @ColumnInfo
-    var city: String?,
-
-    @ColumnInfo
-    var province: String?,
-
-    @ColumnInfo
-    var district: String?,
-
-    @ColumnInfo
     var latitude: Double?,
 
     @ColumnInfo

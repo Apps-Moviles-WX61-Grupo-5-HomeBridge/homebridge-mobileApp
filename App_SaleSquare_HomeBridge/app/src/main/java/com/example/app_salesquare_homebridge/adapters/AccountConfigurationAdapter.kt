@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_salesquare_homebridge.CalculatorActivity
 import com.example.app_salesquare_homebridge.LoginActivity
+import com.example.app_salesquare_homebridge.NewPropertyActivity
 import com.example.app_salesquare_homebridge.R
 import com.example.app_salesquare_homebridge.UserProfileActivity
-import com.example.app_salesquare_homebridge.ui.CreateLocationActivity
 
 class AccountConfigurationAdapter(
     private val context: Context,
@@ -33,7 +33,7 @@ class AccountConfigurationAdapter(
             val intent = when (position) {
                 0 -> Intent(context, CalculatorActivity::class.java)
                 1 -> Intent(context, UserProfileActivity::class.java)
-                2 -> Intent(context, CreateLocationActivity::class.java)
+                2 -> Intent(context, NewPropertyActivity::class.java)
                 3 -> Intent(context, LoginActivity::class.java)
                 else -> Intent(context, LoginActivity::class.java)
             }

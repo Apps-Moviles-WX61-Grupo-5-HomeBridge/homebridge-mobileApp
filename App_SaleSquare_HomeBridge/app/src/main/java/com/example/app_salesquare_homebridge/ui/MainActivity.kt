@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.app_salesquare_homebridge.NewPropertyActivity
 import com.example.app_salesquare_homebridge.R
 import com.example.app_salesquare_homebridge.models.Location
 import com.google.gson.Gson
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnCreatePost = findViewById<Button>(R.id.btCreatePost)
         btnCreatePost.setOnClickListener {
-            val intent = Intent(this, CreateLocationActivity::class.java)
+            val intent = Intent(this, NewPropertyActivity::class.java)
             startActivity(intent)
         }
 
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadLocation() {
         val gson = Gson()
         val json = intent.getStringExtra("location")
-        location = gson.fromJson(json, Location::class.java) ?: Location(null, "", "", "", "",  0.0, 0.0)
+        location = gson.fromJson(json, Location::class.java) ?: Location(null, "",   0.0, 0.0)
 
         val tvAddress = findViewById<TextView>(R.id.tvAddress)
 
