@@ -3,6 +3,7 @@ package com.example.app_salesquare_homebridge
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
 import android.os.Build
@@ -12,6 +13,9 @@ import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
@@ -31,7 +35,14 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.Gson
+import okhttp3.Callback
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -41,6 +52,33 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var etAddress: TextInputEditText
+    private lateinit var btnVenta : Button
+    private lateinit var btnAlquiler : Button
+    private var selectedOperation = "Venta"
+    private lateinit var btnCasa : Button
+    private lateinit var btnDepartamento : Button
+    private lateinit var btnTerreno : Button
+    private var selectedType = "Casa"
+    private lateinit var btnDMas : Button
+    private lateinit var btnDMenos : Button
+    private lateinit var tvDormitorios : TextView
+    private var dormitorios = 0
+    private lateinit var btnBMas : Button
+    private lateinit var btnBMenos : Button
+    private lateinit var tvBanos : TextView
+    private var banos = 0
+    private lateinit var btnCMas : Button
+    private lateinit var btnCMenos : Button
+    private lateinit var tvCocheras : TextView
+    private var cocheras = 0
+    private lateinit var etAreaTechada: TextInputEditText
+    private lateinit var etAreaTotal: TextInputEditText
+    private lateinit var rgAntiguedad: RadioGroup
+    private var antiguedad = "A estrenar"
+    private lateinit var etPrecio : TextInputEditText
+    private lateinit var etTitulo : TextInputEditText
+    private lateinit var etDescripcion : TextInputEditText
+    private var token : String? = null
 
     lateinit var location: Location
 
@@ -61,6 +99,106 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mapView = findViewById(R.id.mvMap3)
         etAddress = findViewById(R.id.etAddress)
+        btnVenta = findViewById(R.id.btTOV)
+        btnAlquiler = findViewById(R.id.btTOA)
+        btnCasa = findViewById(R.id.btTIC)
+        btnDepartamento = findViewById(R.id.btTID)
+        btnTerreno = findViewById(R.id.btTIT)
+        btnDMas = findViewById(R.id.btDMas)
+        btnDMenos = findViewById(R.id.btDMenos)
+        tvDormitorios = findViewById(R.id.tvDormitorios)
+        btnBMas = findViewById(R.id.btBMas)
+        btnBMenos = findViewById(R.id.btBMenos)
+        tvBanos = findViewById(R.id.tvBaños)
+        btnCMas = findViewById(R.id.btEMas)
+        btnCMenos = findViewById(R.id.btEMenos)
+        tvCocheras = findViewById(R.id.tvEstacionamientos)
+        etAreaTechada = findViewById(R.id.etAreaTechada)
+        etAreaTotal = findViewById(R.id.etAreaTotal)
+        rgAntiguedad = findViewById(R.id.rgAntiguedad)
+        etPrecio = findViewById(R.id.etPrecio)
+        etTitulo = findViewById(R.id.etTitulo)
+        etDescripcion = findViewById(R.id.etDescripcion)
+
+        btnVenta.setOnClickListener {
+            selectedOperation = "Venta"
+            btnVenta.setTextColor(Color.parseColor("#FFD700"))
+            btnAlquiler.setTextColor(Color.WHITE)
+        }
+
+        btnAlquiler.setOnClickListener {
+            selectedOperation = "Alquiler"
+            btnAlquiler.setTextColor(Color.parseColor("#FFD700"))
+            btnVenta.setTextColor(Color.WHITE)
+        }
+
+        btnCasa.setOnClickListener {
+            selectedType = "Casa"
+            btnCasa.setTextColor(Color.parseColor("#FFD700"))
+            btnDepartamento.setTextColor(Color.WHITE)
+            btnTerreno.setTextColor(Color.WHITE)
+        }
+
+        btnDepartamento.setOnClickListener {
+            selectedType = "Departamento"
+            btnDepartamento.setTextColor(Color.parseColor("#FFD700"))
+            btnCasa.setTextColor(Color.WHITE)
+            btnTerreno.setTextColor(Color.WHITE)
+        }
+
+        btnTerreno.setOnClickListener {
+            selectedType = "Terreno"
+            btnTerreno.setTextColor(Color.parseColor("#FFD700"))
+            btnCasa.setTextColor(Color.WHITE)
+            btnDepartamento.setTextColor(Color.WHITE)
+        }
+
+        btnDMas.setOnClickListener {
+            dormitorios++
+            updatenumber()
+        }
+
+        btnDMenos.setOnClickListener {
+            if (dormitorios > 0) {
+                dormitorios--
+                updatenumber()
+            }
+        }
+
+        btnBMas.setOnClickListener {
+            banos++
+            updatenumber()
+        }
+
+        btnBMenos.setOnClickListener {
+            if (banos > 0) {
+                banos--
+                updatenumber()
+            }
+        }
+
+        btnCMas.setOnClickListener {
+            cocheras++
+            updatenumber()
+        }
+
+        btnCMenos.setOnClickListener {
+            if (cocheras > 0) {
+                cocheras--
+                updatenumber()
+            }
+        }
+
+        rgAntiguedad.setOnCheckedChangeListener{ _, checkedId ->
+            antiguedad = when(checkedId){
+                R.id.radio_new -> "A estrenar"
+                R.id.radio_old -> "Usado"
+                R.id.radio_construction -> "En construcción"
+                else -> "A estrenar"
+            }
+        }
+
+
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -69,6 +207,7 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         mapView.getMapAsync(this)
 
         setupAddressInputListeners()
+        updatenumber()
 
         this.changeToPhotos()
     }
@@ -77,11 +216,109 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         val btnCreatePost = findViewById<Button>(R.id.btnContinue)
         btnCreatePost.setOnClickListener {
             saveLocation()
+            saveEverything()
             val intent = Intent(this, AddPhotosActivity::class.java)
             startActivity(intent)
         }
     }
 
+    private fun updatenumber(){
+        tvDormitorios.text = dormitorios.toString()
+        tvBanos.text = banos.toString()
+        tvCocheras.text = cocheras.toString()
+    }
+
+    private fun saveEverything() {
+        val client = OkHttpClient()
+
+        val AreaTechada = etAreaTechada.text.toString().toIntOrNull() ?: 0
+        val AreaTotal = etAreaTotal.text.toString().toIntOrNull() ?: 0
+        val Precio = etPrecio.text.toString().toIntOrNull() ?: 0
+        val Titulo = etTitulo.text.toString()
+        val Descripcion = etDescripcion.text.toString()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        val token = intent.getStringExtra("token")
+        val user = intent.getStringExtra("userId")
+
+
+        val jsonObject = JSONObject().apply {
+            put("title", Titulo)
+            put("description", Descripcion)
+            put("price", Precio)
+            put("_Location_Address", location)
+            put("userId", user)
+            put("coveredArea", AreaTechada)
+            put("totalArea", AreaTotal)
+            put("type", selectedType)
+            put("operation", selectedOperation)
+            put("delivery", "string")
+            put("dormitoryQuantity", dormitorios)
+            put("bathroomQuantity", banos)
+            put("parkingLotQuantity", cocheras)
+            put("saleState", "Disponible")
+            put("projectStage", "Iniciado")
+            put("projectStartDate", dateFormat.format(Date()))
+            put("antiquity", 0)
+            put("size", 0)
+            put("rooms", 0)
+            put("garages", 0)
+        }
+
+        val requestBody = jsonObject.toString().toRequestBody("application/json".toMediaType())
+
+        val request = okhttp3.Request.Builder()
+            .url("http://10.0.2.2:5011/api/v1/publication/postPublication")
+            .post(requestBody)
+            .addHeader("Authorization", "Bearer $token")
+            .addHeader("Content-Type", "application/json")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: okhttp3.Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(
+                        this@NewPropertyActivity,
+                        "Error de conexión ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                response.body?.let {
+                    val responseBody = it.string()
+
+                    runOnUiThread {
+                        try {
+                            if (response.isSuccessful && !responseBody.isNullOrEmpty()) {
+                                val jsonObject = JSONObject(responseBody)
+                                val result = jsonObject.optBoolean("result", false)
+                                if (result) {
+                                    Toast.makeText(
+                                        this@NewPropertyActivity,
+                                        "Propiedad creada exitosamente",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            } else {
+                                Toast.makeText(
+                                    this@NewPropertyActivity,
+                                    "Error al crear la propiedad",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } catch (e: Exception) {
+                            Toast.makeText(
+                                this@NewPropertyActivity,
+                                "Error al crear la propiedad",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+        })
+    }
     private fun saveLocation() {
         val address = etAddress.text.toString()
         val latitude = googleMap.cameraPosition.target.latitude

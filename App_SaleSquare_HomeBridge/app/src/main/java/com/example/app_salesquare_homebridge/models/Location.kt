@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Location (
+data class Location(
     @PrimaryKey(autoGenerate = true)
     val id: Int?, //Required for Room
 
@@ -13,7 +13,7 @@ data class Location (
     var address: String?,
 
     @ColumnInfo
-    var latitude: Double?,
+    var latitude: Double,
 
     @ColumnInfo
     var longitude: Double?

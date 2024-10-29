@@ -99,7 +99,7 @@
                     android:fontFamily="@font/hind_semibold"
                     android:textSize="12sp"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toTopOf="@+id/mvMap"
+                    app:layout_constraintBottom_toTopOf="@+id/mvMap3"
                     android:layout_marginBottom="4dp"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
                     android:layout_marginTop="24dp"
@@ -126,7 +126,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
             <Button
-                    android:id="@+id/button27"
+                    android:id="@+id/btTOV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Venta"
@@ -136,16 +136,16 @@
                     android:layout_marginTop="16dp" />
 
             <Button
-                    android:id="@+id/button28"
+                    android:id="@+id/btTOA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Alquiler"
-                    app:layout_constraintTop_toTopOf="@+id/button27"
-                    app:layout_constraintStart_toEndOf="@+id/button27"
+                    app:layout_constraintTop_toTopOf="@+id/btTOV"
+                    app:layout_constraintStart_toEndOf="@+id/btTOV"
                     android:layout_marginStart="80dp" />
 
             <Button
-                    android:id="@+id/button29"
+                    android:id="@+id/btTIC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Casa"
@@ -155,21 +155,21 @@
                     android:layout_marginTop="16dp" />
 
             <Button
-                    android:id="@+id/button30"
+                    android:id="@+id/btTID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Departamento"
-                    app:layout_constraintTop_toTopOf="@+id/button29"
+                    app:layout_constraintTop_toTopOf="@+id/btTIC"
                     android:layout_marginStart="76dp"
-                    app:layout_constraintStart_toEndOf="@+id/button29" />
+                    app:layout_constraintStart_toEndOf="@+id/btTIC" />
 
             <Button
-                    android:id="@+id/button32"
+                    android:id="@+id/btTIT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Terreno"
                     android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/button29"
+                    app:layout_constraintTop_toBottomOf="@+id/btTIC"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="100dp" />
 
@@ -203,7 +203,7 @@
                     android:layout_marginStart="19dp" />
 
             <Button
-                    android:id="@+id/button34"
+                    android:id="@+id/btBMenos"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/round_button"
@@ -216,7 +216,7 @@
                     android:layout_marginStart="19dp" />
 
             <Button
-                    android:id="@+id/button35"
+                    android:id="@+id/btBMas"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/round_button"
@@ -226,15 +226,15 @@
                     android:layout_marginTop="51dp"
                     app:layout_constraintTop_toBottomOf="@+id/line2"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/textView22" />
+                    app:layout_constraintStart_toEndOf="@+id/tvBaños" />
 
             <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/tvBaños"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:layout_marginStart="5dp"
-                    app:layout_constraintStart_toEndOf="@+id/button34"
+                    app:layout_constraintStart_toEndOf="@+id/btBMenos"
                     android:layout_marginTop="65dp"
                     app:layout_constraintTop_toBottomOf="@+id/line2" />
 
@@ -249,7 +249,7 @@
                     android:layout_marginStart="19dp" />
 
             <Button
-                    android:id="@+id/button36"
+                    android:id="@+id/btEMenos"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/round_button"
@@ -262,7 +262,7 @@
                     android:layout_marginStart="19dp" />
 
             <Button
-                    android:id="@+id/button37"
+                    android:id="@+id/btEMas"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/round_button"
@@ -272,17 +272,17 @@
                     android:layout_marginTop="17dp"
                     app:layout_constraintTop_toBottomOf="@+id/textView23"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/textView24" />
+                    app:layout_constraintStart_toEndOf="@+id/tvEstacionamientos" />
 
             <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/tvEstacionamientos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:layout_marginTop="30dp"
                     app:layout_constraintTop_toBottomOf="@+id/textView23"
                     android:layout_marginStart="5dp"
-                    app:layout_constraintStart_toEndOf="@+id/button36" />
+                    app:layout_constraintStart_toEndOf="@+id/btEMenos" />
 
             <TextView
                     android:id="@+id/textView19"
@@ -295,7 +295,7 @@
                     android:layout_marginStart="19dp" />
 
             <Button
-                    android:id="@+id/button31"
+                    android:id="@+id/btDMenos"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/round_button"
@@ -308,24 +308,24 @@
                     android:layout_marginStart="19dp" />
 
             <Button
-                    android:id="@+id/button33"
+                    android:id="@+id/btDMas"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/round_button"
                     android:gravity="center"
                     android:padding="10dp"
                     android:text="+"
-                    app:layout_constraintTop_toTopOf="@+id/button31"
+                    app:layout_constraintTop_toTopOf="@+id/btDMenos"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/textView20" />
+                    app:layout_constraintStart_toEndOf="@+id/tvDormitorios" />
 
             <TextView
-                    android:id="@+id/textView20"
+                    android:id="@+id/tvDormitorios"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:layout_marginStart="5dp"
-                    app:layout_constraintStart_toEndOf="@+id/button31"
+                    app:layout_constraintStart_toEndOf="@+id/btDMenos"
                     android:layout_marginTop="33dp"
                     app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -337,12 +337,12 @@
                     android:textAlignment="center"
                     android:layout_marginTop="23dp"
                     app:layout_constraintTop_toBottomOf="@+id/textView28"
-                    android:id="@+id/textInputEditText4"
+                    android:id="@+id/etAreaTotal"
                     android:layout_marginEnd="45dp"
                     app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputEditText"
+                    android:id="@+id/etAreaTechada"
                     android:layout_width="94dp"
                     android:layout_height="45dp"
                     android:background="@color/white"
@@ -400,7 +400,7 @@
                     android:text="m2"
                     android:layout_marginTop="37dp"
                     app:layout_constraintTop_toBottomOf="@+id/textView28"
-                    app:layout_constraintEnd_toStartOf="@+id/textInputEditText4"
+                    app:layout_constraintEnd_toStartOf="@+id/etAreaTotal"
                     android:layout_marginEnd="8dp" />
 
             <RadioGroup
@@ -409,7 +409,7 @@
                     android:orientation="vertical"
                     android:layout_marginTop="10dp"
                     app:layout_constraintTop_toBottomOf="@+id/textView30"
-                    android:id="@+id/radioGroup"
+                    android:id="@+id/rgAntiguedad"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="24dp">
 
@@ -444,7 +444,7 @@
                     android:layout_marginStart="20dp" />
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputEditText1"
+                    android:id="@+id/etPrecio"
                     android:layout_width="94dp"
                     android:layout_height="45dp"
                     android:background="@color/white"
@@ -461,7 +461,7 @@
                     android:layout_height="wrap_content"
                     android:text="Precio"
                     android:layout_marginTop="1dp"
-                    app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                    app:layout_constraintTop_toBottomOf="@+id/rgAntiguedad"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp" />
 
@@ -501,7 +501,7 @@
                     android:layout_height="wrap_content"
                     android:text="Descripcion"
                     android:layout_marginTop="6dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText2"
+                    app:layout_constraintTop_toBottomOf="@+id/etTitulo"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="17dp" />
 
@@ -511,7 +511,7 @@
                     android:layout_height="wrap_content"
                     android:text="Continuar"
                     android:layout_marginTop="24dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText3"
+                    app:layout_constraintTop_toBottomOf="@+id/etDescripcion"
                     android:layout_marginEnd="82dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -520,7 +520,7 @@
                     android:layout_marginBottom="24dp" />
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputEditText2"
+                    android:id="@+id/etTitulo"
                     android:layout_width="302dp"
                     android:layout_height="45dp"
                     android:background="@color/white"
@@ -532,7 +532,7 @@
                     android:layout_marginStart="18dp" />
 
             <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputEditText3"
+                    android:id="@+id/etDescripcion"
                     android:layout_width="302dp"
                     android:layout_height="92dp"
                     android:background="@color/white"
@@ -548,7 +548,7 @@
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:background="#CCCCCC"
-                    app:layout_constraintTop_toBottomOf="@+id/button27"
+                    app:layout_constraintTop_toBottomOf="@+id/btTOV"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -558,7 +558,7 @@
                     android:layout_height="2dp"
                     android:background="#CCCCCC"
                     android:layout_marginTop="18dp"
-                    app:layout_constraintTop_toBottomOf="@+id/button32"
+                    app:layout_constraintTop_toBottomOf="@+id/btTIT"
                     app:layout_constraintStart_toStartOf="parent" />
 
             <View
@@ -567,7 +567,7 @@
                     android:layout_height="2dp"
                     android:background="#CCCCCC"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/button31"
+                    app:layout_constraintTop_toBottomOf="@+id/btDMenos"
                     app:layout_constraintStart_toStartOf="parent" />
 
             <View
@@ -576,7 +576,7 @@
                     android:layout_height="2dp"
                     android:background="#CCCCCC"
                     android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/button34"
+                    app:layout_constraintTop_toBottomOf="@+id/btBMenos"
                     app:layout_constraintStart_toStartOf="parent" />
 
             <View
@@ -585,7 +585,7 @@
                     android:layout_height="2dp"
                     android:background="#CCCCCC"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@+id/button36"
+                    app:layout_constraintTop_toBottomOf="@+id/btEMenos"
                     app:layout_constraintStart_toStartOf="parent" />
 
             <View
@@ -594,7 +594,7 @@
                     android:layout_height="2dp"
                     android:background="#CCCCCC"
                     android:layout_marginTop="24dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText4"
+                    app:layout_constraintTop_toBottomOf="@+id/etAreaTotal"
                     app:layout_constraintStart_toStartOf="parent" />
 
             <View
@@ -602,7 +602,7 @@
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:background="#CCCCCC"
-                    app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                    app:layout_constraintTop_toBottomOf="@+id/rgAntiguedad"
                     app:layout_constraintStart_toStartOf="parent" />
 
             <View
@@ -611,7 +611,7 @@
                     android:layout_height="2dp"
                     android:background="#CCCCCC"
                     android:layout_marginTop="7dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText1"
+                    app:layout_constraintTop_toBottomOf="@+id/etPrecio"
                     app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
