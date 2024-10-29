@@ -2,10 +2,9 @@ package     com.example.app_salesquare_homebridge
 
 import      android.content.Intent
 import      android.os.Bundle
-import      android.widget.Button
 import      android.widget.ImageButton
 import      android.widget.ImageView
-import android.widget.LinearLayout
+import      android.widget.LinearLayout
 import      android.widget.TextView
 import      androidx.activity.enableEdgeToEdge
 import      androidx.appcompat.app.AppCompatActivity
@@ -17,17 +16,13 @@ import      com.example.app_salesquare_homebridge.communication.PublicationRespo
 import      com.example.app_salesquare_homebridge.models.Publication
 import      com.example.app_salesquare_homebridge.network.PostApiService
 import      com.example.app_salesquare_homebridge.posts.PostAdapter
+import      com.example.app_salesquare_homebridge.shared.publication.SearchFilterWrapper
 import      com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import      com.example.app_salesquare_homebridge.ui.MainActivity
-import      okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import org.imaginativeworld.whynotimagecarousel.ImageCarousel
-import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
-import retrofit2.Call
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import      retrofit2.Call
+import      retrofit2.Response
+import      retrofit2.Retrofit
+import      retrofit2.converter.gson.GsonConverterFactory
 
 
 
@@ -40,12 +35,26 @@ public final class PostResultsActivity : AppCompatActivity()
     //	-------------------------------------------
     //					Variables
     //	-------------------------------------------
-    private val client = OkHttpClient()
-    private lateinit var d_UserWrapper: UserWrapper
-    private val m_Posts: MutableList<Publication>  = mutableListOf()
-    private val m_PostsAdapter: PostAdapter = PostAdapter(this.m_Posts)
+    private val m_Posts: MutableList<Publication>   = mutableListOf()
+    private val m_PostsAdapter: PostAdapter         = PostAdapter(this.m_Posts)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private val m_SearchFilterWrapper: SearchFilterWrapper = SearchFilterWrapper()
+
+    //	-------------------------------------------
+    //					Dependencies
+    //	-------------------------------------------
+    private lateinit var d_UserWrapper: UserWrapper
+
+
+
+//	|-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|
+//			        Functions and Methods
+//	|-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|
+
+    //	-------------------------------------------
+    //			    Loading Functions
+    //	-------------------------------------------
+    protected override fun onCreate(savedInstanceState: Bundle?): Unit {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.post_results)
@@ -61,15 +70,12 @@ public final class PostResultsActivity : AppCompatActivity()
             val intent = Intent(this, SearchFilterActivity::class.java)
             startActivity(intent)
         }
-
         navbar.findViewById<ImageView>(R.id.icon_notificaciones).setOnClickListener {
             // Manejar la navegación a la sección de Notificaciones
         }
-
         navbar.findViewById<ImageView>(R.id.icon_planes).setOnClickListener {
             // Manejar la navegación a la sección de Planes
         }
-
         navbar.findViewById<ImageView>(R.id.icon_cuenta).setOnClickListener {
             val intent = Intent(this, AccountConfigurationActivity::class.java)
             startActivity(intent)
@@ -84,6 +90,8 @@ public final class PostResultsActivity : AppCompatActivity()
     }
 
     private fun loadPosts(): Unit {
+        //  Usage of [[SearchFilterWrapper]]
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
             .addConverterFactory(GsonConverterFactory.create())
@@ -125,10 +133,17 @@ public final class PostResultsActivity : AppCompatActivity()
         val tvPropertiesShownTextView: TextView = findViewById<TextView>(R.id.properties_shown_tv)
         tvPropertiesShownTextView.text = "Estás viendo ${this.m_Posts.size} propiedad(es)."
     }
+
+    //	-------------------------------------------
+    //			        Functions
+    //	-------------------------------------------
     private fun changeToFilter(): Unit {
-        val btnFilter = findViewById<ImageButton>(R.id.filter_button)
-        btnFilter.setOnClickListener {
-            val intent = Intent(this, SearchFilterActivity::class.java)
+        val filterButton: ImageButton = findViewById(R.id.filter_button)
+        filterButton.setOnClickListener {
+            val intent: Intent = Intent(this, SearchFilterActivity::class.java)
+
+            intent.putExtra("searchFilterWrapper", this.m_SearchFilterWrapper)
+
             startActivity(intent)
         }
     }
@@ -139,7 +154,6 @@ public final class PostResultsActivity : AppCompatActivity()
             startActivity(intent)
         }
     }
-
     private fun changeToLogin(): Unit {
         val btnLogin = findViewById<ImageButton>(R.id.imageButton4)
         btnLogin.setOnClickListener {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,7 +48,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buyOperationTypeButton"
             android:layout_width="160dp"
             android:layout_height="45dp"
             android:layout_marginStart="15dp"
@@ -69,7 +69,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/housePlaceTypeButton"
             android:layout_width="157dp"
             android:layout_height="49dp"
             android:layout_marginStart="12dp"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/rentOperationTypeButton"
             android:layout_width="166dp"
             android:layout_height="46dp"
             android:layout_marginTop="196dp"
@@ -91,7 +91,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/apartmentPlaceTypeButton"
             android:layout_width="164dp"
             android:layout_height="48dp"
             android:layout_marginTop="308dp"
@@ -112,7 +112,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/terrainPlaceTypeButton"
             android:layout_width="171dp"
             android:layout_height="47dp"
             android:layout_marginStart="100dp"
@@ -173,6 +173,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/priceToInput"
             android:layout_width="94dp"
             android:layout_height="45dp"
             android:layout_marginTop="486dp"
@@ -183,6 +184,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/priceFromInput"
             android:layout_width="94dp"
             android:layout_height="45dp"
             android:layout_marginStart="64dp"
@@ -193,7 +195,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/noRoomButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="18dp"
@@ -208,7 +210,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/oneRoomButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -218,11 +220,11 @@
             android:text="1"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button7"
-            app:layout_constraintTop_toTopOf="@+id/button7" />
+            app:layout_constraintStart_toEndOf="@+id/noRoomButton"
+            app:layout_constraintTop_toTopOf="@+id/noRoomButton" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/twoRoomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -232,11 +234,11 @@
             android:text="2"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button8"
-            app:layout_constraintTop_toTopOf="@+id/button8" />
+            app:layout_constraintStart_toEndOf="@+id/oneRoomButton"
+            app:layout_constraintTop_toTopOf="@+id/oneRoomButton" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/threeRoomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -246,11 +248,11 @@
             android:text="3"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button9"
-            app:layout_constraintTop_toTopOf="@+id/button9" />
+            app:layout_constraintStart_toEndOf="@+id/twoRoomsButton"
+            app:layout_constraintTop_toTopOf="@+id/twoRoomsButton" />
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/fourRoomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -260,11 +262,11 @@
             android:text="4"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button10"
-            app:layout_constraintTop_toTopOf="@+id/button10" />
+            app:layout_constraintStart_toEndOf="@+id/threeRoomsButton"
+            app:layout_constraintTop_toTopOf="@+id/threeRoomsButton" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/manyRoomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -274,8 +276,8 @@
             android:text="5+"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button11"
-            app:layout_constraintTop_toTopOf="@+id/button11" />
+            app:layout_constraintStart_toEndOf="@+id/fourRoomsButton"
+            app:layout_constraintTop_toTopOf="@+id/fourRoomsButton" />
 
         <TextView
             android:id="@+id/garages_text"
@@ -342,7 +344,7 @@
             tools:layout_editor_absoluteX="0dp" />
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/noBathroomButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="18dp"
@@ -357,7 +359,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/oneBathroomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -367,11 +369,11 @@
             android:text="1"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button13"
-            app:layout_constraintTop_toTopOf="@+id/button13" />
+            app:layout_constraintStart_toEndOf="@+id/noBathroomButton"
+            app:layout_constraintTop_toTopOf="@+id/noBathroomButton" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/twoBathroomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -381,11 +383,11 @@
             android:text="2"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button14"
-            app:layout_constraintTop_toTopOf="@+id/button14" />
+            app:layout_constraintStart_toEndOf="@+id/oneBathroomsButton"
+            app:layout_constraintTop_toTopOf="@+id/oneBathroomsButton" />
 
         <Button
-            android:id="@+id/button16"
+            android:id="@+id/threeBathroomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -395,11 +397,11 @@
             android:text="3"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button15"
-            app:layout_constraintTop_toTopOf="@+id/button15" />
+            app:layout_constraintStart_toEndOf="@+id/twoBathroomsButton"
+            app:layout_constraintTop_toTopOf="@+id/twoBathroomsButton" />
 
         <Button
-            android:id="@+id/button17"
+            android:id="@+id/fourBathroomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -409,11 +411,11 @@
             android:text="4"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button16"
-            app:layout_constraintTop_toTopOf="@+id/button16" />
+            app:layout_constraintStart_toEndOf="@+id/threeBathroomsButton"
+            app:layout_constraintTop_toTopOf="@+id/threeBathroomsButton" />
 
         <Button
-            android:id="@+id/button18"
+            android:id="@+id/fiveBathroomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -423,8 +425,8 @@
             android:text="5+"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button17"
-            app:layout_constraintTop_toTopOf="@+id/button17" />
+            app:layout_constraintStart_toEndOf="@+id/fourBathroomsButton"
+            app:layout_constraintTop_toTopOf="@+id/fourBathroomsButton" />
 
         <TextView
             android:id="@+id/description_text"
@@ -437,7 +439,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button19"
+            android:id="@+id/noGarageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="18dp"
@@ -452,7 +454,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button20"
+            android:id="@+id/oneGarageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -462,11 +464,11 @@
             android:text="1"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button19"
-            app:layout_constraintTop_toTopOf="@+id/button19" />
+            app:layout_constraintStart_toEndOf="@+id/noGarageButton"
+            app:layout_constraintTop_toTopOf="@+id/noGarageButton" />
 
         <Button
-            android:id="@+id/button21"
+            android:id="@+id/twoGaragesButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -476,11 +478,11 @@
             android:text="2"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button20"
-            app:layout_constraintTop_toTopOf="@+id/button20" />
+            app:layout_constraintStart_toEndOf="@+id/oneGarageButton"
+            app:layout_constraintTop_toTopOf="@+id/oneGarageButton" />
 
         <Button
-            android:id="@+id/button22"
+            android:id="@+id/threeGarageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -490,11 +492,11 @@
             android:text="3"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button21"
-            app:layout_constraintTop_toTopOf="@+id/button21" />
+            app:layout_constraintStart_toEndOf="@+id/twoGaragesButton"
+            app:layout_constraintTop_toTopOf="@+id/twoGaragesButton" />
 
         <Button
-            android:id="@+id/button23"
+            android:id="@+id/fourGarageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -504,11 +506,11 @@
             android:text="4"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button22"
-            app:layout_constraintTop_toTopOf="@+id/button22" />
+            app:layout_constraintStart_toEndOf="@+id/threeGarageButton"
+            app:layout_constraintTop_toTopOf="@+id/threeGarageButton" />
 
         <Button
-            android:id="@+id/button24"
+            android:id="@+id/manyGarageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -518,8 +520,8 @@
             android:text="5+"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/button23"
-            app:layout_constraintTop_toTopOf="@+id/button23" />
+            app:layout_constraintStart_toEndOf="@+id/fourGarageButton"
+            app:layout_constraintTop_toTopOf="@+id/fourGarageButton" />
 
         <TextView
             android:id="@+id/post_not_found_text"
@@ -600,6 +602,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/priceToView"
             android:layout_width="94dp"
             android:layout_height="45dp"
             android:layout_marginTop="955dp"
@@ -610,6 +613,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/priceFromView"
             android:layout_width="94dp"
             android:layout_height="45dp"
             android:layout_marginStart="64dp"

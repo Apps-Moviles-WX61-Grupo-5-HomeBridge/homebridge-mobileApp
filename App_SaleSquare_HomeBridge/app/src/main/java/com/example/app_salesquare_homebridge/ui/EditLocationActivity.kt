@@ -95,12 +95,12 @@ class EditLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun loadLocation() {
         val gson = Gson()
         val json = intent.getStringExtra("location")
-        location = gson.fromJson(json, Location::class.java) ?: Location(null, "", "", "", "",  0.0, 0.0)
+        location = gson.fromJson(json, Location::class.java) ?: Location(null, "", 0.0, 0.0)
 
         etAddress.setText(location.address)
-        tvCity.setText(location.city)
-        tvProvince.setText(location.province)
-        tvDistrict.setText(location.district)
+        //  tvCity.setText(location.city)
+        //  tvProvince.setText(location.province)
+        //  tvDistrict.setText(location.district)
 
         val latLng = LatLng(location.latitude!!, location.longitude!!)
         googleMap.clear()
@@ -116,7 +116,7 @@ class EditLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         val latitude = googleMap.cameraPosition.target.latitude
         val longitude = googleMap.cameraPosition.target.longitude
 
-        location = Location(null, address, city, province, district, latitude, longitude)
+        location = Location(null, address, latitude, longitude)
         // Guardar la instancia de Location en la base de datos
         Toast.makeText(this, "Ubicación guardada", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, EditImageActivity::class.java)
