@@ -173,7 +173,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/priceToInput"
+            android:id="@+id/priceToView"
             android:layout_width="94dp"
             android:layout_height="45dp"
             android:layout_marginTop="486dp"
@@ -184,7 +184,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/priceFromInput"
+            android:id="@+id/priceFromView"
             android:layout_width="94dp"
             android:layout_height="45dp"
             android:layout_marginStart="64dp"
@@ -359,7 +359,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/oneBathroomsButton"
+            android:id="@+id/oneBathroomButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -383,8 +383,8 @@
             android:text="2"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/oneBathroomsButton"
-            app:layout_constraintTop_toTopOf="@+id/oneBathroomsButton" />
+            app:layout_constraintStart_toEndOf="@+id/oneBathroomButton"
+            app:layout_constraintTop_toTopOf="@+id/oneBathroomButton" />
 
         <Button
             android:id="@+id/threeBathroomsButton"
@@ -415,7 +415,7 @@
             app:layout_constraintTop_toTopOf="@+id/threeBathroomsButton" />
 
         <Button
-            android:id="@+id/fiveBathroomsButton"
+            android:id="@+id/manyBathroomsButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -482,7 +482,7 @@
             app:layout_constraintTop_toTopOf="@+id/oneGarageButton" />
 
         <Button
-            android:id="@+id/threeGarageButton"
+            android:id="@+id/threeGaragesButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -496,7 +496,7 @@
             app:layout_constraintTop_toTopOf="@+id/twoGaragesButton" />
 
         <Button
-            android:id="@+id/fourGarageButton"
+            android:id="@+id/fourGaragesButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -506,11 +506,11 @@
             android:text="4"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/threeGarageButton"
-            app:layout_constraintTop_toTopOf="@+id/threeGarageButton" />
+            app:layout_constraintStart_toEndOf="@+id/threeGaragesButton"
+            app:layout_constraintTop_toTopOf="@+id/threeGaragesButton" />
 
         <Button
-            android:id="@+id/manyGarageButton"
+            android:id="@+id/manyGaragesButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
@@ -520,8 +520,8 @@
             android:text="5+"
             android:textColor="@color/white"
             android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/fourGarageButton"
-            app:layout_constraintTop_toTopOf="@+id/fourGarageButton" />
+            app:layout_constraintStart_toEndOf="@+id/fourGaragesButton"
+            app:layout_constraintTop_toTopOf="@+id/fourGaragesButton" />
 
         <TextView
             android:id="@+id/post_not_found_text"
@@ -602,7 +602,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/priceToView"
+            android:id="@+id/areaToView"
             android:layout_width="94dp"
             android:layout_height="45dp"
             android:layout_marginTop="955dp"
@@ -613,7 +613,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/priceFromView"
+            android:id="@+id/areaFromView"
             android:layout_width="94dp"
             android:layout_height="45dp"
             android:layout_marginStart="64dp"

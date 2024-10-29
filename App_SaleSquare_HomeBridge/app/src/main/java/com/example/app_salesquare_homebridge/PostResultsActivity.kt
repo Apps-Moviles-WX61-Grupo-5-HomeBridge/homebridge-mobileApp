@@ -16,7 +16,6 @@ import      com.example.app_salesquare_homebridge.communication.PublicationRespo
 import      com.example.app_salesquare_homebridge.models.Publication
 import      com.example.app_salesquare_homebridge.network.PostApiService
 import      com.example.app_salesquare_homebridge.posts.PostAdapter
-import      com.example.app_salesquare_homebridge.shared.publication.SearchFilterWrapper
 import      com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import      com.example.app_salesquare_homebridge.ui.MainActivity
 import      retrofit2.Call
@@ -37,8 +36,6 @@ public final class PostResultsActivity : AppCompatActivity()
     //	-------------------------------------------
     private val m_Posts: MutableList<Publication>   = mutableListOf()
     private val m_PostsAdapter: PostAdapter         = PostAdapter(this.m_Posts)
-
-    private val m_SearchFilterWrapper: SearchFilterWrapper = SearchFilterWrapper()
 
     //	-------------------------------------------
     //					Dependencies
@@ -83,7 +80,6 @@ public final class PostResultsActivity : AppCompatActivity()
 
         this.d_UserWrapper = intent.getParcelableExtra("userWrapper")!!
 
-        this.loadPosts()
         this.changeToFilter()
         this.changeToMenu()
         this.changeToLogin()
@@ -134,6 +130,12 @@ public final class PostResultsActivity : AppCompatActivity()
         tvPropertiesShownTextView.text = "Estás viendo ${this.m_Posts.size} propiedad(es)."
     }
 
+    protected override fun onResume() {
+        super.onResume()
+
+        this.loadPosts()
+    }
+
     //	-------------------------------------------
     //			        Functions
     //	-------------------------------------------
@@ -141,9 +143,6 @@ public final class PostResultsActivity : AppCompatActivity()
         val filterButton: ImageButton = findViewById(R.id.filter_button)
         filterButton.setOnClickListener {
             val intent: Intent = Intent(this, SearchFilterActivity::class.java)
-
-            intent.putExtra("searchFilterWrapper", this.m_SearchFilterWrapper)
-
             startActivity(intent)
         }
     }
