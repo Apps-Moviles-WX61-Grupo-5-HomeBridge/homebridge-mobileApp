@@ -9,6 +9,7 @@ import android.location.Geocoder
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.AutoCompleteTextView
@@ -25,6 +26,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.app_salesquare_homebridge.models.Location
+import com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -78,9 +80,8 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var etPrecio : TextInputEditText
     private lateinit var etTitulo : TextInputEditText
     private lateinit var etDescripcion : TextInputEditText
-    private var token : String? = null
-
     lateinit var location: Location
+    private lateinit var d_UserWrapper: UserWrapper
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -198,6 +199,8 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
+        d_UserWrapper = intent.getParcelableExtra<UserWrapper>("userWrapper")
+            ?: throw IllegalArgumentException("UserWrapper no fue proporcionado")
 
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -231,40 +234,37 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun saveEverything() {
         val client = OkHttpClient()
 
-        val AreaTechada = etAreaTechada.text.toString().toIntOrNull() ?: 0
         val AreaTotal = etAreaTotal.text.toString().toIntOrNull() ?: 0
         val Precio = etPrecio.text.toString().toIntOrNull() ?: 0
         val Titulo = etTitulo.text.toString()
         val Descripcion = etDescripcion.text.toString()
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-        val token = intent.getStringExtra("token")
-        val user = intent.getStringExtra("userId")
-
+        val token = d_UserWrapper.token()
+        val userId = d_UserWrapper.userId()
+        Log.d("SaveEverything", "Token: $token")
+        Log.d("SaveEverything", "Datos obtenidos - Titulo: $Titulo, Descripcion: $Descripcion, Precio: $Precio, AreaTotal: $AreaTotal")
 
         val jsonObject = JSONObject().apply {
             put("title", Titulo)
             put("description", Descripcion)
             put("price", Precio)
-            put("_Location_Address", location)
-            put("userId", user)
-            put("coveredArea", AreaTechada)
+            put("_Location_Address", "Calle Falsa 123") //Location pero solo el address
+            put("userId", userId)
             put("totalArea", AreaTotal)
-            put("type", selectedType)
-            put("operation", selectedOperation)
-            put("delivery", "string")
+            put("type", 1) //No puede ser int
+            put("operation", 1) //No puede ser int
             put("dormitoryQuantity", dormitorios)
             put("bathroomQuantity", banos)
             put("parkingLotQuantity", cocheras)
-            put("saleState", "Disponible")
-            put("projectStage", "Iniciado")
-            put("projectStartDate", dateFormat.format(Date()))
-            put("antiquity", 0)
+            put("antiquity", 0) //no puede ser int
             put("size", 0)
             put("rooms", 0)
             put("garages", 0)
         }
 
+        Log.d("SaveEverything", "JSON Object creado: $jsonObject")
+
         val requestBody = jsonObject.toString().toRequestBody("application/json".toMediaType())
+        Log.d("SaveEverything", "Request Body creado")
 
         val request = okhttp3.Request.Builder()
             .url("http://10.0.2.2:5011/api/v1/publication/postPublication")
@@ -273,8 +273,11 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
             .addHeader("Content-Type", "application/json")
             .build()
 
+        Log.d("SaveEverything", "Request construido, enviando...")
+
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: okhttp3.Call, e: IOException) {
+                Log.d("SaveEverything", "Error en conexión: ${e.message}")
                 runOnUiThread {
                     Toast.makeText(
                         this@NewPropertyActivity,
@@ -285,40 +288,44 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
             override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
-                response.body?.let {
-                    val responseBody = it.string()
+                val responseBody = response.body?.string()
+                Log.d("SaveEverything", "Respuesta recibida: ${responseBody ?: "Sin respuesta"}")
 
-                    runOnUiThread {
+                runOnUiThread {
+                    if (response.isSuccessful && !responseBody.isNullOrEmpty()) {
                         try {
-                            if (response.isSuccessful && !responseBody.isNullOrEmpty()) {
-                                val jsonObject = JSONObject(responseBody)
-                                val result = jsonObject.optBoolean("result", false)
-                                if (result) {
-                                    Toast.makeText(
-                                        this@NewPropertyActivity,
-                                        "Propiedad creada exitosamente",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            } else {
+                            val jsonObject = JSONObject(responseBody)
+                            val result = jsonObject.optBoolean("result", false)
+                            if (result) {
                                 Toast.makeText(
                                     this@NewPropertyActivity,
-                                    "Error al crear la propiedad",
+                                    "Propiedad creada exitosamente",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                            } else {
+                                Log.d("SaveEverything", "Error al crear la propiedad: Resultado no exitoso")
                             }
                         } catch (e: Exception) {
+                            Log.d("SaveEverything", "Error al procesar respuesta JSON: ${e.message}")
                             Toast.makeText(
                                 this@NewPropertyActivity,
                                 "Error al crear la propiedad",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
+                    } else {
+                        Log.d("SaveEverything", "Error en respuesta HTTP, código: ${response.code}")
+                        Toast.makeText(
+                            this@NewPropertyActivity,
+                            "Error al crear la propiedad",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
         })
     }
+
     private fun saveLocation() {
         val address = etAddress.text.toString()
         val latitude = googleMap.cameraPosition.target.latitude

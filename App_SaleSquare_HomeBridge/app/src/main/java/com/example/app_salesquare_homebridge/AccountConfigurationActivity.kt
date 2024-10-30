@@ -11,10 +11,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_salesquare_homebridge.adapters.AccountConfigurationAdapter
+import com.example.app_salesquare_homebridge.models.User
+import com.example.app_salesquare_homebridge.shared.user.UserWrapper
 
 class AccountConfigurationActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AccountConfigurationAdapter
+    private lateinit var userWrapper: UserWrapper
 
     private val titles = arrayOf("Calculadora crediticia", "Perfil", "Crear nueva publicación", "Cerrar sesión")
     private val icons = intArrayOf(
@@ -28,10 +31,11 @@ class AccountConfigurationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_configuration)
 
+        userWrapper = intent.getParcelableExtra("userWrapper") ?: throw IllegalArgumentException("UserWrapper not found")
+
         recyclerView = findViewById(R.id.rvMyAccount)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-        adapter = AccountConfigurationAdapter(this, titles, icons)
+        adapter = AccountConfigurationAdapter(this, titles, icons, userWrapper)
         recyclerView.adapter = adapter
 
         val navbar = layoutInflater.inflate(R.layout.navbar, findViewById<LinearLayout>(R.id.navbar_container2), true)

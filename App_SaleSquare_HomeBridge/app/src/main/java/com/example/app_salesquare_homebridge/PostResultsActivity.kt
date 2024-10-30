@@ -61,6 +61,8 @@ public final class PostResultsActivity : AppCompatActivity()
             insets
         }
 
+        this.d_UserWrapper = intent.getParcelableExtra("userWrapper")!!
+
         val navbar = layoutInflater.inflate(R.layout.navbar, findViewById<LinearLayout>(R.id.navbar_container), true)
 
         navbar.findViewById<ImageView>(R.id.icon_buscar).setOnClickListener {
@@ -75,10 +77,9 @@ public final class PostResultsActivity : AppCompatActivity()
         }
         navbar.findViewById<ImageView>(R.id.icon_cuenta).setOnClickListener {
             val intent = Intent(this, AccountConfigurationActivity::class.java)
+            intent.putExtra("userWrapper", this.d_UserWrapper)
             startActivity(intent)
         }
-
-        this.d_UserWrapper = intent.getParcelableExtra("userWrapper")!!
 
         this.changeToFilter()
         this.changeToMenu()

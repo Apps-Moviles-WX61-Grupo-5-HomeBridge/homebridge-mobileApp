@@ -13,11 +13,13 @@ import com.example.app_salesquare_homebridge.LoginActivity
 import com.example.app_salesquare_homebridge.NewPropertyActivity
 import com.example.app_salesquare_homebridge.R
 import com.example.app_salesquare_homebridge.UserProfileActivity
+import com.example.app_salesquare_homebridge.shared.user.UserWrapper
 
 class AccountConfigurationAdapter(
     private val context: Context,
     private val titles: Array<String>,
-    private val icons: IntArray
+    private val icons: IntArray,
+    private val userWrapper: UserWrapper
 ) : RecyclerView.Adapter<AccountConfigurationAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,7 +35,9 @@ class AccountConfigurationAdapter(
             val intent = when (position) {
                 0 -> Intent(context, CalculatorActivity::class.java)
                 1 -> Intent(context, UserProfileActivity::class.java)
-                2 -> Intent(context, NewPropertyActivity::class.java)
+                2 -> Intent(context, NewPropertyActivity::class.java).apply {
+                    putExtra("userWrapper", userWrapper)
+                }
                 3 -> Intent(context, LoginActivity::class.java)
                 else -> Intent(context, LoginActivity::class.java)
             }

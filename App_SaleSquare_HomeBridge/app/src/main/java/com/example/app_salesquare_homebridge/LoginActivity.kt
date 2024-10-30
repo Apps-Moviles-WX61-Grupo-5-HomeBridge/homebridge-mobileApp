@@ -2,6 +2,7 @@ package     com.example.app_salesquare_homebridge
 
 import      android.content.Intent
 import      android.os.Bundle
+import android.os.Handler
 import      android.text.SpannableString
 import      android.text.TextPaint
 import      android.text.style.ClickableSpan
@@ -15,7 +16,7 @@ import      com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import      okhttp3.MediaType.Companion.toMediaType
 import      okio.IOException
 import      org.json.JSONObject
-
+import retrofit2.http.Headers
 
 
 public final class LoginActivity: AppCompatActivity() {
@@ -66,7 +67,7 @@ public final class LoginActivity: AppCompatActivity() {
     }
 
     private fun login(email: String, password: String) {
-        val url = "https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/api/v1/user/login"
+        val url = "http://10.0.2.2:5011/api/v1/user/login"
         val Json = JSONObject().apply {
             put("password", password)
             put("email", email)
@@ -114,6 +115,7 @@ public final class LoginActivity: AppCompatActivity() {
                                         Intent(this@LoginActivity, PostResultsActivity::class.java)
                                     intent.putExtra("userWrapper", this@LoginActivity.m_UserWrapper)
                                     startActivity(intent)
+
                                 }
                             } else {
                                 Toast.makeText(
