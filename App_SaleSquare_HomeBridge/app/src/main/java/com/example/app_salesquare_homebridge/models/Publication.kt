@@ -37,10 +37,10 @@ data class Publication (
     var totalArea: Float?,
 
     @ColumnInfo(name = "type")
-    var type: String?,
+    var type: Int?,
 
     @ColumnInfo(name = "operation")
-    var operation: String?,
+    var operation: Int?,
 
     @ColumnInfo(name = "delivery")
     var delivery: String?,

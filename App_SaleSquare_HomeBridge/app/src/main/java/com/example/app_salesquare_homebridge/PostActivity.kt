@@ -27,6 +27,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class PostActivity : AppCompatActivity() {
+    private lateinit var userWrapper: UserWrapper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -36,6 +38,8 @@ class PostActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        userWrapper = intent.getParcelableExtra("userWrapper")!!
 
         val backIcon = findViewById<ImageView>(R.id.inmuebles_icon)
         val menuIcon:ImageView = findViewById(R.id.menu_icon)
@@ -136,15 +140,24 @@ class PostActivity : AppCompatActivity() {
         val bathroom = intent.getIntExtra("bathroom", 0)
         val garages = intent.getIntExtra("garages", 0)
         val location = intent.getStringExtra("location")
-        val coveredArea = intent.getFloatExtra("coveredArea", 0.0f)
         val totalArea = intent.getFloatExtra("totalArea", 0.0f)
-        val type = intent.getStringExtra("type")
-        val operation = intent.getStringExtra("operation")
-        val delivery = intent.getStringExtra("delivery")
+        val typeInt = intent.getIntExtra("type", 0)
+        val operationInt = intent.getIntExtra("operation", 0)
         val antiquity = intent.getIntExtra("antiquity", 0)
-        val projectStage = intent.getStringExtra("projectStage")
         val projectStartDate = intent.getStringExtra("projectStartDate")
-        val saleState = intent.getStringExtra("saleState")
+
+        val type = when (typeInt) {
+            0 -> "Casa"
+            1 -> "Departamento"
+            2 -> "Terreno"
+            else -> "Desconocido"
+        }
+
+        val operation = when (operationInt) {
+            0 -> "Venta"
+            1 -> "Alquiler"
+            else -> "Desconocido"
+        }
 
         findViewById<TextView>(R.id.tvTitle).text = title
         findViewById<TextView>(R.id.tvDescription).text = description
@@ -153,19 +166,15 @@ class PostActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvBathroomsQuantity).text = bathroom.toString()
         findViewById<TextView>(R.id.tvParkingLotsQuantity).text = garages.toString()
         findViewById<TextView>(R.id.tvAddress).text = location
-        findViewById<TextView>(R.id.tvCoveredArea).text = coveredArea.toString()
         findViewById<TextView>(R.id.tvTotalArea).text = totalArea.toString()
         findViewById<TextView>(R.id.tvType).text = type
         findViewById<TextView>(R.id.tvOperation).text = operation
-        findViewById<TextView>(R.id.tvDelivery).text = delivery
         findViewById<TextView>(R.id.tvAntiquity).text = antiquity.toString()
-        findViewById<TextView>(R.id.tvProjectStage).text = projectStage
         findViewById<TextView>(R.id.tvProjectStartDate).text = projectStartDate
-        findViewById<TextView>(R.id.tvSaleState).text = saleState
         findViewById<TextView>(R.id.tvOperation2).text = operation
 
 
-        val carousel: ImageCarousel = findViewById(R.id.carousel)
+        /*val carousel: ImageCarousel = findViewById(R.id.carousel)
         val list = mutableListOf<CarouselItem>()
         val images = intent.getStringArrayListExtra("imageList") ?: emptyList<String>()
 
@@ -173,7 +182,7 @@ class PostActivity : AppCompatActivity() {
             addCarouselItem(list, imageUrl)
         }
 
-        carousel.setData(list)
+        carousel.setData(list)*/
     }
 
     private fun goBack(): Unit {

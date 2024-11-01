@@ -12,11 +12,12 @@ import      androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.app_salesquare_homebridge.PostActivity
 import      com.example.app_salesquare_homebridge.R
 import      com.example.app_salesquare_homebridge.models.Publication
-
+import com.example.app_salesquare_homebridge.shared.user.UserWrapper
 
 
 public final class PostAdapter(
-    private val m_Posts: MutableList<Publication>
+    private val m_Posts: MutableList<Publication>,
+    private val userWrapper: UserWrapper
 ) : Adapter<PostPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostPrototype {
         val view = LayoutInflater
@@ -27,7 +28,7 @@ public final class PostAdapter(
     }
 
     override fun onBindViewHolder(holder: PostPrototype, position: Int): Unit {
-        holder.bind(this.m_Posts[position])
+        holder.bind(this.m_Posts[position], this.userWrapper)
     }
 
     override fun getItemCount(): Int {
@@ -46,13 +47,13 @@ public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val m_ImageView: ImageView = itemView.findViewById<ImageView>(R.id.house_image_reference)
     private val m_PostDetailsButton: Button = itemView.findViewById<Button>(R.id.bt_PostDetails)
 
-    public fun bind(post: Publication): Unit {
+    public fun bind(post: Publication, userWrapper: UserWrapper): Unit {
         this.m_PriceText.text = post.price.toString()
         this.m_Location.text = post.location
         this.m_Size.text = post.size.toString()
-        this.m_Rooms.text = post.rooms.toString()
+        this.m_Rooms.text = post.dormitory.toString()
         this.m_Bathrooms.text = post.bathroom.toString()
-        this.m_Garages.text = post.garages.toString()
+        this.m_Garages.text = post.parkingLot.toString()
         this.m_Description.text = post.description
         this.m_ImageView.setImageResource(R.drawable.cute_house)
 
@@ -61,23 +62,21 @@ public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val intent = Intent(context, PostActivity::class.java)
             intent.putExtra("post_id", post.id)
             intent.putExtra("size", post.size)
-            intent.putExtra("rooms", post.rooms)
+            intent.putExtra("rooms", post.dormitory)
             intent.putExtra("bathroom", post.bathroom)
-            intent.putExtra("garages", post.garages)
+            intent.putExtra("garages", post.parkingLot)
             intent.putExtra("description", post.description)
             intent.putExtra("price", post.price)
-            intent.putExtra("imageList", ArrayList(post.imagesList))
+//            intent.putExtra("imageList", ArrayList(post.imagesList))
             intent.putExtra("title", post.title)
             intent.putExtra("location", post.location)
-            intent.putExtra("coveredArea", post.coveredArea)
             intent.putExtra("totalArea", post.totalArea)
             intent.putExtra("type", post.type)
             intent.putExtra("operation", post.operation)
             intent.putExtra("delivery", post.delivery)
-            intent.putExtra("saleState", post.saleState)
-            intent.putExtra("projectStage", post.projectStage)
             intent.putExtra("projectStartDate", post.projectStartDate)
             intent.putExtra("antiquity", post.antiquity)
+            intent.putExtra("userWrapper", userWrapper)
             context.startActivity(intent)
         }
     }

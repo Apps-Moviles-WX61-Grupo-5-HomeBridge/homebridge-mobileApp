@@ -159,7 +159,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Tipo de propiedad"
+                        android:text="@string/property_type"
                         android:textStyle="bold" />
 
                     <TextView
@@ -180,7 +180,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Operación"
+                        android:text="@string/operation"
                         android:textStyle="bold" />
 
                     <TextView
@@ -201,52 +201,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Entrega"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvDelivery"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:textStyle="bold"
-                        android:maxLines="2"
-                        android:ellipsize="end"
-                        tools:text="Tiempo de entrega" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/greenish_gray">
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:padding="10dp"
-                        android:text="Área techada"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvCoveredArea"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:padding="10dp"
-                        android:textStyle="bold"
-                        tools:text="Área techada" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white">
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:padding="10dp"
-                        android:text="Área total"
+                        android:text="@string/total_area"
                         android:textStyle="bold" />
 
                     <TextView
@@ -267,7 +222,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Dormitorios"
+                        android:text="@string/dormitories"
                         android:textStyle="bold" />
 
                     <TextView
@@ -288,7 +243,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Baños"
+                        android:text="@string/bathrooms"
                         android:textStyle="bold" />
 
                     <TextView
@@ -309,7 +264,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Estacionamientos"
+                        android:text="@string/parkingLots"
                         android:textStyle="bold" />
 
                     <TextView
@@ -327,52 +282,10 @@
                     android:background="@color/white">
 
                     <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:padding="10dp"
-                        android:text="Estado de venta"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvSaleState"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:padding="10dp"
-                        android:textStyle="bold"
-                        tools:text="Estado" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/greenish_gray">
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:padding="10dp"
-                        android:text="Etapa del proyecto"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvProjectStage"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:padding="10dp"
-                        android:textStyle="bold"
-                        tools:text="Etapa" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white">
-
-                    <TextView
                         android:layout_width="150dp"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Fecha de inicio del proyecto"
+                        android:text="@string/start_date"
                         android:textStyle="bold" />
 
                     <TextView
@@ -393,7 +306,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:padding="10dp"
-                        android:text="Antigüedad"
+                        android:text="@string/antiquity"
                         android:textStyle="bold" />
 
                     <TextView
@@ -415,7 +328,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="180dp"
             android:backgroundTint="#465544"
-            android:text="Ver ubicación en mapa"
+            android:text="@string/map_location"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -427,7 +340,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Información del anunciante"
+            android:text="@string/advertiser_info"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvShowMap" />
@@ -468,7 +381,7 @@
             android:drawableRight="@drawable/baseline_email_24"
             android:paddingLeft="90dp"
             android:paddingRight="90dp"
-            android:text="Contactar"
+            android:text="@string/contact"
             app:cornerRadius="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

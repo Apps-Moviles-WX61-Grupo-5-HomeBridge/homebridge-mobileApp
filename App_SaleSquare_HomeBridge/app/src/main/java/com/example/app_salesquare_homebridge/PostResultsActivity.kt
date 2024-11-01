@@ -35,11 +35,11 @@ public final class PostResultsActivity : AppCompatActivity()
     //					Variables
     //	-------------------------------------------
     private val m_Posts: MutableList<Publication>   = mutableListOf()
-    private val m_PostsAdapter: PostAdapter         = PostAdapter(this.m_Posts)
 
     //	-------------------------------------------
     //					Dependencies
     //	-------------------------------------------
+    private lateinit var m_PostsAdapter: PostAdapter
     private lateinit var d_UserWrapper: UserWrapper
 
 
@@ -62,8 +62,12 @@ public final class PostResultsActivity : AppCompatActivity()
         }
 
         this.d_UserWrapper = intent.getParcelableExtra("userWrapper")!!
+        this.m_PostsAdapter = PostAdapter(this.m_Posts, this.d_UserWrapper)
 
         val navbar = layoutInflater.inflate(R.layout.navbar, findViewById<LinearLayout>(R.id.navbar_container), true)
+
+        val iconInmuebles = navbar.findViewById<ImageView>(R.id.icon_inmuebles)
+        iconInmuebles.setColorFilter(resources.getColor(R.color.light_green, theme))
 
         navbar.findViewById<ImageView>(R.id.icon_buscar).setOnClickListener {
             val intent = Intent(this, SearchFilterActivity::class.java)

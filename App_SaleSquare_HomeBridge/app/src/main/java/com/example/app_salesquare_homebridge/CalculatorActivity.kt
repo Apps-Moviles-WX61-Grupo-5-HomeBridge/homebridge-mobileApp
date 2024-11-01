@@ -20,7 +20,7 @@ class CalculatorActivity : AppCompatActivity() {
             insets
         }
 
-        val navbar = layoutInflater.inflate(R.layout.navbar, findViewById<LinearLayout>(R.id.navbar_container3), true)
+        val navbar = layoutInflater.inflate(R.layout.navbar, findViewById<LinearLayout>(R.id.navbar_container4), true)
 
         navbar.findViewById<ImageView>(R.id.icon_inmuebles).setOnClickListener {
             val intent = Intent(this, PostResultsActivity::class.java)

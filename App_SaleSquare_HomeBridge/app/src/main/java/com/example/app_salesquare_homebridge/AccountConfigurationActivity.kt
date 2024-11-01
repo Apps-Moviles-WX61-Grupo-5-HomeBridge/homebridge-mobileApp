@@ -19,9 +19,8 @@ class AccountConfigurationActivity : AppCompatActivity() {
     private lateinit var adapter: AccountConfigurationAdapter
     private lateinit var userWrapper: UserWrapper
 
-    private val titles = arrayOf("Calculadora crediticia", "Perfil", "Crear nueva publicación", "Cerrar sesión")
+    private val titles = arrayOf("Perfil", "Crear nueva publicación", "Cerrar sesión")
     private val icons = intArrayOf(
-        R.drawable.baseline_calculate_24,
         R.drawable.baseline_person_24,
         R.drawable.baseline_add_box_24,
         R.drawable.baseline_logout_24
@@ -40,8 +39,12 @@ class AccountConfigurationActivity : AppCompatActivity() {
 
         val navbar = layoutInflater.inflate(R.layout.navbar, findViewById<LinearLayout>(R.id.navbar_container2), true)
 
+        val iconCuenta = navbar.findViewById<ImageView>(R.id.icon_cuenta)
+        iconCuenta.setColorFilter(resources.getColor(R.color.light_green, theme))
+
         navbar.findViewById<ImageView>(R.id.icon_inmuebles).setOnClickListener {
             val intent = Intent(this, PostResultsActivity::class.java)
+            intent.putExtra("userWrapper", this.userWrapper)
             startActivity(intent)
         }
 

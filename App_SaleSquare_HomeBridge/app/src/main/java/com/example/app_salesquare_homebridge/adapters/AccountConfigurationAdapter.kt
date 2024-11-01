@@ -33,12 +33,11 @@ class AccountConfigurationAdapter(
 
         holder.itemView.setOnClickListener {
             val intent = when (position) {
-                0 -> Intent(context, CalculatorActivity::class.java)
-                1 -> Intent(context, UserProfileActivity::class.java)
-                2 -> Intent(context, NewPropertyActivity::class.java).apply {
+                0 -> Intent(context, UserProfileActivity::class.java)
+                1 -> Intent(context, NewPropertyActivity::class.java).apply {
                     putExtra("userWrapper", userWrapper)
                 }
-                3 -> Intent(context, LoginActivity::class.java)
+                2 -> Intent(context, LoginActivity::class.java)
                 else -> Intent(context, LoginActivity::class.java)
             }
             context.startActivity(intent)

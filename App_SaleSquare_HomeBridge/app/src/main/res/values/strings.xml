@@ -39,4 +39,16 @@
     <string name="registrarme">Registrarme con un Email:</string>
     <string name="condicion">Al registrarte, estás aceptando los términos y condiciones</string>
     <string name="tengo">Ya tengo cuenta. Ingresar</string>
+    <string name="mi_account">Mi cuenta</string>
+    <string name="property_type">Tipo de propiedad</string>
+    <string name="operation">Operación</string>
+    <string name="total_area">Área total</string>
+    <string name="dormitories">Dormitorios</string>
+    <string name="bathrooms">Baños</string>
+    <string name="parkingLots">Estacionamientos</string>
+    <string name="start_date">Fecha de inicio del proyecto</string>
+    <string name="antiquity">Antigüedad</string>
+    <string name="map_location">Ver ubicación en mapa</string>
+    <string name="advertiser_info">Información del anunciante</string>
+    <string name="contact">Contactar</string>
 </resources>

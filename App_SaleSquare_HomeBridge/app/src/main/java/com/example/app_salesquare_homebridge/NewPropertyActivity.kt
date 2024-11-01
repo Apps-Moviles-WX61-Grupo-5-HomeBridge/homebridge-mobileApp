@@ -221,6 +221,7 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
             saveLocation()
             saveEverything()
             val intent = Intent(this, AddPhotosActivity::class.java)
+            intent.putExtra("userWrapper", d_UserWrapper)
             startActivity(intent)
         }
     }
