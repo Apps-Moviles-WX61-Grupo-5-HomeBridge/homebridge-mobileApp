@@ -40,12 +40,16 @@ class MyPostsActivity : AppCompatActivity() {
             val intent = Intent(this, SearchFilterActivity::class.java)
             startActivity(intent)
         }
-        navbar.findViewById<ImageView>(R.id.icon_notificaciones).setOnClickListener {
-            // Manejar la navegación a la sección de Notificaciones
+
+        navbar.findViewById<ImageView>(R.id.icon_publicar).setOnClickListener {
+            val iconPublicar = it as ImageView
+            iconPublicar.setColorFilter(resources.getColor(R.color.light_green, theme))
+
+            val intent = Intent(this, NewPropertyActivity::class.java)
+            intent.putExtra("userWrapper", this.d_UserWrapper)
+            startActivity(intent)
         }
-        navbar.findViewById<ImageView>(R.id.icon_planes).setOnClickListener {
-            // Manejar la navegación a la sección de Planes
-        }
+
         navbar.findViewById<ImageView>(R.id.icon_cuenta).setOnClickListener {
             val intent = Intent(this, AccountConfigurationActivity::class.java)
             intent.putExtra("userWrapper", this.d_UserWrapper)
