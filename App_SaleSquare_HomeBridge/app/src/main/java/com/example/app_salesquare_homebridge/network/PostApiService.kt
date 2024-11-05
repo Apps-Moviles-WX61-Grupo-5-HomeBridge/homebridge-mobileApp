@@ -1,12 +1,15 @@
 package     com.example.app_salesquare_homebridge.network
 
+import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
 import      com.example.app_salesquare_homebridge.communication.PublicationResponse
+import com.example.app_salesquare_homebridge.models.PropertyImages
 import      retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import      retrofit2.http.GET
 import retrofit2.http.HTTP
 import      retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Path
 import      retrofit2.http.Query
 
@@ -24,6 +27,18 @@ interface PostApiService {
         @Header("Authorization") token: String,
         @Path("postId") postId: Int
     ): Call<Void>*/
+
+    @GET("api/v1/publication/imageList")
+    fun imageList(
+        @Header("Authorization") token: String,
+        @Query("amount") amount: Int
+    ): Call<PropertyImagesResponse>
+
+    @POST("api/v1/publication/postImageList")
+    fun sendUrls(
+        @Header("Authorization") token: String,
+        @Body urlList: PropertyImages
+    ): Call<Void>
 
     @HTTP(method = "DELETE", path = "api/v1/publication/deletePublication", hasBody = true)
     fun deletePost(

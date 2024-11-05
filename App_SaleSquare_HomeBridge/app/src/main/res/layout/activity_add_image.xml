@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
     android:background="#DCDCDC"
-    tools:context=".AddImageActivity">
+    tools:context=".AddPhotosActivity">
 
-    <TextView
-        android:id="@+id/tvPhoto"
+    <!-- Campo de entrada para la URL de la imagen -->
+    <EditText
+        android:id="@+id/urlInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese la URL de la imagen"
+        android:inputType="textUri" />
+
+    <!-- Botón para agregar la URL a la lista -->
+    <Button
+        android:id="@+id/addUrlButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/fotos"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Agregar URL"
+        android:layout_marginTop="8dp" />
 
-    <ImageButton
-        android:id="@+id/ibtAddPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="24dp"
-        android:contentDescription="@string/boton_de_agregar_imagen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPhoto"
-        app:srcCompat="@drawable/add_image_bt" />
+    <!-- RecyclerView para mostrar la lista de URLs -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/urlRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp" />
 
+    <!-- Botón para guardar las URLs en la base de datos -->
     <Button
         android:id="@+id/btPublish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="#465544"
-        android:paddingHorizontal="100dp"
-        android:text="@string/publicar_inmueble"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ibtAddPhoto" />
+        android:text="Guardar URLs"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

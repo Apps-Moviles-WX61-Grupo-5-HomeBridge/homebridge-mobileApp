@@ -15,6 +15,7 @@ import      androidx.appcompat.app.AppCompatActivity
 import      androidx.cardview.widget.CardView
 import      androidx.core.view.ViewCompat
 import      androidx.core.view.WindowInsetsCompat
+import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
 import com.example.app_salesquare_homebridge.communication.PublicationResponse
 import com.example.app_salesquare_homebridge.network.PostApiService
 import com.example.app_salesquare_homebridge.posts.Post
@@ -35,6 +36,7 @@ class PostActivity : AppCompatActivity() {
     private lateinit var PostsAdapter: PostAdapter
 
     private var postId: Int = -1
+    private lateinit var images: List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -201,15 +203,37 @@ class PostActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvOperation2).text = operation
 
 
-        /*val carousel: ImageCarousel = findViewById(R.id.carousel)
+        val carousel: ImageCarousel = findViewById(R.id.carousel)
         val list = mutableListOf<CarouselItem>()
-        val images = intent.getStringArrayListExtra("imageList") ?: emptyList<String>()
 
-        for (imageUrl in images) {
-            addCarouselItem(list, imageUrl)
-        }
+        val retrofit = Builder()
+            .baseUrl("http://10.0.2.2:5011")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PostApiService::class.java)
+        val call = service.imageList("Bearer ${this.userWrapper.token()}", 1)
 
-        carousel.setData(list)*/
+        call.enqueue(object : Callback<PropertyImagesResponse> {
+            override fun onResponse(call: Call<PropertyImagesResponse>, response: Response<PropertyImagesResponse>) {
+                if (response.isSuccessful) {
+                    val imagesResponse = response.body()
+                    if (imagesResponse != null) {
+                        images = imagesResponse.toPropertyImages().imageList!!
+                        for (imageUrl in images) {
+                            addCarouselItem(list, imageUrl)
+                        }
+                        carousel.setData(list)
+                    }
+                } else {
+                    Toast.makeText(this@PostActivity, "No se pudo cargar la lista de imágenes", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<PropertyImagesResponse>, t: Throwable) {
+                println("Fallo en la conexión: ${t.message}")
+                Toast.makeText(this@PostActivity, "Error al cargar la lista de imágenes: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun deletePost(postId: Int) {
