@@ -14,4 +14,10 @@ interface PostApiService {
         @Header("Authorization") token: String,
         @Query("amount") amount: Int
     ): Call<List<PublicationResponse>>
+
+    @DELETE("api/v1/publication/{postId}")
+    fun deletePost(
+        @Header("Authorization") token: String,
+        @Path("postId") postId: Int
+    ): Call<Void>
 }

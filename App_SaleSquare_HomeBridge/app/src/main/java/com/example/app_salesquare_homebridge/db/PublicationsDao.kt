@@ -16,4 +16,8 @@ interface PublicationsDao {
 
     @Delete
     fun delete(publications: Publication)
+
+
+    @Query("DELETE FROM publication WHERE id = :postId")
+    fun deleteById(postId: Int)
 }

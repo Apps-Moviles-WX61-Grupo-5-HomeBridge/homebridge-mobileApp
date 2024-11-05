@@ -10,12 +10,15 @@ import      android.widget.PopupMenu
 import android.widget.TextView
 import      android.widget.Toast
 import      androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import      androidx.appcompat.app.AppCompatActivity
 import      androidx.cardview.widget.CardView
 import      androidx.core.view.ViewCompat
 import      androidx.core.view.WindowInsetsCompat
 import com.example.app_salesquare_homebridge.communication.PublicationResponse
 import com.example.app_salesquare_homebridge.network.PostApiService
+import com.example.app_salesquare_homebridge.posts.Post
+import com.example.app_salesquare_homebridge.posts.PostAdapter
 import com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import      org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import      org.imaginativeworld.whynotimagecarousel.model.CarouselItem
@@ -28,6 +31,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PostActivity : AppCompatActivity() {
     private lateinit var userWrapper: UserWrapper
+    private lateinit var m_Posts: MutableList<Post>
+    private lateinit var PostsAdapter: PostAdapter
+
+    private var postId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +45,8 @@ class PostActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        m_Posts = mutableListOf()
 
         userWrapper = intent.getParcelableExtra("userWrapper")!!
 
@@ -82,13 +91,54 @@ class PostActivity : AppCompatActivity() {
                     true
                 }
                 R.id.delete -> {
-                    Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
+                    val dialogView = layoutInflater.inflate(R.layout.delete_post_dialog_box, null)
+                    val dialog = AlertDialog.Builder(this).setView(dialogView).create()
+                    val confirmButton = dialogView.findViewById<Button>(R.id.btConfirmDelete)
+                    val cancelButton = dialogView.findViewById<Button>(R.id.btDenyDelete)
+
+                    confirmButton.setOnClickListener {
+                        deletePost(postId)
+                        dialog.dismiss()
+                        goBack()
+                    }
+
+                    cancelButton.setOnClickListener {
+                        dialog.dismiss()
+                    }
+
+                    dialog.show()
                     true
                 }
                 else -> false
             }
         }
         popupMenu.show()
+    }
+
+    private fun deletePost(postId: Int) {
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PostApiService::class.java)
+        val call = service.deletePublication("Bearer ${this.userWrapper.token()}", postId)
+
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    // Aquí puedes realizar cualquier acción adicional después de la eliminación.
+                    Toast.makeText(this@PostActivity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@PostActivity, "No se pudo eliminar la publicación", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(this@PostActivity, "Error al eliminar la publicación: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun coverCardView() {
@@ -133,6 +183,8 @@ class PostActivity : AppCompatActivity() {
     }
 
     private fun loadPublication() {
+
+        postId = intent.getIntExtra("post_id", -1)
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
         val price = intent.getDoubleExtra("price",0.0)
