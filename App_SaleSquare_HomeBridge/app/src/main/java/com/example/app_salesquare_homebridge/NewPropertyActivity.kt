@@ -56,11 +56,11 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var etAddress: TextInputEditText
     private lateinit var btnVenta : Button
     private lateinit var btnAlquiler : Button
-    private var selectedOperation = "Venta"
+    private var selectedOperation = 0
     private lateinit var btnCasa : Button
     private lateinit var btnDepartamento : Button
     private lateinit var btnTerreno : Button
-    private var selectedType = "Casa"
+    private var selectedType = 0
     private lateinit var btnDMas : Button
     private lateinit var btnDMenos : Button
     private lateinit var tvDormitorios : TextView
@@ -76,7 +76,7 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var etAreaTechada: TextInputEditText
     private lateinit var etAreaTotal: TextInputEditText
     private lateinit var rgAntiguedad: RadioGroup
-    private var antiguedad = "A estrenar"
+    private var antiguedad = 0
     private lateinit var etPrecio : TextInputEditText
     private lateinit var etTitulo : TextInputEditText
     private lateinit var etDescripcion : TextInputEditText
@@ -122,33 +122,33 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         etDescripcion = findViewById(R.id.etDescripcion)
 
         btnVenta.setOnClickListener {
-            selectedOperation = "Venta"
+            selectedOperation = 0
             btnVenta.setTextColor(Color.parseColor("#FFD700"))
             btnAlquiler.setTextColor(Color.WHITE)
         }
 
         btnAlquiler.setOnClickListener {
-            selectedOperation = "Alquiler"
+            selectedOperation = 1
             btnAlquiler.setTextColor(Color.parseColor("#FFD700"))
             btnVenta.setTextColor(Color.WHITE)
         }
 
         btnCasa.setOnClickListener {
-            selectedType = "Casa"
+            selectedType = 0
             btnCasa.setTextColor(Color.parseColor("#FFD700"))
             btnDepartamento.setTextColor(Color.WHITE)
             btnTerreno.setTextColor(Color.WHITE)
         }
 
         btnDepartamento.setOnClickListener {
-            selectedType = "Departamento"
+            selectedType = 1
             btnDepartamento.setTextColor(Color.parseColor("#FFD700"))
             btnCasa.setTextColor(Color.WHITE)
             btnTerreno.setTextColor(Color.WHITE)
         }
 
         btnTerreno.setOnClickListener {
-            selectedType = "Terreno"
+            selectedType = 2
             btnTerreno.setTextColor(Color.parseColor("#FFD700"))
             btnCasa.setTextColor(Color.WHITE)
             btnDepartamento.setTextColor(Color.WHITE)
@@ -192,10 +192,10 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
 
         rgAntiguedad.setOnCheckedChangeListener{ _, checkedId ->
             antiguedad = when(checkedId){
-                R.id.radio_new -> "A estrenar"
-                R.id.radio_old -> "Usado"
-                R.id.radio_construction -> "En construcción"
-                else -> "A estrenar"
+                R.id.radio_new -> 0
+                R.id.radio_old -> 1
+                R.id.radio_construction -> 2
+                else -> 0
             }
         }
 
@@ -248,18 +248,15 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
             put("title", Titulo)
             put("description", Descripcion)
             put("price", Precio)
-            put("_Location_Address", "Calle Falsa 123") //Location pero solo el address
+            put("_Location_Address", location.address) //Location pero solo el address
             put("userId", userId)
-            put("totalArea", AreaTotal)
-            put("type", 1) //No puede ser int
-            put("operation", 1) //No puede ser int
-            put("dormitoryQuantity", dormitorios)
-            put("bathroomQuantity", banos)
-            put("parkingLotQuantity", cocheras)
-            put("antiquity", 0) //no puede ser int
-            put("size", 0)
-            put("rooms", 0)
-            put("garages", 0)
+            put("type", selectedType) //No puede ser int
+            put("operation", selectedOperation) //No puede ser int
+            put("bathrooms", banos)
+            put("antiquity", antiguedad) //no puede ser int
+            put("size", AreaTotal)
+            put("rooms", dormitorios)
+            put("garages", cocheras)
         }
 
         Log.d("SaveEverything", "JSON Object creado: $jsonObject")
@@ -294,33 +291,20 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 runOnUiThread {
                     if (response.isSuccessful && !responseBody.isNullOrEmpty()) {
-                        try {
-                            val jsonObject = JSONObject(responseBody)
-                            val result = jsonObject.optBoolean("result", false)
-                            if (result) {
-                                Toast.makeText(
-                                    this@NewPropertyActivity,
-                                    "Propiedad creada exitosamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            } else {
-                                Log.d("SaveEverything", "Error al crear la propiedad: Resultado no exitoso")
-                            }
-                        } catch (e: Exception) {
-                            Log.d("SaveEverything", "Error al procesar respuesta JSON: ${e.message}")
+                        val resultAsInt = responseBody.toIntOrNull()
+                        if (resultAsInt != null) {
+                            Toast.makeText(
+                                this@NewPropertyActivity,
+                                "Propiedad creada",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
                             Toast.makeText(
                                 this@NewPropertyActivity,
                                 "Error al crear la propiedad",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
-                    } else {
-                        Log.d("SaveEverything", "Error en respuesta HTTP, código: ${response.code}")
-                        Toast.makeText(
-                            this@NewPropertyActivity,
-                            "Error al crear la propiedad",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
                 }
             }
