@@ -116,31 +116,6 @@ class PostActivity : AppCompatActivity() {
         popupMenu.show()
     }
 
-    private fun deletePost(postId: Int) {
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PostApiService::class.java)
-        val call = service.deletePublication("Bearer ${this.userWrapper.token()}", postId)
-
-        call.enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    // Aquí puedes realizar cualquier acción adicional después de la eliminación.
-                    Toast.makeText(this@PostActivity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@PostActivity, "No se pudo eliminar la publicación", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Toast.makeText(this@PostActivity, "Error al eliminar la publicación: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
     private fun coverCardView() {
         val cardView: CardView = findViewById(R.id.cvOperationPrice)
 
@@ -235,6 +210,31 @@ class PostActivity : AppCompatActivity() {
         }
 
         carousel.setData(list)*/
+    }
+
+    private fun deletePost(postId: Int) {
+
+        val retrofit = Builder()
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PostApiService::class.java)
+        val call = service.deletePost("Bearer ${this.userWrapper.token()}", postId)
+
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    // Aquí puedes realizar cualquier acción adicional después de la eliminación.
+                    Toast.makeText(this@PostActivity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@PostActivity, "No se pudo eliminar la publicación", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(this@PostActivity, "Error al eliminar la publicación: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun goBack(): Unit {
