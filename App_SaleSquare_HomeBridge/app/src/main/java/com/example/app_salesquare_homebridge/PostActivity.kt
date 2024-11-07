@@ -166,7 +166,7 @@ class PostActivity : AppCompatActivity() {
         val description = intent.getStringExtra("description")
         val price = intent.getDoubleExtra("price",0.0)
         val rooms = intent.getIntExtra("rooms", 0)
-        val bathroom = intent.getIntExtra("bathroom", 0)
+        val bathroom = intent.getIntExtra("bathrooms", 0)
         val garages = intent.getIntExtra("garages", 0)
         val location = intent.getStringExtra("location")
         val totalArea = intent.getFloatExtra("totalArea", 0.0f)

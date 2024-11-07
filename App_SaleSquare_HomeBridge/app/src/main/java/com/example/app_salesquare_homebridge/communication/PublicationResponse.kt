@@ -27,7 +27,8 @@ class PublicationResponse (
     private var antiquity: Int,
     private var size: Int,
     private var rooms: Int,
-    private var garages: Int
+    private var garages: Int,
+    private var bathrooms: Int
 ) {
     fun toPublication() : Publication {
         val inputDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
@@ -60,7 +61,8 @@ class PublicationResponse (
             imagesList = this.imageList,
             size = this.size ?: 0,
             rooms = this.rooms ?: 0,
-            garages = this.garages ?: 0
+            garages = this.garages ?: 0,
+            bathrooms = this.bathrooms ?: 0
         )
     }
 }

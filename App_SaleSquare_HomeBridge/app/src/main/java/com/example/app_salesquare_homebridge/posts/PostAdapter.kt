@@ -51,9 +51,9 @@ public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
         this.m_PriceText.text = post.price.toString()
         this.m_Location.text = post.location
         this.m_Size.text = post.size.toString()
-        this.m_Rooms.text = post.dormitory.toString()
-        this.m_Bathrooms.text = post.bathroom.toString()
-        this.m_Garages.text = post.parkingLot.toString()
+        this.m_Rooms.text = post.rooms.toString()
+        this.m_Bathrooms.text = post.bathrooms.toString()
+        this.m_Garages.text = post.garages.toString()
         this.m_Description.text = post.description
         this.m_ImageView.setImageResource(R.drawable.cute_house)
 
@@ -62,9 +62,9 @@ public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val intent = Intent(context, PostActivity::class.java)
             intent.putExtra("post_id", post.id)
             intent.putExtra("size", post.size)
-            intent.putExtra("rooms", post.dormitory)
-            intent.putExtra("bathroom", post.bathroom)
-            intent.putExtra("garages", post.parkingLot)
+            intent.putExtra("rooms", post.rooms)
+            intent.putExtra("bathrooms", post.bathrooms)
+            intent.putExtra("garages", post.garages)
             intent.putExtra("description", post.description)
             intent.putExtra("price", post.price)
 //            intent.putExtra("imageList", ArrayList(post.imagesList))

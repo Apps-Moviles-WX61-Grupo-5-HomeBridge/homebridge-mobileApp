@@ -48,7 +48,7 @@ data class Publication (
     @ColumnInfo(name = "dormitories")
     var dormitory: Int?,
 
-    @ColumnInfo(name = "bathrooms")
+    @ColumnInfo(name = "bathroom")
     var bathroom: Int?,
 
     @ColumnInfo(name = "parkingLot")
@@ -73,5 +73,8 @@ data class Publication (
     var garages: Int?,
 
     @ColumnInfo(name = "rooms")
-    var rooms: Int?
+    var rooms: Int?,
+
+    @ColumnInfo(name = "bathrooms")
+    var bathrooms: Int?
 )
