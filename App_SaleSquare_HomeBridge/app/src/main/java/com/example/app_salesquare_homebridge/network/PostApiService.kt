@@ -22,6 +22,11 @@ interface PostApiService {
         @Query("amount") amount: Int
     ): Call<List<PublicationResponse>>
 
+    @GET("api/v1/publication/justPublications")
+    fun justPublications(
+        @Header("Authorization") token: String
+    ): Call<List<PublicationResponse>>
+
     /*@DELETE("api/v1/publication/{postId}")
     fun deletePost(
         @Header("Authorization") token: String,
