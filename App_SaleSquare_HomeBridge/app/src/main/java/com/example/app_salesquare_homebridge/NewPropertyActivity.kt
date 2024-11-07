@@ -265,7 +265,7 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         Log.d("SaveEverything", "Request Body creado")
 
         val request = okhttp3.Request.Builder()
-            .url("http://10.0.2.2:5011/api/v1/publication/postPublication")
+            .url("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/api/v1/publication/postPublication")
             .post(requestBody)
             .addHeader("Authorization", "Bearer $token")
             .addHeader("Content-Type", "application/json")

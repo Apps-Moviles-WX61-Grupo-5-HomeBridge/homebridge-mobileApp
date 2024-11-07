@@ -41,7 +41,7 @@ public final class PostResultsActivity : AppCompatActivity()
     //	-------------------------------------------
     private lateinit var m_PostsAdapter: PostAdapter
     private lateinit var d_UserWrapper: UserWrapper
-
+    private lateinit var apiService: PostApiService
 
 
 //	|-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|
@@ -62,7 +62,15 @@ public final class PostResultsActivity : AppCompatActivity()
         }
 
         this.d_UserWrapper = intent.getParcelableExtra("userWrapper")!!
-        this.m_PostsAdapter = PostAdapter(this.m_Posts, this.d_UserWrapper)
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        apiService = retrofit.create(PostApiService::class.java)
+
+        this.m_PostsAdapter = PostAdapter(this.m_Posts, this.d_UserWrapper, this.apiService)
 
         val navbar = layoutInflater.inflate(R.layout.navbar, findViewById<LinearLayout>(R.id.navbar_container), true)
 

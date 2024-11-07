@@ -9,22 +9,29 @@ import      android.widget.ImageView
 import      android.widget.TextView
 import      androidx.recyclerview.widget.RecyclerView
 import      androidx.recyclerview.widget.RecyclerView.Adapter
+import com.bumptech.glide.Glide
 import com.example.app_salesquare_homebridge.PostActivity
 import      com.example.app_salesquare_homebridge.R
+import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
 import      com.example.app_salesquare_homebridge.models.Publication
+import com.example.app_salesquare_homebridge.network.PostApiService
 import com.example.app_salesquare_homebridge.shared.user.UserWrapper
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 public final class PostAdapter(
     private val m_Posts: MutableList<Publication>,
-    private val userWrapper: UserWrapper
+    private val userWrapper: UserWrapper,
+    private val apiService: PostApiService
 ) : Adapter<PostPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostPrototype {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.post_card_result, parent, false)
 
-        return PostPrototype(view)
+        return PostPrototype(view, apiService)
     }
 
     override fun onBindViewHolder(holder: PostPrototype, position: Int): Unit {
@@ -36,7 +43,7 @@ public final class PostAdapter(
     }
 }
 
-public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
+public class PostPrototype(itemView: View, private val apiService: PostApiService) : RecyclerView.ViewHolder(itemView) {
     private val m_PriceText: TextView = itemView.findViewById<TextView>(R.id.price_text)
     private val m_Location: TextView = itemView.findViewById<TextView>(R.id.location_text)
     private val m_Size: TextView = itemView.findViewById<TextView>(R.id.size_text)
@@ -55,7 +62,32 @@ public class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
         this.m_Bathrooms.text = post.bathrooms.toString()
         this.m_Garages.text = post.garages.toString()
         this.m_Description.text = post.description
-        this.m_ImageView.setImageResource(R.drawable.cute_house)
+//        this.m_ImageView.setImageResource(R.drawable.cute_house)
+
+        post.id?.let {
+            apiService.imageList("Bearer " + userWrapper.token(), it).enqueue(object : Callback<PropertyImagesResponse> {
+                override fun onResponse(call: Call<PropertyImagesResponse>, response: Response<PropertyImagesResponse>) {
+                    if (response.isSuccessful) {
+                        val imageList = response.body()?.toPropertyImages()?.imageList
+                        if (!imageList.isNullOrEmpty()) {
+                            val imageUrl = imageList[0] //
+                            Glide.with(itemView.context)
+                                .load(imageUrl)
+                                .placeholder(R.drawable.cute_house)
+                                .into(m_ImageView)
+                        } else {
+                            m_ImageView.setImageResource(R.drawable.cute_house)
+                        }
+                    } else {
+                        m_ImageView.setImageResource(R.drawable.cute_house)
+                    }
+                }
+
+                override fun onFailure(call: Call<PropertyImagesResponse>, t: Throwable) {
+                    m_ImageView.setImageResource(R.drawable.cute_house)
+                }
+            })
+        }
 
         m_PostDetailsButton.setOnClickListener {
             val context = itemView.context

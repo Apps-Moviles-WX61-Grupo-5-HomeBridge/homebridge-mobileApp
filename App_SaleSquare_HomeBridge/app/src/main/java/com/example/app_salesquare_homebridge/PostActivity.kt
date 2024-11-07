@@ -35,7 +35,7 @@ class PostActivity : AppCompatActivity() {
     private lateinit var m_Posts: MutableList<Post>
     private lateinit var PostsAdapter: PostAdapter
 
-    private var postId: Int = -1
+//    private var postId: Int = -1
     private lateinit var images: List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,11 +99,11 @@ class PostActivity : AppCompatActivity() {
                     val confirmButton = dialogView.findViewById<Button>(R.id.btConfirmDelete)
                     val cancelButton = dialogView.findViewById<Button>(R.id.btDenyDelete)
 
-                    confirmButton.setOnClickListener {
+                    /*confirmButton.setOnClickListener {
                         deletePost(postId)
                         dialog.dismiss()
                         goBack()
-                    }
+                    }*/
 
                     cancelButton.setOnClickListener {
                         dialog.dismiss()
@@ -161,7 +161,8 @@ class PostActivity : AppCompatActivity() {
 
     private fun loadPublication() {
 
-        postId = intent.getIntExtra("post_id", -1)
+//        postId = intent.getIntExtra("post_id", -1)
+        val postId = intent.getIntExtra("post_id", 0)
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
         val price = intent.getDoubleExtra("price",0.0)
@@ -169,7 +170,7 @@ class PostActivity : AppCompatActivity() {
         val bathroom = intent.getIntExtra("bathrooms", 0)
         val garages = intent.getIntExtra("garages", 0)
         val location = intent.getStringExtra("location")
-        val totalArea = intent.getFloatExtra("totalArea", 0.0f)
+        val totalArea = intent.getIntExtra("size", 0)
         val typeInt = intent.getIntExtra("type", 0)
         val operationInt = intent.getIntExtra("operation", 0)
         val antiquity = intent.getIntExtra("antiquity", 0)
@@ -207,11 +208,11 @@ class PostActivity : AppCompatActivity() {
         val list = mutableListOf<CarouselItem>()
 
         val retrofit = Builder()
-            .baseUrl("http://10.0.2.2:5011")
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(PostApiService::class.java)
-        val call = service.imageList("Bearer ${this.userWrapper.token()}", 1)
+        val call = service.imageList("Bearer ${this.userWrapper.token()}", postId)
 
         call.enqueue(object : Callback<PropertyImagesResponse> {
             override fun onResponse(call: Call<PropertyImagesResponse>, response: Response<PropertyImagesResponse>) {
