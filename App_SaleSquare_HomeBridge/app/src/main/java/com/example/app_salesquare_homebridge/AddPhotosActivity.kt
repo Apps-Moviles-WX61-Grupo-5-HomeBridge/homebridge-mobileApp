@@ -49,19 +49,18 @@ class AddPhotosActivity : AppCompatActivity() {
         urlRecyclerView.adapter = urlAdapter
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:5011/") // URL base de tu API
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         apiService = retrofit.create(PostApiService::class.java)
 
-        // Configurar el botón de agregar URL
         addUrlButton.setOnClickListener {
             val url = urlInput.text.toString()
             if (url.isNotBlank()) {
-                urls.add(url) // Agregar URL a la lista
-                urlAdapter.notifyItemInserted(urls.size - 1) // Actualizar RecyclerView
-                urlInput.text.clear() // Limpiar el campo de texto
+                urls.add(url)
+                urlAdapter.notifyItemInserted(urls.size - 1)
+                urlInput.text.clear()
             }
         }
 

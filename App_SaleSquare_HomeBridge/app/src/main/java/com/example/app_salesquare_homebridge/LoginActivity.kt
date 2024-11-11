@@ -67,7 +67,7 @@ public final class LoginActivity: AppCompatActivity() {
     }
 
     private fun login(email: String, password: String) {
-        val url = "http://10.0.2.2:5011/api/v1/user/login"
+        val url = "https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net/api/v1/user/login"
         val Json = JSONObject().apply {
             put("password", password)
             put("email", email)
