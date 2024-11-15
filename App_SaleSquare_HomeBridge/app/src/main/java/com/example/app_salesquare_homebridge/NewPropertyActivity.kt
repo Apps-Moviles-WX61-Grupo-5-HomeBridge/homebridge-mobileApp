@@ -298,6 +298,10 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
                                 "Propiedad creada",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            val intent = Intent(this@NewPropertyActivity, AddPhotosActivity::class.java)
+                            intent.putExtra("userWrapper", d_UserWrapper)
+                            intent.putExtra("publicationId", resultAsInt)
+                            startActivity(intent)
                         } else {
                             Toast.makeText(
                                 this@NewPropertyActivity,

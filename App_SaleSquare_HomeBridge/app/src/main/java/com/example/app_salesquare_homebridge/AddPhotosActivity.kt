@@ -65,13 +65,14 @@ class AddPhotosActivity : AppCompatActivity() {
         }
 
         this.d_UserWrapper = intent.getParcelableExtra("userWrapper")!!
+        val publicationId = intent.getIntExtra("publicationId", -1)
 
-        this.changeToMyPosts()
+        this.changeToMyPosts(publicationId)
     }
 
-    private fun changeToMyPosts(): Unit {
+    private fun changeToMyPosts(publicationId: Int): Unit {
         saveUrlsButton.setOnClickListener {
-            sendUrlsToApi()
+            sendUrlsToApi(publicationId)
             val intent = Intent(this, MyPostsActivity::class.java)
             intent.putExtra("userWrapper", d_UserWrapper)
             startActivity(intent)
@@ -79,8 +80,8 @@ class AddPhotosActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendUrlsToApi() {
-        val publicationId = 1
+    private fun sendUrlsToApi(publicationId: Int) {
+//        val publicationId = 1
         val urlList = PropertyImages(publicationId, urls)
 
         val call = apiService.sendUrls("Bearer ${this.d_UserWrapper.token()}", urlList)
