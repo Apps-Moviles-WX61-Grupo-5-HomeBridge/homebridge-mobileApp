@@ -2,6 +2,7 @@ package     com.example.app_salesquare_homebridge
 
 import android.content.Intent
 import      android.os.Bundle
+import android.util.Log
 import      android.view.View
 import      android.view.ViewGroup
 import android.widget.Button
@@ -15,6 +16,7 @@ import      androidx.appcompat.app.AppCompatActivity
 import      androidx.cardview.widget.CardView
 import      androidx.core.view.ViewCompat
 import      androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
 import com.example.app_salesquare_homebridge.communication.PublicationResponse
 import com.example.app_salesquare_homebridge.network.PostApiService
@@ -27,6 +29,7 @@ import retrofit2.Retrofit.Builder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
@@ -57,6 +60,8 @@ class PostActivity : AppCompatActivity() {
         val shareIcon:ImageView = findViewById(R.id.share_icon)
         val editIcon:Button = findViewById(R.id.tvShowMap)
         val tvAddress = findViewById<TextView>(R.id.tvAddress)
+        val name = findViewById<TextView>(R.id.tvLandlordName)
+        val picture = findViewById<ImageView>(R.id.ivLandlordPicture)
 
         editIcon.setOnClickListener {
             val address = tvAddress.text.toString()
@@ -161,8 +166,8 @@ class PostActivity : AppCompatActivity() {
 
     private fun loadPublication() {
 
-//        postId = intent.getIntExtra("post_id", -1)
         val postId = intent.getIntExtra("post_id", 0)
+        val userId = intent.getIntExtra("userId", -1)
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
         val price = intent.getDoubleExtra("price",0.0)
@@ -175,6 +180,11 @@ class PostActivity : AppCompatActivity() {
         val operationInt = intent.getIntExtra("operation", 0)
         val antiquity = intent.getIntExtra("antiquity", 0)
         val projectStartDate = intent.getStringExtra("projectStartDate")
+
+        if (userId != -1)
+        {
+            loadUserDetail(userId)
+        }
 
         val type = when (typeInt) {
             0 -> "Casa"
@@ -226,13 +236,48 @@ class PostActivity : AppCompatActivity() {
                         carousel.setData(list)
                     }
                 } else {
-                    Toast.makeText(this@PostActivity, "No se pudo cargar la lista de imágenes", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PostActivity, "No se pudo cargar la lista de imágenes del carrusel", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<PropertyImagesResponse>, t: Throwable) {
                 println("Fallo en la conexión: ${t.message}")
                 Toast.makeText(this@PostActivity, "Error al cargar la lista de imágenes: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun loadUserDetail(userId : Int)
+    {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PostApiService::class.java)
+        val call = service.findUserById("Bearer ${this.userWrapper.token()}", userId)
+
+        call.enqueue(object : Callback<Map<String, Any>> {
+            override fun onResponse(call : Call<Map<String, Any>>, response : Response<Map<String, Any>>) {
+                val user = response.body()
+
+                if (response.isSuccessful) {
+
+                    if (user != null) {
+
+                        val name = user["name"] as String
+                        val picture = user["userProfilePhotoUrl"] as String
+                        findViewById<TextView>(R.id.tvLandlordName).text = name
+                        Glide.with(this@PostActivity).load(picture).into(findViewById<ImageView>(R.id.ivLandlordPicture))
+                    }
+                } else {
+                    Log.e("PostActivity", "Failed to load user information. Response code: ${response.message()}")
+                    Toast.makeText(this@PostActivity, "No se pudo cargar la información del usuario", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
+                Log.e("PostActivity", "Request failed: ${t.message}")
+                Toast.makeText(this@PostActivity, "Error al cargar la información del usuario: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -270,8 +315,17 @@ class PostActivity : AppCompatActivity() {
     }
     private fun changeToLandlordProfile(): Unit {
         val btnCreatePost = findViewById<Button>(R.id.btContact)
+
         btnCreatePost.setOnClickListener {
-            val intent = Intent(this, MyProfileActivity::class.java)
+            val userId = intent.getIntExtra("userId", -1)
+            if (userId == -1) {
+                Log.e("PostActivity", "No user id was passed to the activity ${intent.extras}")
+                return@setOnClickListener
+            }
+            val intent = Intent(this, MyProfileActivity::class.java).apply {
+                putExtra("userId", userId)
+                putExtra("userWrapper", userWrapper)
+            }
             startActivity(intent)
         }
     }

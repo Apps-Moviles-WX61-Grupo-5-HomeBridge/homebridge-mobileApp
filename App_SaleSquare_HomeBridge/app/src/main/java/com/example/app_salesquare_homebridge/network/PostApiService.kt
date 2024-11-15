@@ -3,6 +3,7 @@ package     com.example.app_salesquare_homebridge.network
 import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
 import      com.example.app_salesquare_homebridge.communication.PublicationResponse
 import com.example.app_salesquare_homebridge.models.PropertyImages
+import com.example.app_salesquare_homebridge.models.Publication
 import      retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -38,6 +39,18 @@ interface PostApiService {
         @Header("Authorization") token: String,
         @Query("amount") amount: Int
     ): Call<PropertyImagesResponse>
+
+    @GET("api/v1/user/findById")
+    fun findUserById(
+        @Header("Authorization") token: String,
+        @Query ("id") userId: Int
+    ): Call<Map<String, Any>>
+
+    @GET("api/v1/publication/userPublications")
+    fun userPublications(
+        @Header("Authorization") token: String,
+        @Query("userId") userId: Int
+    ): Call<List<Publication>>
 
     @POST("api/v1/publication/postImageList")
     fun sendUrls(

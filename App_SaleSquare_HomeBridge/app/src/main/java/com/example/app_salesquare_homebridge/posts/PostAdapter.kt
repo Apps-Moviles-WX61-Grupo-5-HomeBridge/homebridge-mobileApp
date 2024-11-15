@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.app_salesquare_homebridge.PostActivity
 import      com.example.app_salesquare_homebridge.R
 import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
+import com.example.app_salesquare_homebridge.communication.PublicationResponse
 import      com.example.app_salesquare_homebridge.models.Publication
 import com.example.app_salesquare_homebridge.network.PostApiService
 import com.example.app_salesquare_homebridge.shared.user.UserWrapper
@@ -40,6 +41,11 @@ public final class PostAdapter(
 
     override fun getItemCount(): Int {
         return this.m_Posts.size
+    }
+    fun updatePosts(posts: List<Publication>) {
+        this.m_Posts.clear()
+        this.m_Posts.addAll(posts)
+        notifyDataSetChanged()
     }
 }
 
@@ -92,6 +98,7 @@ public class PostPrototype(itemView: View, private val apiService: PostApiServic
         m_PostDetailsButton.setOnClickListener {
             val context = itemView.context
             val intent = Intent(context, PostActivity::class.java)
+            intent.putExtra("userId", post.userId)
             intent.putExtra("post_id", post.id)
             intent.putExtra("size", post.size)
             intent.putExtra("rooms", post.rooms)
