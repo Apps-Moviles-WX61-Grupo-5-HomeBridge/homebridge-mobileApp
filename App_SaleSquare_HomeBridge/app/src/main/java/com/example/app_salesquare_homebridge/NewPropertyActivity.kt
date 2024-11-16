@@ -220,9 +220,6 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         btnCreatePost.setOnClickListener {
             saveLocation()
             saveEverything()
-            val intent = Intent(this, AddPhotosActivity::class.java)
-            intent.putExtra("userWrapper", d_UserWrapper)
-            startActivity(intent)
         }
     }
 
@@ -325,6 +322,7 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         Toast.makeText(this, "Ubicación guardada", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, NewPropertyActivity::class.java)
         val gson = Gson()
+        intent.putExtra("userWrapper", d_UserWrapper)
         intent.putExtra("location", gson.toJson(location))
         startActivity(intent)
 

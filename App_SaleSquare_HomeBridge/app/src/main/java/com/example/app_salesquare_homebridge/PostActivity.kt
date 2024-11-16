@@ -38,7 +38,7 @@ class PostActivity : AppCompatActivity() {
     private lateinit var m_Posts: MutableList<Post>
     private lateinit var PostsAdapter: PostAdapter
 
-//    private var postId: Int = -1
+    private var postId: Int = -1
     private lateinit var images: List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,11 +104,10 @@ class PostActivity : AppCompatActivity() {
                     val confirmButton = dialogView.findViewById<Button>(R.id.btConfirmDelete)
                     val cancelButton = dialogView.findViewById<Button>(R.id.btDenyDelete)
 
-                    /*confirmButton.setOnClickListener {
+                    confirmButton.setOnClickListener {
                         deletePost(postId)
                         dialog.dismiss()
-                        goBack()
-                    }*/
+                    }
 
                     cancelButton.setOnClickListener {
                         dialog.dismiss()
@@ -166,7 +165,7 @@ class PostActivity : AppCompatActivity() {
 
     private fun loadPublication() {
 
-        val postId = intent.getIntExtra("post_id", 0)
+        postId = intent.getIntExtra("post_id", -1)
         val userId = intent.getIntExtra("userId", -1)
         val title = intent.getStringExtra("title")
         val description = intent.getStringExtra("description")
@@ -296,6 +295,10 @@ class PostActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     // Aquí puedes realizar cualquier acción adicional después de la eliminación.
                     Toast.makeText(this@PostActivity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@PostActivity, PostResultsActivity::class.java)
+                    intent.putExtra("userWrapper", userWrapper)
+                    startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(this@PostActivity, "No se pudo eliminar la publicación", Toast.LENGTH_SHORT).show()
                 }
