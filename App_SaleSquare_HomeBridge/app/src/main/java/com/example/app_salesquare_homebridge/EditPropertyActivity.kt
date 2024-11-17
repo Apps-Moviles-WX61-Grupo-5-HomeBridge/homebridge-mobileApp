@@ -218,7 +218,6 @@ class EditPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun changeToPhotos(): Unit {
         val btnCreatePost = findViewById<Button>(R.id.btnContinue)
         btnCreatePost.setOnClickListener {
-            saveLocation()
             saveEverything()
         }
     }
