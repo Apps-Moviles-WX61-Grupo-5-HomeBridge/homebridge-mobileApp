@@ -6,6 +6,7 @@ import android.util.Log
 import      android.view.View
 import      android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import      android.widget.ImageView
 import      android.widget.PopupMenu
 import android.widget.TextView
@@ -19,6 +20,7 @@ import      androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
 import com.example.app_salesquare_homebridge.communication.PublicationResponse
+import com.example.app_salesquare_homebridge.models.Publication
 import com.example.app_salesquare_homebridge.network.PostApiService
 import com.example.app_salesquare_homebridge.posts.Post
 import com.example.app_salesquare_homebridge.posts.PostAdapter
@@ -41,6 +43,8 @@ class PostActivity : AppCompatActivity() {
     private var postId: Int = -1
     private lateinit var images: List<String>
 
+    lateinit var property: Publication
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -62,6 +66,7 @@ class PostActivity : AppCompatActivity() {
         val tvAddress = findViewById<TextView>(R.id.tvAddress)
         val name = findViewById<TextView>(R.id.tvLandlordName)
         val picture = findViewById<ImageView>(R.id.ivLandlordPicture)
+        val editPost = findViewById<ImageButton>(R.id.ivEditIcon)
 
         editIcon.setOnClickListener {
             val address = tvAddress.text.toString()
@@ -80,6 +85,13 @@ class PostActivity : AppCompatActivity() {
         }
         shareIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in share icon", Toast.LENGTH_SHORT).show()
+        }
+        editPost.setOnClickListener {
+            val intent = Intent(this, EditPropertyActivity::class.java).apply {
+                putExtra("post_id", postId)
+                putExtra("userWrapper", userWrapper)
+            }
+            startActivity(intent)
         }
         loadPublication()
         this.goBack()
