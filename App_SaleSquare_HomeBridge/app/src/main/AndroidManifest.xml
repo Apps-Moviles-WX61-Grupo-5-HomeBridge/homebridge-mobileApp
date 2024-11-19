@@ -73,7 +73,7 @@
         <activity
             android:name=".PostResultsActivity"
             android:exported="true"></activity>
-
+        <activity android:name=".EditProfileActivity" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAWteO3GWNKFeKpDql-7E5W8bp6FeRmiJY" />

@@ -38,18 +38,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/userprofiledefault" />
 
-        <ImageView
-            android:id="@+id/ivEditName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="144dp"
-            android:layout_marginTop="144dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_edit_square_24" />
-
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
@@ -59,18 +47,6 @@
             android:text="Eva Lopez"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo_button" />
-
-        <ImageView
-            android:id="@+id/ivEditDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="204dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_edit_square_24" />
 
         <TextView
             android:id="@+id/tvDescription"
@@ -93,18 +69,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
-        <ImageView
-            android:id="@+id/ivEditWeb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="382dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_edit_square_24" />
-
         <TextView
             android:id="@+id/tvWebsite"
             android:layout_width="wrap_content"
@@ -124,18 +88,6 @@
             android:text="Publicaciones:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWebsite" />
-
-        <ImageView
-            android:id="@+id/ivEditPublications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="115dp"
-            android:layout_marginTop="455dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_edit_square_24" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
