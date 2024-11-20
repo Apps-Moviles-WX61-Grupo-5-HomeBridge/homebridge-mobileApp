@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -23,7 +24,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var tvLogin : TextView
     private lateinit var etEmail : EditText
     private lateinit var etPassword : EditText
+    private lateinit var cbTerms: CheckBox
     private var spannableString = SpannableString("Ya tengo cuenta. Ingresar")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,19 +46,26 @@ class RegisterActivity : AppCompatActivity() {
         tvLogin = findViewById(R.id.tvRedLogin)
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
+        cbTerms = findViewById(R.id.cbTerms)
 
         btRegister.setOnClickListener {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
-            if (email.isEmpty() && password.isEmpty()) {
+            if (!cbTerms.isChecked) {
+                Toast.makeText(
+                    this,
+                    "Debe aceptar los términos y condiciones",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(
                     this,
                     "Por favor, ingrese su correo y contraseña",
                     Toast.LENGTH_SHORT
                 ).show()
+            } else {
+                registerUser(email, password)
             }
-            else{
-            registerUser(email, password)}
         }
 
         val clickableSpan = object: android.text.style.ClickableSpan() {

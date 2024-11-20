@@ -52,4 +52,5 @@
     <string name="advertiser_info">Información del anunciante</string>
     <string name="contact">Contactar</string>
     <string name="editar">Editar el inmueble</string>
+    <string name="terminos">Al registrarme, acepto los términos y condiciones</string>
 </resources>
