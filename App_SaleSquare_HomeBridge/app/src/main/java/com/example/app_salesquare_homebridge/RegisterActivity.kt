@@ -26,6 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etPassword : EditText
     private lateinit var cbTerms: CheckBox
     private var spannableString = SpannableString("Ya tengo cuenta. Ingresar")
+    private var spannableTerms = SpannableString("Al registrarme, acepto los términos y condiciones")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,11 +81,34 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
+        val clickableSpanTerms = object: android.text.style.ClickableSpan() {
+            override fun onClick(widget: android.view.View) {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    android.net.Uri.parse("https://www.freeprivacypolicy.com/live/c204108a-47fb-4835-bf4b-0f4974c72a5a")
+                )
+
+                startActivity(intent)
+            }
+
+            override fun updateDrawState(ds: android.text.TextPaint) {
+                super.updateDrawState(ds)
+                ds.isUnderlineText = false
+                ds.color = resources.getColor(R.color.blue, theme)
+            }
+        }
+
         spannableString.setSpan(clickableSpan, 16, 24, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         tvLogin.text = spannableString
 
         tvLogin.movementMethod = android.text.method.LinkMovementMethod.getInstance()
+
+        spannableTerms.setSpan(clickableSpanTerms, 27, 49, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        cbTerms.text = spannableTerms
+
+        cbTerms.movementMethod = android.text.method.LinkMovementMethod.getInstance()
     }
 
     fun registerUser(email: String, password: String) {
