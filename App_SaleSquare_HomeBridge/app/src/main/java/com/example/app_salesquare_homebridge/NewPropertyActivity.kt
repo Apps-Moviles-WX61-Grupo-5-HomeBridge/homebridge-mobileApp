@@ -82,6 +82,7 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var etDescripcion : TextInputEditText
     lateinit var location: Location
     private lateinit var d_UserWrapper: UserWrapper
+    private var publicationId: Int = 0
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -212,10 +213,6 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         setupAddressInputListeners()
         updatenumber()
 
-        this.changeToPhotos()
-    }
-
-    private fun changeToPhotos(): Unit {
         val btnCreatePost = findViewById<Button>(R.id.btnContinue)
         btnCreatePost.setOnClickListener {
             saveLocation()
@@ -290,15 +287,13 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
                     if (response.isSuccessful && !responseBody.isNullOrEmpty()) {
                         val resultAsInt = responseBody.toIntOrNull()
                         if (resultAsInt != null) {
+                            publicationId = resultAsInt
                             Toast.makeText(
                                 this@NewPropertyActivity,
                                 "Propiedad creada",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            val intent = Intent(this@NewPropertyActivity, AddPhotosActivity::class.java)
-                            intent.putExtra("userWrapper", d_UserWrapper)
-                            intent.putExtra("publicationId", resultAsInt)
-                            startActivity(intent)
+                            changeToPhotos()
                         } else {
                             Toast.makeText(
                                 this@NewPropertyActivity,
@@ -320,12 +315,19 @@ class NewPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         location = Location(null, address, latitude, longitude)
         // Guardar la instancia de Location en la base de datos
         Toast.makeText(this, "Ubicación guardada", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, NewPropertyActivity::class.java)
-        val gson = Gson()
+    }
+
+    private fun changeToPhotos(): Unit {
+        val intent = Intent(this, AddPhotosActivity::class.java)
         intent.putExtra("userWrapper", d_UserWrapper)
+        intent.putExtra("publicationId", publicationId)
+
+        val gson = Gson()
         intent.putExtra("location", gson.toJson(location))
+
         startActivity(intent)
 
+        finish()
     }
 
     private fun checkLocationPermission() {
