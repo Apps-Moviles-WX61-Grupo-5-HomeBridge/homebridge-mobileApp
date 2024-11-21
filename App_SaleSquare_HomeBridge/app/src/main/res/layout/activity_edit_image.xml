@@ -1,77 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditImageActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#DCDCDC"
+    tools:context=".AddPhotosActivity">
 
+    <!-- Campo de entrada para la URL de la imagen -->
     <TextView
-        android:id="@+id/tvEditPhoto"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvEditPhotos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/fotos"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Editar fotos"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvDeletePhoto"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/urlInput2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/eliminar_foto"
-        app:layout_constraintStart_toEndOf="@+id/ivDeleteIcon"
-        app:layout_constraintTop_toBottomOf="@+id/tvEditPhoto" />
+        android:hint="Ingrese la URL de la imagen"
+        android:inputType="textUri"
+        android:layout_marginTop="10dp"/>
 
-    <ImageView
-        android:id="@+id/ivDeleteIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/boton_de_eliminar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEditPhoto"
-        app:srcCompat="@drawable/icon_delete" />
-
-    <ImageView
-        android:id="@+id/ivPropertyImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/imagen_de_la_propiedad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDeletePhoto"
-        app:srcCompat="@drawable/image_property" />
-
-    <ImageButton
-        android:id="@+id/ibtEditPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/Boton_de_editar_imagen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPropertyImage"
-        app:srcCompat="@drawable/add_image_bt" />
-
+    <!-- Botón para agregar la URL a la lista -->
     <Button
-        android:id="@+id/btApplyChanges"
+        android:id="@+id/addUrlButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#465544"
-        android:paddingHorizontal="50dp"
-        android:text="@string/confirmar_cambios"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ibtEditPhoto" />
+        android:text="Agregar URL"
+        android:layout_marginTop="10dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- RecyclerView para mostrar la lista de URLs -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/urlRecyclerView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp" />
+
+    <!-- Botón para guardar las URLs en la base de datos -->
+    <Button
+        android:id="@+id/btPublish2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar URLs"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

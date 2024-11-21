@@ -66,7 +66,8 @@ class PostActivity : AppCompatActivity() {
         val tvAddress = findViewById<TextView>(R.id.tvAddress)
         val name = findViewById<TextView>(R.id.tvLandlordName)
         val picture = findViewById<ImageView>(R.id.ivLandlordPicture)
-        val editPost = findViewById<ImageButton>(R.id.ivEditIcon)
+        val editDetails = findViewById<ImageButton>(R.id.ivEditDetails)
+        val editPhotos = findViewById<ImageButton>(R.id.ivEditIcon)
 
         editIcon.setOnClickListener {
             val address = tvAddress.text.toString()
@@ -87,8 +88,15 @@ class PostActivity : AppCompatActivity() {
             Toast.makeText(this, "You clicked in share icon", Toast.LENGTH_SHORT).show()
         }
         loadPublication()
-        editPost.setOnClickListener {
+        editDetails.setOnClickListener {
             val intent = Intent(this, EditPropertyActivity::class.java).apply {
+                putExtra("post_id", postId)
+                putExtra("userWrapper", userWrapper)
+            }
+            startActivity(intent)
+        }
+        editPhotos.setOnClickListener {
+            val intent = Intent(this, EditImageActivity::class.java).apply {
                 putExtra("post_id", postId)
                 putExtra("userWrapper", userWrapper)
             }
@@ -142,12 +150,15 @@ class PostActivity : AppCompatActivity() {
 
     private fun showEditIcons(isVisible: Boolean) {
         val editIcon: ImageView = findViewById(R.id.ivEditIcon)
+        val editDetails: ImageView = findViewById(R.id.ivEditDetails)
 
         val visibility = if (isVisible) View.VISIBLE else View.GONE
 
         editIcon.visibility = visibility
+        editDetails.visibility = visibility
 
         adjustEditMargin()
+        adjustTitleMargin()
     }
 
     private fun addCarouselItem(list: MutableList<CarouselItem>, imageUrl: String) {
@@ -165,6 +176,18 @@ class PostActivity : AppCompatActivity() {
             params.topMargin = 0
         }
         photos.layoutParams = params
+    }
+
+    private fun adjustTitleMargin() {
+        val ivEditDetails = findViewById<ImageView>(R.id.ivEditDetails)
+        val tvTitle = findViewById<View>(R.id.tvTitle)
+        val params = tvTitle.layoutParams as ViewGroup.MarginLayoutParams
+        if (ivEditDetails.visibility == View.VISIBLE) {
+            params.topMargin = 150
+        } else {
+            params.topMargin = 21
+        }
+        tvTitle.layoutParams = params
     }
 
     private fun showShareIcon() {
