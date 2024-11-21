@@ -38,7 +38,7 @@ interface PostApiService {
     @GET("api/v1/publication/imageList")
     fun imageList(
         @Header("Authorization") token: String,
-        @Query("amount") amount: Int
+        @Query("publicationId") amount: Int
     ): Call<PropertyImagesResponse>
 
     @GET("api/v1/user/findById")

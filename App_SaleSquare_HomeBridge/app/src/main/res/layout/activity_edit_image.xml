@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:text="Editar fotos"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
 
     <EditText
         android:id="@+id/urlInput2"
@@ -46,7 +47,7 @@
         android:id="@+id/btPublish2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar URLs"
+        android:text="Guardar Imágenes"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp" />
 
