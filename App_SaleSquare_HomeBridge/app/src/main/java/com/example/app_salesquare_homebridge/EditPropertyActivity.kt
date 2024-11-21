@@ -218,6 +218,7 @@ class EditPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun changeToPhotos(): Unit {
         val btnCreatePost = findViewById<Button>(R.id.btnContinue)
         btnCreatePost.setOnClickListener {
+            saveLocation()
             saveEverything()
         }
     }
@@ -237,7 +238,7 @@ class EditPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         val Descripcion = etDescripcion.text.toString()
         val token = d_UserWrapper.token()
         val userId = d_UserWrapper.userId()
-        val propertyId = intent.getIntExtra("propertyId", -1)
+        val propertyId = intent.getIntExtra("post_id", -1)
         val userWrapper: UserWrapper? = intent.getParcelableExtra("userWrapper")
 
 
@@ -302,9 +303,9 @@ class EditPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
                             "Propiedad actualizada",
                             Toast.LENGTH_SHORT
                         ).show()
-                        val intent = Intent(this@EditPropertyActivity, AddPhotosActivity::class.java)
+                        val intent = Intent(this@EditPropertyActivity, PostResultsActivity::class.java)
                         intent.putExtra("userWrapper", d_UserWrapper)
-                        intent.putExtra("publicationId", propertyId)
+                        //intent.putExtra("publicationId", propertyId)
                         startActivity(intent)
                     } else {
                         Toast.makeText(
@@ -326,11 +327,11 @@ class EditPropertyActivity : AppCompatActivity(), OnMapReadyCallback {
         location = Location(null, address, latitude, longitude)
         // Guardar la instancia de Location en la base de datos
         Toast.makeText(this, "Ubicación guardada", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, NewPropertyActivity::class.java)
+        /*val intent = Intent(this, NewPropertyActivity::class.java)
         val gson = Gson()
         intent.putExtra("userWrapper", d_UserWrapper)
         intent.putExtra("location", gson.toJson(location))
-        startActivity(intent)
+        startActivity(intent)*/
 
     }
 

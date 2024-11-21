@@ -86,6 +86,7 @@ class PostActivity : AppCompatActivity() {
         shareIcon.setOnClickListener {
             Toast.makeText(this, "You clicked in share icon", Toast.LENGTH_SHORT).show()
         }
+        loadPublication()
         editPost.setOnClickListener {
             val intent = Intent(this, EditPropertyActivity::class.java).apply {
                 putExtra("post_id", postId)
@@ -93,7 +94,6 @@ class PostActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-        loadPublication()
         this.goBack()
         this.changeToLandlordProfile()
     }
