@@ -1,6 +1,6 @@
 package com.example.app_salesquare_homebridge.communication
 
-import com.example.app_salesquare_homebridge.models.Publication
+import com.example.app_salesquare_homebridge.models.publications.Publication
 import java.text.SimpleDateFormat
 import java.util.Locale
 

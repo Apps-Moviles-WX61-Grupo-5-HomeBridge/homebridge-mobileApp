@@ -1,4 +1,4 @@
-package com.example.app_salesquare_homebridge.models
+package com.example.app_salesquare_homebridge.models.publications
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

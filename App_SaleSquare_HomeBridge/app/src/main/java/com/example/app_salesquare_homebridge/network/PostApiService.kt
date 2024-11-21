@@ -3,16 +3,15 @@ package     com.example.app_salesquare_homebridge.network
 import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
 import      com.example.app_salesquare_homebridge.communication.PublicationResponse
 import com.example.app_salesquare_homebridge.models.PropertyImages
-import com.example.app_salesquare_homebridge.models.Publication
+import com.example.app_salesquare_homebridge.models.publications.Publication
+import com.example.app_salesquare_homebridge.network.publications.GetPublicationsRequest
 import      retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.DELETE
 import      retrofit2.http.GET
 import retrofit2.http.HTTP
 import      retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
-import retrofit2.http.Path
 import      retrofit2.http.Query
 
 
@@ -21,7 +20,7 @@ interface PostApiService {
     @GET("api/v1/publication/publications")
     fun publications(
         @Header("Authorization") token: String,
-        @Query("amount") amount: Int
+        @Query("request") request: GetPublicationsRequest
     ): Call<List<PublicationResponse>>
 
     @GET("api/v1/publication/justPublications")

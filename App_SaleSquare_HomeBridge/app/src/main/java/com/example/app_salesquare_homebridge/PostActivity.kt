@@ -19,8 +19,7 @@ import      androidx.core.view.ViewCompat
 import      androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
-import com.example.app_salesquare_homebridge.communication.PublicationResponse
-import com.example.app_salesquare_homebridge.models.Publication
+import com.example.app_salesquare_homebridge.models.publications.Publication
 import com.example.app_salesquare_homebridge.network.PostApiService
 import com.example.app_salesquare_homebridge.posts.Post
 import com.example.app_salesquare_homebridge.posts.PostAdapter

@@ -13,8 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.app_salesquare_homebridge.PostActivity
 import      com.example.app_salesquare_homebridge.R
 import com.example.app_salesquare_homebridge.communication.PropertyImagesResponse
-import com.example.app_salesquare_homebridge.communication.PublicationResponse
-import      com.example.app_salesquare_homebridge.models.Publication
+import      com.example.app_salesquare_homebridge.models.publications.Publication
 import com.example.app_salesquare_homebridge.network.PostApiService
 import com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import retrofit2.Call

@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.app_salesquare_homebridge.models.Publication
+import com.example.app_salesquare_homebridge.models.publications.Publication
 
 @Dao
 interface PublicationsDao {

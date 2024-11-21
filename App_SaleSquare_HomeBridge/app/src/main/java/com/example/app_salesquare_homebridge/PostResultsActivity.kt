@@ -13,9 +13,12 @@ import      androidx.core.view.WindowInsetsCompat
 import      androidx.recyclerview.widget.LinearLayoutManager
 import      androidx.recyclerview.widget.RecyclerView
 import      com.example.app_salesquare_homebridge.communication.PublicationResponse
-import      com.example.app_salesquare_homebridge.models.Publication
+import      com.example.app_salesquare_homebridge.models.publications.Publication
+import com.example.app_salesquare_homebridge.models.publications.PublicationConstraints
 import      com.example.app_salesquare_homebridge.network.PostApiService
+import com.example.app_salesquare_homebridge.network.publications.GetPublicationsRequest
 import      com.example.app_salesquare_homebridge.posts.PostAdapter
+import com.example.app_salesquare_homebridge.shared.publication.SearchFilterWrapper
 import      com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import      com.example.app_salesquare_homebridge.ui.MainActivity
 import      retrofit2.Call
@@ -97,20 +100,34 @@ public final class PostResultsActivity : AppCompatActivity()
 
         this.changeToFilter()
         this.changeToMenu()
-//        this.changeToLogin()
+        this.initializeView()
     }
 
     private fun loadPosts(): Unit {
         //  Usage of [[SearchFilterWrapper]]
-
-        m_Posts.clear()
+        this.m_Posts.clear()
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://salesquare-aceeh0btd8frgyc2.brazilsouth-01.azurewebsites.net")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(PostApiService::class.java)
-        val call = service.justPublications("Bearer ${this.d_UserWrapper.token()}")
+        val call = service.publications(
+            "Bearer ${this.d_UserWrapper.token()}",
+            GetPublicationsRequest(
+                SearchFilterWrapper.location,
+                SearchFilterWrapper.operationType.ordinal,
+                SearchFilterWrapper.placeType.ordinal,
+                SearchFilterWrapper.priceFrom,
+                SearchFilterWrapper.priceTo,
+                SearchFilterWrapper.rooms,
+                SearchFilterWrapper.bathrooms,
+                SearchFilterWrapper.garages,
+                SearchFilterWrapper.areaFrom,
+                SearchFilterWrapper.areaTo,
+                PublicationConstraints.maxPublicationsRequest
+            )
+        )
 
         call.enqueue(object : retrofit2.Callback<List<PublicationResponse>> {
             override fun onResponse(call: Call<List<PublicationResponse>>, response: Response<List<PublicationResponse>>) {

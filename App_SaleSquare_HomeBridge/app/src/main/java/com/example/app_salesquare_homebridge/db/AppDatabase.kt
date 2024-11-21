@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.app_salesquare_homebridge.models.Location
-import com.example.app_salesquare_homebridge.models.Publication
+import com.example.app_salesquare_homebridge.models.publications.Publication
 
 @Database(entities = [Location::class, Publication::class], version = 1)
 @TypeConverters(Converters::class)
