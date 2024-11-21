@@ -14,11 +14,11 @@ import      androidx.recyclerview.widget.LinearLayoutManager
 import      androidx.recyclerview.widget.RecyclerView
 import      com.example.app_salesquare_homebridge.communication.PublicationResponse
 import      com.example.app_salesquare_homebridge.models.publications.Publication
-import com.example.app_salesquare_homebridge.models.publications.PublicationConstraints
+import      com.example.app_salesquare_homebridge.models.publications.PublicationConstraints
 import      com.example.app_salesquare_homebridge.network.PostApiService
-import com.example.app_salesquare_homebridge.network.publications.GetPublicationsRequest
+import      com.example.app_salesquare_homebridge.network.publications.GetPublicationsRequest
 import      com.example.app_salesquare_homebridge.posts.PostAdapter
-import com.example.app_salesquare_homebridge.shared.publication.SearchFilterWrapper
+import      com.example.app_salesquare_homebridge.shared.publication.SearchFilterWrapper
 import      com.example.app_salesquare_homebridge.shared.user.UserWrapper
 import      com.example.app_salesquare_homebridge.ui.MainActivity
 import      retrofit2.Call
@@ -112,22 +112,24 @@ public final class PostResultsActivity : AppCompatActivity()
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(PostApiService::class.java)
-        val call = service.publications(
-            "Bearer ${this.d_UserWrapper.token()}",
-            GetPublicationsRequest(
+        val call = if (!SearchFilterWrapper.allInvalid()) {
+            service.publications(
+                "Bearer ${this.d_UserWrapper.token()}",
                 SearchFilterWrapper.location,
-                SearchFilterWrapper.operationType.ordinal,
-                SearchFilterWrapper.placeType.ordinal,
+                SearchFilterWrapper.operationType.value,
+                SearchFilterWrapper.placeType.value,
                 SearchFilterWrapper.priceFrom,
                 SearchFilterWrapper.priceTo,
                 SearchFilterWrapper.rooms,
                 SearchFilterWrapper.bathrooms,
                 SearchFilterWrapper.garages,
                 SearchFilterWrapper.areaFrom,
-                SearchFilterWrapper.areaTo,
-                PublicationConstraints.maxPublicationsRequest
+                SearchFilterWrapper.areaTo
             )
-        )
+        }
+        else {
+            service.justPublications("Bearer ${this.d_UserWrapper.token()}")
+        }
 
         call.enqueue(object : retrofit2.Callback<List<PublicationResponse>> {
             override fun onResponse(call: Call<List<PublicationResponse>>, response: Response<List<PublicationResponse>>) {

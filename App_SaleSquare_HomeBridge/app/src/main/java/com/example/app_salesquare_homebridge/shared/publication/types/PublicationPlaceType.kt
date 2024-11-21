@@ -2,28 +2,10 @@ package     com.example.app_salesquare_homebridge.shared.publication.types
 
 
 
-public final enum class PublicationPlaceType
+public final enum class PublicationPlaceType(val value: Int)
 {
-    House,
-    Apartment,
-    Terrain;
-
-    companion object {
-        public fun fromInt(value: Int): PublicationPlaceType {
-            return when (value) {
-                0 -> House
-                1 -> Apartment
-                2 -> Terrain
-
-                else -> throw IllegalArgumentException()
-            }
-        }
-        public fun stringFromType(type: PublicationPlaceType): String {
-            return when (type) {
-                House -> "Casa"
-                Apartment -> "Departamento"
-                Terrain -> "Terreno"
-            }
-        }
-    }
+    NotDefined(-1),
+    House(0),
+    Apartment(1),
+    Terrain(2);
 }

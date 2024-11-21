@@ -20,7 +20,16 @@ interface PostApiService {
     @GET("api/v1/publication/publications")
     fun publications(
         @Header("Authorization") token: String,
-        @Query("request") request: GetPublicationsRequest
+        @Query("Location") location: String,
+        @Query("OperationType") operationType: Int,
+        @Query("PlaceType") placeType: Int,
+        @Query("PriceFrom") priceFrom: Float,
+        @Query("PriceTo") priceTo: Float,
+        @Query("Rooms") rooms: Int,
+        @Query("Bathrooms") bathrooms: Int,
+        @Query("Garages") garages: Int,
+        @Query("AreaFrom") areaFrom: Float,
+        @Query("AreaTo") areaTo: Float
     ): Call<List<PublicationResponse>>
 
     @GET("api/v1/publication/justPublications")
