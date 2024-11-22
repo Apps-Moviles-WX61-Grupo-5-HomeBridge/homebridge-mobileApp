@@ -189,11 +189,4 @@ public final class PostResultsActivity : AppCompatActivity()
             startActivity(intent)
         }
     }
-    private fun changeToLogin(): Unit {
-        val btnLogin = findViewById<ImageButton>(R.id.imageButton4)
-        btnLogin.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-    }
 }

@@ -76,10 +76,11 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:adjustViewBounds="false"
+            android:background="@drawable/ripple_button"
             android:cropToPadding="false"
             android:padding="5dp"
+            android:layout_marginLeft="40dp"
             android:paddingEnd="60dp"
-            android:background="@drawable/ripple_button"
             android:scaleType="centerInside"
             android:src="@drawable/filter_icon" />
 
@@ -87,7 +88,7 @@
             android:id="@+id/textView4"
             android:layout_width="50dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="80dp"
             android:layout_marginTop="13dp"
             android:autoSizeTextType="uniform"
             android:autoText="false"
@@ -107,36 +108,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/frameLayout"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
-
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="false"
-            android:background="@drawable/ripple_button"
-            android:cropToPadding="false"
-            android:padding="5dp"
-            android:paddingEnd="60dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/sort_icon" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="15dp"
-            android:autoSizeTextType="uniform"
-            android:autoText="false"
-            android:text="Ordenar"
-            app:layout_constraintBottom_toTopOf="@+id/filter_button"
-            app:layout_constraintEnd_toStartOf="@+id/filter_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"/>
 
     <TextView
         android:id="@+id/properties_shown_tv"
