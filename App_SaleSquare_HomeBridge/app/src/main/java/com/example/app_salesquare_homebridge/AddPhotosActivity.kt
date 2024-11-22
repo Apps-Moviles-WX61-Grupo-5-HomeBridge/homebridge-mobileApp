@@ -73,7 +73,7 @@ class AddPhotosActivity : AppCompatActivity() {
     private fun changeToMyPosts(publicationId: Int): Unit {
         saveUrlsButton.setOnClickListener {
             sendUrlsToApi(publicationId)
-            val intent = Intent(this, MyPostsActivity::class.java)
+            val intent = Intent(this, PostResultsActivity::class.java)
             intent.putExtra("userWrapper", d_UserWrapper)
             startActivity(intent)
             finish()
